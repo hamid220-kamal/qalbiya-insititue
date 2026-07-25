@@ -8,29 +8,29 @@ export const DirectMentorship: React.FC = () => {
 
   return (
     <section 
-      className="w-full bg-white py-16 sm:py-24 border-t border-[#EAD5D8]/60 relative overflow-hidden" 
+      className="w-full bg-[#FAF8F5] py-16 sm:py-24 border-t border-[#E8DDD9] relative overflow-hidden" 
       id="direct-mentorship-section"
     >
       {/* Decorative Background Blobs */}
-      <div className="absolute top-0 left-0 -z-10 h-64 w-64 rounded-full bg-[#EAB1BB]/15 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 -z-10 h-64 w-64 rounded-full bg-[#D4AF37]/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-0 -z-10 h-64 w-64 rounded-full bg-[#78122B]/5 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 -z-10 h-64 w-64 rounded-full bg-[#D4AF37]/10 blur-3xl pointer-events-none" />
 
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="bg-panel-dark border border-[#D4AF37]/20 rounded-3xl shadow-xl p-8 sm:p-12 relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center" id="direct-mentorship-card">
+        <div className="bg-[#FDFBF7] border border-[#E8DDD9] rounded-3xl shadow-xl p-8 sm:p-12 relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center" id="direct-mentorship-card">
           
-          {/* Subtle gold decoration on top card corner */}
-          <div className="absolute -top-10 -left-10 w-24 h-24 rounded-full border border-[#D4AF37]/20 pointer-events-none" />
-          <div className="absolute -top-6 -left-6 w-16 h-16 rounded-full border border-[#D4AF37]/10 pointer-events-none" />
+          {/* Subtle decoration on top card corner */}
+          <div className="absolute -top-10 -left-10 w-24 h-24 rounded-full border border-[#78122B]/10 pointer-events-none" />
+          <div className="absolute -top-6 -left-6 w-16 h-16 rounded-full border border-[#78122B]/5 pointer-events-none" />
           
           {/* Left Column: Portrait */}
           <div className="lg:col-span-4 flex flex-col items-center">
             <div className="relative">
               {/* Outer soft breathing glow border */}
               <motion.div 
-                className="absolute inset-0 rounded-2xl bg-[#EAB1BB]/30"
+                className="absolute inset-0 rounded-2xl bg-[#78122B]/10"
                 animate={{
                   scale: [1, 1.05, 1],
-                  opacity: [0.5, 0.8, 0.5]
+                  opacity: [0.3, 0.6, 0.3]
                 }}
                 transition={{
                   duration: 4,
@@ -40,23 +40,23 @@ export const DirectMentorship: React.FC = () => {
               />
               
               {/* Portrait Frame */}
-              <div className="relative w-48 h-48 sm:w-56 sm:h-56 aspect-square rounded-2xl overflow-hidden border-2 border-[#D4AF37]/20 shadow-md bg-panel-dark z-10">
+              <div className="relative w-48 h-48 sm:w-56 sm:h-56 aspect-square rounded-2xl overflow-hidden border-2 border-[#E8DDD9] shadow-md bg-white z-10">
                 <img
                   src={founderWorkspace}
                   alt="Ms. Mustara - Founder & Head Mentor of Qalbiya Islamic Institute"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover filter brightness-95 saturate-[0.85] transition-transform duration-700 hover:scale-105"
+                  className="w-full h-full object-cover filter brightness-95 transition-transform duration-700 hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2E1F21]/70 via-transparent to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#23181A]/80 via-transparent to-transparent opacity-90" />
                 <div className="absolute bottom-3 left-3 right-3 text-center">
                   <span className="text-xs font-bold text-white uppercase tracking-widest block">Ms. Mustara</span>
-                  <span className="text-[10px] text-[#EAB1BB] font-semibold block mt-0.5">Founder & Head Mentor</span>
+                  <span className="text-[10px] text-[#F3D797] font-semibold block mt-0.5">Founder & Head Mentor</span>
                 </div>
               </div>
 
               {/* Live Availability Badge */}
-              <div className="absolute -bottom-2 -right-2 bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-md z-20 border border-white/20">
-                <span className="w-1.5 h-1.5 bg-white rounded-full animate-ping" />
+              <div className="absolute -bottom-2 -right-2 bg-[#075E54] text-white text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-md z-20 border border-white/30">
+                <span className="w-1.5 h-1.5 bg-emerald-300 rounded-full animate-ping" />
                 <span>Online Mentorship</span>
               </div>
             </div>
@@ -65,22 +65,22 @@ export const DirectMentorship: React.FC = () => {
           {/* Right Column: Mentorship content */}
           <div className="lg:col-span-8 space-y-6 text-center lg:text-left">
             <div className="space-y-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#D4AF37] inline-flex items-center gap-1.5 mx-auto lg:mx-0">
-                <Heart className="w-3.5 h-3.5 text-[#D4AF37] fill-[#D4AF37]/20" /> Direct Mentorship & Support
+              <span className="text-xs font-bold uppercase tracking-widest text-[#78122B] inline-flex items-center gap-1.5 mx-auto lg:mx-0">
+                <Heart className="w-3.5 h-3.5 text-[#78122B] fill-[#78122B]/20" /> Direct Mentorship & Support
               </span>
-              <h2 className="serif-heading font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#23181A] leading-tight">
                 Personal Spiritual Guidance
               </h2>
             </div>
 
-            <p className="text-sm sm:text-base text-[#fdf5e9]/95 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Seek personal, compassionate guidance from Ms. Mustara. Whether you need support with your Quranic goals, understanding core prayers, navigating spiritual plateaus, or seeking customized learning paths for your family, she is here to listen and help you back to your center.
+            <p className="text-sm sm:text-base text-[#4A3B3E] leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+              Seek personal, compassionate guidance directly from Ms. Mustara. Whether you need support with your Quranic goals, understanding core prayers, navigating spiritual plateaus, or seeking customized learning paths for your family, she is here to listen and help you back to your center.
             </p>
 
-            <div className="p-4 rounded-xl bg-white/5 border border-[#D4AF37]/15 text-xs text-[#fdf5e9] font-medium inline-block text-left relative overflow-hidden">
-              <div className="flex items-start gap-2">
-                <Sparkles className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
-                <p>
+            <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#E8DDD9] text-xs text-[#5C4D50] font-medium inline-block text-left relative overflow-hidden shadow-xs">
+              <div className="flex items-start gap-2.5">
+                <Sparkles className="w-4 h-4 text-[#78122B] shrink-0 mt-0.5" />
+                <p className="leading-relaxed">
                   Our mentorship sessions are conducted in a completely safe, respectful, and confidential sister-to-sister space designed with love and sacred manners.
                 </p>
               </div>
@@ -91,7 +91,7 @@ export const DirectMentorship: React.FC = () => {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative overflow-hidden w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 rounded-xl bg-[#075E54] text-white px-8 py-4 text-xs font-bold tracking-wider uppercase shadow-lg shadow-emerald-950/15 transition-all cursor-pointer border border-emerald-500/20"
+                className="relative overflow-hidden w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 rounded-xl bg-[#075E54] text-white px-8 py-4 text-xs font-bold tracking-wider uppercase shadow-md transition-all cursor-pointer border border-emerald-600/30"
                 id="direct-mentorship-whatsapp-btn"
                 whileHover={{ scale: 1.03, backgroundColor: "#128C7E" }}
                 whileTap={{ scale: 0.98 }}
@@ -114,7 +114,7 @@ export const DirectMentorship: React.FC = () => {
                 <span>Request Personal Guidance</span>
               </motion.a>
               
-              <div className="text-[11px] text-[#EAD5D8]/80 font-medium">
+              <div className="text-[11px] text-[#5C4D50] font-medium">
                 Direct WhatsApp contact &bull; Responds within 24 hours
               </div>
             </div>

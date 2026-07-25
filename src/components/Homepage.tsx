@@ -67,8 +67,8 @@ export const Homepage: React.FC<HomepageProps> = ({ courses, onNavigate, onSelec
       slug: 'seerah-course',
       title: 'Seerah of Prophet ﷺ Course',
       category: 'women',
-      categoryLabel: "Women's Academic",
-      badge: '🔥 Popular — Joined by 50+ students',
+      categoryLabel: "Women's Courses",
+      badge: 'Popular — Joined by 50+ students',
       badgeColor: 'bg-[#F9E8EC] text-[#78122B]',
       tag: 'Live Online',
       desc: 'A deep, reflective journey into the beautiful character, mercy, and daily life of the Prophet ﷺ to inspire your personal spiritual transformation.',
@@ -82,8 +82,8 @@ export const Homepage: React.FC<HomepageProps> = ({ courses, onNavigate, onSelec
       slug: 'tajweed-1-1',
       title: 'Tajweed 1:1 Classes',
       category: 'women',
-      categoryLabel: "Women's Academic",
-      badge: '🔥 Popular',
+      categoryLabel: "Women's Courses",
+      badge: 'Popular',
       badgeColor: 'bg-[#F9E8EC] text-[#78122B]',
       tag: 'Live Online',
       desc: "One-on-one Tajweed classes designed around your pace, your pronunciation, and your journey to reciting the Qur'an with confidence and correctness.",
@@ -97,8 +97,8 @@ export const Homepage: React.FC<HomepageProps> = ({ courses, onNavigate, onSelec
       slug: 'noorani-qaida',
       title: 'Noorani Qaida Course',
       category: 'women',
-      categoryLabel: "Women's Academic",
-      badge: '🔥 Popular — Joined by 200+ students',
+      categoryLabel: "Women's Courses",
+      badge: 'Popular — Joined by 200+ students',
       badgeColor: 'bg-[#F9E8EC] text-[#78122B]',
       tag: 'Live Online',
       desc: "Learn the Arabic letters and Noorani Qaida with proper foundational Tajweed rules — the essential first step to reading the Qur'an with confidence.",
@@ -112,8 +112,8 @@ export const Homepage: React.FC<HomepageProps> = ({ courses, onNavigate, onSelec
       slug: 'pre-diploma-deeniyat',
       title: 'Pre-Diploma in Deeniyat',
       category: 'women',
-      categoryLabel: "Women's Academic",
-      badge: '🔥 Popular',
+      categoryLabel: "Women's Courses",
+      badge: 'Popular',
       badgeColor: 'bg-[#F9E8EC] text-[#78122B]',
       tag: 'Live Online',
       desc: "A structured, six-month journey covering everything from correcting your recitation to understanding your beliefs — so you don't just follow Islam, you understand it, live it, and feel closer to Allah.",
@@ -127,8 +127,8 @@ export const Homepage: React.FC<HomepageProps> = ({ courses, onNavigate, onSelec
       slug: 'juniors-deeniyat-mastercourse',
       title: 'Juniors Deeniyat Mastercourse',
       category: 'kids',
-      categoryLabel: "Kids' Tarbiyah",
-      badge: '🔥 Flagship Program',
+      categoryLabel: "Kids' Courses",
+      badge: 'Flagship Program',
       badgeColor: 'bg-[#E2F0D9] text-[#2E6B38]',
       tag: 'Live Online',
       desc: "A structured, age-appropriate program for children ages 6–12 — covering Qur'an, Seerah, Sahaba, daily sunnah, and akhlaq, so your child doesn't just learn Islam, they grow up loving it.",
@@ -142,8 +142,8 @@ export const Homepage: React.FC<HomepageProps> = ({ courses, onNavigate, onSelec
       slug: 'noorani-qaida-kids',
       title: "Noorani Qaida (Kids')",
       category: 'kids',
-      categoryLabel: "Kids' Tarbiyah",
-      badge: '🔥 Foundation Path',
+      categoryLabel: "Kids' Courses",
+      badge: 'Foundation Path',
       badgeColor: 'bg-[#E2F0D9] text-[#2E6B38]',
       tag: 'Live Online',
       desc: "A gentle, structured introduction to the Arabic letters and Noorani Qaida — helping your child begin their Qur'an journey with a strong, correct foundation.",
@@ -162,13 +162,6 @@ export const Homepage: React.FC<HomepageProps> = ({ courses, onNavigate, onSelec
       <section className="pt-16 sm:pt-24 pb-12 px-4 sm:px-6 lg:px-8 text-center" id="hero-section">
         <div className="max-w-4xl mx-auto space-y-6">
           
-          {/* Top Established Tag */}
-          <div className="inline-block">
-            <span className="text-xs font-mono font-medium uppercase tracking-[0.25em] text-[#8C7A7E]">
-              ESTABLISHED 1445 AH
-            </span>
-          </div>
-
           {/* Main Headline */}
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#23181A] leading-[1.15]">
             Knowledge that reaches the heart. <br className="hidden sm:inline" />
@@ -350,9 +343,9 @@ export const Homepage: React.FC<HomepageProps> = ({ courses, onNavigate, onSelec
         <div className="flex justify-center pb-2">
           <div className="inline-flex p-1 bg-[#FDFBF7] border border-[#E8DDD9] rounded-xl shadow-xs">
             {[
-              { id: 'all', label: 'All Programs' },
-              { id: 'women', label: "Women's Academy" },
-              { id: 'kids', label: "Kids' Academy" },
+              { id: 'all', label: 'All courses' },
+              { id: 'women', label: "Women's courses" },
+              { id: 'kids', label: "Kids' courses" },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -460,82 +453,7 @@ export const Homepage: React.FC<HomepageProps> = ({ courses, onNavigate, onSelec
         </AnimatePresence>
       </section>
 
-      {/* SECTION 4 — Faculty / Scholars Section (Matching Mockup) */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10" id="faculty-section">
-        <div className="text-center space-y-2 max-w-2xl mx-auto">
-          <span className="text-xs font-mono font-medium uppercase tracking-[0.2em] text-[#8C7A7E]">
-            OUR FACULTY
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#23181A]">
-            Taught by Inheritors of Knowledge
-          </h2>
-          <p className="text-xs sm:text-sm text-[#5C4D50]">
-            Learn from world-class scholars who have dedicated their lives to the preservation and transmission of the Islamic tradition.
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          
-          {/* Faculty Card 1 — Ms. Mustara */}
-          <div className="bg-[#FDFBF7] border border-[#E8DDD9] rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-            <div className="w-28 h-32 shrink-0 rounded-xl overflow-hidden border border-[#E8DDD9] bg-[#FAF8F5]">
-              <img 
-                src={founderWorkspace} 
-                alt="Ms. Mustara - Founder & Head Instructor" 
-                className="w-full h-full object-cover filter brightness-95"
-              />
-            </div>
-            <div className="space-y-3 text-center sm:text-left flex-1">
-              <div>
-                <span className="text-[10px] font-mono font-bold tracking-wider text-[#78122B] uppercase">
-                  FOUNDER & HEAD SCHOLAR • SEERAH & TAJWEED
-                </span>
-                <h3 className="font-serif text-xl font-bold text-[#23181A]">
-                  Ms. Mustara
-                </h3>
-              </div>
-              <p className="text-xs text-[#5C4D50] leading-relaxed">
-                Head scholar specializing in Tajweed recitations, Seerah studies, and personal spiritual mentorship for seekers globally.
-              </p>
-              <div className="flex items-center justify-center sm:justify-start space-x-3 pt-1 text-[#8C7A7E]">
-                <FileText className="w-4 h-4 hover:text-[#78122B] cursor-pointer" />
-                <Video className="w-4 h-4 hover:text-[#78122B] cursor-pointer" />
-                <Globe className="w-4 h-4 hover:text-[#78122B] cursor-pointer" />
-              </div>
-            </div>
-          </div>
-
-          {/* Faculty Card 2 — Senior Faculty */}
-          <div className="bg-[#FDFBF7] border border-[#E8DDD9] rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-            <div className="w-28 h-32 shrink-0 rounded-xl overflow-hidden border border-[#E8DDD9] bg-[#FAF8F5]">
-              <img 
-                src={womensOnlineStudy} 
-                alt="Faculty Scholar" 
-                className="w-full h-full object-cover filter brightness-95"
-              />
-            </div>
-            <div className="space-y-3 text-center sm:text-left flex-1">
-              <div>
-                <span className="text-[10px] font-mono font-bold tracking-wider text-[#78122B] uppercase">
-                  SENIOR FELLOW • FIQH & HADITH
-                </span>
-                <h3 className="font-serif text-xl font-bold text-[#23181A]">
-                  Ustadha Amina Hussain
-                </h3>
-              </div>
-              <p className="text-xs text-[#5C4D50] leading-relaxed">
-                Specialist in classical jurisprudence and Hadith methodology, guiding students through rigorous traditional texts.
-              </p>
-              <div className="flex items-center justify-center sm:justify-start space-x-3 pt-1 text-[#8C7A7E]">
-                <FileText className="w-4 h-4 hover:text-[#78122B] cursor-pointer" />
-                <Video className="w-4 h-4 hover:text-[#78122B] cursor-pointer" />
-                <Globe className="w-4 h-4 hover:text-[#78122B] cursor-pointer" />
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
 
       {/* SECTION 5 — Closing Maroon CTA Banner (Matching Mockup) */}
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center" id="scholarly-journey-cta">

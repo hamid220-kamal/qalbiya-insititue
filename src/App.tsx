@@ -227,7 +227,7 @@ export default function App() {
     <div className="flex min-h-screen flex-col bg-bg-deep text-text-cream selection:bg-accent-gold/20 selection:text-accent-gold transition-colors duration-500">
       
       {/* Universal Header with responsive links */}
-      <Header currentRoute={currentRoute} onNavigate={handleNavigate} />
+      <Header currentRoute={currentRoute} onNavigate={handleNavigate} selectedCourseSlug={selectedCourseSlug} />
 
       {/* Main Content Stage with transition animations */}
       <main className="flex-grow">
