@@ -1,4 +1,10 @@
 import { Course } from './types';
+import sacredLearningApproach from './assets/images/sacred_learning_approach_1784016791330.jpg';
+import quranRehalArchedWindow from './assets/images/quran_rehal_arched_window_1784016809949.jpg';
+import womensOnlineStudy from './assets/images/womens_online_study_1784048690815.jpg';
+import heroLearningSetup from './assets/images/hero_learning_setup_1784226560154.jpg';
+import kidsOnlineStudyGen from './assets/images/kids_online_study_1784048706942.jpg';
+import onlineLearningTablet from './assets/images/online_learning_tablet_1784039716228.jpg';
 
 export const coursesData: Course[] = [
   {
@@ -52,7 +58,7 @@ export const coursesData: Course[] = [
         a: 'Class timings are shared upon registration, with multiple batches designed to fit different schedules.'
       }
     ],
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBAzH2MyDkOk8dq0UBwrKuPzqvPHnwa46zvWqfjbtbkmq9VTUQdpdYxmr7wtbzeOZvWUEqkoLCX70FMl5E4GoHkfRkFFJuEawhCzk8HkbvZue7fFWzaY-Tjqp48NbQ7MyT4IeBy_bwfqWNiyzjh3Z0Dhit62Ug646Ma3m-UIUbwH0LrYRYJfiTEY_xqoTRubv3oGJOeGMRF3Cm0Oh-El4_fBa4bXBfOSSFp2qXJhgNeVWE85NvzRVI_xQ'
+    image: sacredLearningApproach
   },
   {
     slug: 'tajweed-1-1',
@@ -109,7 +115,7 @@ export const coursesData: Course[] = [
         a: 'Yes, we offer a free 1-on-1 assessment and trial class so you can experience our teaching method before committing.'
       }
     ],
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBfQXR5VRk4c4fgGh0r1tBuy4JveWA1HgFYVHOfT3rEkE3Y97dfwyfdn0y4xCXtQ4QQmZFolaMTZMiob2V0BQqL2xlY_6rClgxQk-Ot4a3hJPVF9OcLrbAc1vbwl5cMlwS-VsP4tznx8aYth8yo6yRVGr-x6UkiASfPhPqwTzY-0VZc_dpJaACX5unQvfmBSSd1KJVLLVJK5_szsYVW5ZtHkECtj_Svaj4tVXvtxr5cJtjOa6P93Opx7A'
+    image: quranRehalArchedWindow
   },
   {
     slug: 'noorani-qaida',
@@ -162,7 +168,7 @@ export const coursesData: Course[] = [
         a: 'Yes, daily bite-sized practice homework is assigned. There is a gentle final oral and written review to ensure your fundamentals are perfectly set.'
       }
     ],
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDw-inQ6jzBHlO3SS66MpmxGCGCjqBDsWZiK1DP1WuGX1O5uv9i8Ga8Z0NpX8O8QJJMwi9fzBGuq0WA_kktgrjc_gFDKSvbClFjhyvIxCigGm51qxKySCocVnz6c0F5Wi3cQ0WGvWi9Su0Pq8dD1Kv3VsOSNdVOF1UY9Ihf3mAJRohtS_Y0DE7Os5IyoDIrmpbtgPsc-uk2lCrpQBjoCd4EJ9ZcxA3L5r8er_yplwitOnNwX8uiKZCtmg'
+    image: womensOnlineStudy
   },
   {
     slug: 'pre-diploma-deeniyat',
@@ -218,7 +224,7 @@ export const coursesData: Course[] = [
         a: 'Yes, we conduct a gentle written and oral assessment at the end of the 6 months to celebrate your growth and award your Pre-Diploma.'
       }
     ],
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAZ4AZFGHPfRj3bvrVlQjEOOIWYWF0u9yt033-ziQ48JYRQ1g5yUemA3gFJL4MpDQmYmtkRXcr1tziZ2Ozu-I5Q7O7_1XxHyXcSydsBXqHNJg1iLBhdsRqSF9LQ1GXF6IQ53JzP8OC00leMJM60jasgaRCNxV2WStwsucq7feQxU1kOrekZ_7GLUR3PGz3vQldq5A2H2A4QJsyIoZkDzrdbu6OQWClXZKl9r2DAefMob4lTkpZjDiMfBQ'
+    image: heroLearningSetup
   },
   {
     slug: 'juniors-deeniyat-mastercourse',
@@ -275,7 +281,7 @@ export const coursesData: Course[] = [
         a: 'Group classes offer a beautiful social environment with other children. Private (1-on-1) classes allow the teacher to focus 100% on your child\'s unique pace, which is ideal for kids needing individual attention.'
       }
     ],
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCIChl9WJbHpagdXCDb_enr6Yi-pSgeFREx1lc_KKo5t-kFXXDvWkg2so8IQHIzSjYShsyvEwyMkNhH28E0iGLTPl8tg3gCiSboJ5jX69ur3JJgGxZVL5TEHPe9ogP7PRm_Ad2fZxdXPfgBBIRUr1a8uDc5Sck3P00WAxOxuAQtEI0M4j2ekwCC9lexSS707Q8UgrS9nYz7UmGiWHkhAfUqc1oqAXErnqjgLRVKX7kutIZDj2fcoSLFZw'
+    image: kidsOnlineStudyGen
   },
   {
     slug: 'noorani-qaida-kids',
@@ -330,6 +336,6 @@ export const coursesData: Course[] = [
         a: 'Homework is gentle and highly visual (e.g. practicing a single line or playing a digital matching game). We aim to make it something they look forward to rather than a chore.'
       }
     ],
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDM-hUmLvgRXgl3Qmqh7Po9KMxYn8HGFEiVMJbmt21bDtIS4rdrIS9GwE-36XMv_rCEbD6Cwnm4kqbGvHrJYqu5EJHlSBvWY-uJnvOsnw4x4dwzoG005otrBGL8Vf3Lv7Vt4BsRCaGm2wJrBft-ngAZTvg80KDuYOt7DjS7IqVzx3B_lsGnpijJnCsdrqosR3z_LBZ14pySA2G-6XYfkB_RhN52dSN7QeIpe2gI3cAwTQtAn2neD-wZfw'
+    image: onlineLearningTablet
   }
 ];
