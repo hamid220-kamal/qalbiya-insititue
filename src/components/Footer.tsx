@@ -128,7 +128,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
                   id="footer-link-instagram"
                 >
                   <Instagram className="w-4 h-4 text-[#F3D797] shrink-0" />
-                  <span className="underline decoration-white/30 hover:decoration-current">@qalbiya_institute (Instagram DM)</span>
+                  <span className="underline decoration-white/30 hover:decoration-current">@qalbiya.institute (Instagram DM)</span>
                 </a>
               </div>
 

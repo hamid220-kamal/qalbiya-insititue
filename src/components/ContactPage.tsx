@@ -17,7 +17,7 @@ export const ContactPage: React.FC = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   const quickTopics = [
-    { label: 'Tajweed 1:1', value: 'Tajweed 1:1 Inquiry' },
+    { label: 'Tajweed 1 on 1', value: 'Tajweed 1 on 1 Inquiry' },
     { label: 'Seerah Course', value: 'Seerah Course Inquiry' },
     { label: 'Kids Deeniyat', value: 'Kids Deeniyat Inquiry' },
     { label: 'Noorani Qaida', value: 'Noorani Qaida Inquiry' },

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, Calendar, Layers, Clock, HelpCircle, ArrowRight, UserCheck, MessageSquare, ChevronDown, ChevronUp, Laptop, Tablet, Smartphone } from 'lucide-react';
 import { Course } from '../types';
 
@@ -58,11 +59,14 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
             {course.sub}
           </p>
 
-          {/* Core Outcomes */}
-          <div className="p-6 rounded-2xl border border-brand-border bg-panel-dark/40 space-y-3">
-            <h3 className="serif-heading text-base font-bold text-text-cream">The Sacred Outcome</h3>
-            <p className="text-xs leading-relaxed text-text-sage">
-              {course.outcome}
+          {/* Core Outcome - Section 4 Highlighted Block */}
+          <div className="p-6 sm:p-8 rounded-2xl border border-accent-gold/40 bg-gradient-to-r from-panel-dark/80 via-panel-dark/60 to-panel-dark/80 space-y-3 shadow-lg relative overflow-hidden">
+            <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-accent-gold/10 blur-xl pointer-events-none" />
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-accent-gold block">
+              The Outcome
+            </span>
+            <p className="serif-heading text-lg sm:text-xl font-semibold leading-relaxed text-text-cream italic">
+              "{course.outcome}"
             </p>
           </div>
         </div>
@@ -96,11 +100,18 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
         {/* Left Column: Syllabus, What is included, Who it is for */}
         <div className="lg:col-span-7 space-y-12">
           
-          {/* Syllabus/Curriculum */}
+          {/* SECTION 2 — What This Course Covers / Syllabus */}
           <div className="space-y-6">
-            <h2 className="serif-heading text-2xl font-bold text-text-cream border-b border-brand-border pb-3">
-              The Path of Study
-            </h2>
+            <div className="border-b border-brand-border pb-3">
+              <h2 className="serif-heading text-2xl font-bold text-text-cream">
+                What This Course Covers
+              </h2>
+              {course.slug === 'juniors-deeniyat-mastercourse' && (
+                <p className="text-xs text-text-sage mt-2 leading-relaxed">
+                  This is Qalbiya's most complete children's program — a full Islamic foundation built over time, not rushed. Your child will grow through each stage of learning with structure, consistency, and genuine understanding.
+                </p>
+              )}
+            </div>
             <ul className="space-y-4">
               {course.syllabus.map((item, idx) => (
                 <li key={idx} className="flex items-start space-x-3 text-sm text-text-sage">
@@ -143,9 +154,11 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
           </div>
 
           {course.howLearn && (
-            <div className="p-6 rounded-2xl border border-accent-sage/30 bg-accent-sage/5 space-y-3">
-              <h3 className="serif-heading text-base font-bold text-text-cream">How Kids Learn with Us</h3>
-              <p className="text-xs leading-relaxed text-text-sage">
+            <div className="p-6 rounded-2xl border border-accent-gold/20 bg-panel-dark/60 space-y-3">
+              <h3 className="serif-heading text-lg font-bold text-text-cream">
+                {course.category === 'kids' ? "How Your Child Will Learn" : "How You Will Learn"}
+              </h3>
+              <p className="text-xs sm:text-sm leading-relaxed text-text-sage">
                 {course.howLearn}
               </p>
             </div>
@@ -207,16 +220,21 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
             </div>
           </div>
 
-          {/* Founder Quote */}
-          <div className="p-5 rounded-2xl border border-brand-border bg-panel-dark/50 italic text-xs leading-relaxed text-text-sage space-y-2">
-            <p className="text-[10px] font-bold text-accent-gold uppercase tracking-widest not-italic">Ms. Mustara's Note</p>
-            <p>"{course.teacherNote}"</p>
+          {/* Founder Quote / Meet Your Child's Teacher */}
+          <div className="p-6 rounded-2xl border border-brand-border bg-panel-dark/50 text-xs leading-relaxed text-text-sage space-y-3 shadow-md">
+            <p className="text-[10px] font-extrabold text-accent-gold uppercase tracking-widest not-italic">
+              {course.category === 'kids' ? "Meet Your Child's Teacher" : "Teacher's Note"}
+            </p>
+            <p className="italic text-text-cream/90 text-sm leading-relaxed whitespace-pre-line">
+              "{course.teacherNote}"
+            </p>
           </div>
 
           {/* FAQ Block */}
           <div className="space-y-4">
-            <h3 className="serif-heading text-lg font-bold text-text-cream">
-              Frequently Answered
+            <h3 className="serif-heading text-lg font-bold text-text-cream flex items-center gap-2">
+              <HelpCircle className="w-4 h-4 text-accent-gold" />
+              <span>Frequently Asked Questions</span>
             </h3>
             <div className="space-y-2.5">
               {course.faqs.map((faq, index) => {
@@ -224,21 +242,34 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
                 return (
                   <div 
                     key={index} 
-                    className="rounded-xl border border-brand-border bg-panel-dark/60 overflow-hidden"
+                    className={`rounded-xl border bg-panel-dark/60 overflow-hidden transition-colors ${
+                      isOpen ? 'border-accent-gold/40' : 'border-brand-border'
+                    }`}
                   >
                     <button
+                      type="button"
                       onClick={() => toggleFaq(index)}
-                      className="flex w-full items-center justify-between px-4 py-3 text-left text-xs font-bold text-text-cream hover:bg-panel-light transition-all duration-300"
+                      className="flex w-full items-center justify-between px-4 py-3 text-left text-xs font-bold text-text-cream hover:bg-panel-light hover:text-accent-gold transition-all duration-300 cursor-pointer"
                       id={`course-faq-btn-${index}`}
+                      aria-expanded={isOpen}
                     >
-                      <span>{faq.q}</span>
-                      {isOpen ? <ChevronUp className="w-4 h-4 text-accent-gold shrink-0" /> : <ChevronDown className="w-4 h-4 text-accent-gold shrink-0" />}
+                      <span className="pr-2">{faq.q}</span>
+                      <ChevronDown className={`w-4 h-4 text-accent-gold shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
                     </button>
-                    {isOpen && (
-                      <div className="px-4 pb-3.5 pt-1 text-xs leading-relaxed text-text-sage border-t border-brand-border/40">
-                        {faq.a}
-                      </div>
-                    )}
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        >
+                          <div className="px-4 pb-3.5 pt-1 text-xs leading-relaxed text-text-sage border-t border-brand-border/40 bg-panel-light/20">
+                            {faq.a}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               })}
@@ -247,6 +278,42 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
 
         </div>
 
+      </section>
+
+      {/* SECTION 10 — Closing CTA Banner */}
+      <section className="pt-8" id="course-detail-closing-cta">
+        <div className="rounded-3xl border border-accent-gold/30 bg-gradient-to-br from-panel-dark via-[#480117] to-panel-dark p-8 sm:p-12 text-center space-y-6 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 rounded-full bg-accent-gold/10 blur-2xl pointer-events-none" />
+          
+          <h2 className="serif-heading text-2xl sm:text-3xl font-bold text-text-cream max-w-2xl mx-auto leading-snug">
+            {course.category === 'kids' 
+              ? "Give your child a foundation that grows with them — in knowledge, in akhlaq, in love for their deen."
+              : "Give yourself a foundation that grounds your heart in light, knowledge, and daily peace."
+            }
+          </h2>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <a 
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#EAB1BB] to-[#D4AF37] text-bg-deep font-bold text-xs uppercase tracking-widest hover:scale-[1.03] transition-all shadow-xl cursor-pointer"
+              id="closing-cta-enroll-btn"
+            >
+              <span>Enroll Now → WhatsApp Us</span>
+            </a>
+
+            <a 
+              href="https://www.instagram.com/qalbiya.institute/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full border border-brand-border hover:border-accent-gold/50 bg-panel-dark/60 text-text-cream font-semibold text-xs tracking-wide transition-all cursor-pointer"
+              id="closing-cta-dm-btn"
+            >
+              <span>DM on Instagram</span>
+            </a>
+          </div>
+        </div>
       </section>
 
     </div>

@@ -8,19 +8,19 @@ import onlineLearningTablet from './assets/images/online_learning_tablet_1784039
 
 export const coursesData: Course[] = [
   {
-    slug: 'seerah-course',
+    slug: 'seerahCourse',
     category: 'women',
     title: 'Seerah of Prophet ﷺ Course',
-    badge: 'Popular — Joined by 50+ students',
+    badge: 'Popular · Joined by 50+ students',
     hook: 'Let his character reshape yours.',
     sub: 'A deep, reflective journey into the beautiful character, mercy, and daily life of the Prophet ﷺ to inspire your personal spiritual transformation.',
     duration: '2 Months',
     price: 'Rs. 299',
     priceDetail: 'full course',
     syllabus: [
-      'Introduction to Seerah & why we study it',
-      'Pre-Islamic Arabia and his childhood',
-      'The Year of Sadness & Mi\'raj lessons',
+      'Introduction to Seerah and why we study it',
+      'Pre Islamic Arabia and his childhood',
+      'The Year of Sadness and Mi\'raj lessons',
       'Character traits of the Prophet ﷺ as a husband, father, and leader',
       'Developing deep love and connection with the Prophet ﷺ'
     ],
@@ -61,12 +61,12 @@ export const coursesData: Course[] = [
     image: sacredLearningApproach
   },
   {
-    slug: 'tajweed-1-1',
+    slug: 'tajweed1on1',
     category: 'women',
-    title: 'Tajweed 1:1 Classes',
+    title: 'Tajweed 1 on 1 Classes',
     badge: 'Popular',
     hook: 'Every ayah, focused solely on you.',
-    sub: 'One-on-one Tajweed classes designed around your pace, your pronunciation, and your journey to reciting the Qur\'an with confidence and correctness.',
+    sub: 'One on one Tajweed classes designed around your pace, your pronunciation, and your journey to reciting the Qur\'an with confidence and correctness.',
     duration: '5 Months',
     price: 'Rs. 800',
     priceDetail: 'per month',
@@ -79,13 +79,13 @@ export const coursesData: Course[] = [
     ],
     whatYouGet: [
       '📓 Personalized notes/PDFs tailored to your progress',
-      '📝 Custom personal mistake-tracking list',
+      '📝 Custom personal mistake tracking list',
       '💬 Dedicated WhatsApp support for daily audio corrections',
       '🎓 Course Completion Certificate'
     ],
     outcome: 'By the end of this course, you\'ll recite the Qur\'an fluently, correctly, and with confidence — not guessing, not hesitating, but reciting the way it was meant to be recited.',
     courseDetails: {
-      'Format': '1-on-1 Personalized Session',
+      'Format': '1 on 1 Personalized Session',
       'Platform': 'Google Meet',
       'Duration': '5 Months',
       'Classes': '3 classes/week, 1hr each',
@@ -93,8 +93,8 @@ export const coursesData: Course[] = [
     },
     teacherNote: 'I\'ve seen how much confidence a woman gains once her recitation finally feels right... and how that transforms her relationship with Allah\'s word.',
     whoThisIsFor: [
-      'Sisters starting from scratch who want personalized, non-intimidating guidance',
-      'Sisters who have been reciting for years but want to refine long-standing pronunciation errors',
+      'Sisters starting from scratch who want personalized, gentle guidance',
+      'Sisters who have been reciting for years but want to refine long standing pronunciation errors',
       'Anyone looking to develop a slow, correct, beautiful recitation'
     ],
     faqs: [
@@ -104,7 +104,7 @@ export const coursesData: Course[] = [
       },
       {
         q: 'What is the policy for missed classes?',
-        a: 'Since this is a 1-on-1 class, if you notify your teacher at least 4 hours in advance, we will reschedule the class at a mutually convenient time.'
+        a: 'Since this is a 1 on 1 class, if you notify your teacher at least 4 hours in advance, we will reschedule the class at a mutually convenient time.'
       },
       {
         q: 'How is the class timing decided?',
@@ -112,16 +112,16 @@ export const coursesData: Course[] = [
       },
       {
         q: 'Is there a trial class available?',
-        a: 'Yes, we offer a free 1-on-1 assessment and trial class so you can experience our teaching method before committing.'
+        a: 'Yes, we offer a free 1 on 1 assessment and trial class so you can experience our teaching method before committing.'
       }
     ],
     image: quranRehalArchedWindow
   },
   {
-    slug: 'noorani-qaida',
+    slug: 'nooraniQaida',
     category: 'women',
     title: 'Noorani Qaida Course',
-    badge: 'Popular — Joined by 200+ students',
+    badge: 'Popular · Joined by 200+ students',
     hook: 'Where your Qur\'an journey begins.',
     sub: 'Learn the Arabic letters and Noorani Qaida with proper foundational Tajweed rules — the essential first step to reading the Qur\'an with confidence.',
     duration: '2 Months',
@@ -137,18 +137,18 @@ export const coursesData: Course[] = [
     whatYouGet: [
       '📓 Daily homework shared in the class private group',
       '💬 Instant WhatsApp support for audio recording reviews',
-      '📝 Final comprehensive exam (written + oral)',
+      '📝 Final comprehensive exam (written and oral)',
       '🎓 Course Completion Certificate'
     ],
     outcome: 'By the end of this course, you\'ll take your very first real step into the Qur\'an — reading it, not just recognizing it, with correct articulation of each letter.',
     courseDetails: {
-      'Format': 'Group Sessions or 1-on-1 (Student\'s choice)',
+      'Format': 'Group Sessions or 1 on 1 (Student\'s choice)',
       'Platform': 'Google Meet',
       'Duration': '2 Months',
       'Classes': '4 classes/week',
-      'Fee': 'Rs. 299/month, or Rs. 500 one-time for the full course'
+      'Fee': 'Rs. 299/month, or Rs. 500 one time for the full course'
     },
-    teacherNote: 'This page must feel especially welcoming and non-intimidating because we know how much courage it takes for an adult sister to start learning from the beginning.',
+    teacherNote: 'This page must feel especially welcoming and welcoming because we know how much courage it takes for an adult sister to start learning from the beginning.',
     whoThisIsFor: [
       'Absolute beginners with zero prior experience in Arabic reading',
       'Sisters who can read but struggle with letter recognition and foundational pronunciation',
@@ -160,45 +160,45 @@ export const coursesData: Course[] = [
         a: 'Absolutely none. This course is designed specifically for complete beginners starting from the very first letter.'
       },
       {
-        q: 'What is the difference between Group and 1-on-1 options?',
-        a: 'Group classes allow learning with a supportive circle of sister peers, while 1-on-1 sessions focus entirely on your personal pace and articulation.'
+        q: 'What is the difference between Group and 1 on 1 options?',
+        a: 'Group classes allow learning with a supportive circle of sister peers, while 1 on 1 sessions focus entirely on your personal pace and articulation.'
       },
       {
         q: 'Are there exams and homework?',
-        a: 'Yes, daily bite-sized practice homework is assigned. There is a gentle final oral and written review to ensure your fundamentals are perfectly set.'
+        a: 'Yes, daily short practice homework is assigned. There is a gentle final oral and written review to ensure your fundamentals are perfectly set.'
       }
     ],
     image: womensOnlineStudy
   },
   {
-    slug: 'pre-diploma-deeniyat',
+    slug: 'preDiplomaDeeniyat',
     category: 'women',
-    title: 'Pre-Diploma in Deeniyat',
+    title: 'Pre Diploma in Deeniyat',
     badge: 'Popular',
     hook: 'Your complete foundation in Deen.',
-    sub: 'A structured, six-month journey covering everything from correcting your recitation to understanding your beliefs — so you don\'t just follow Islam, you understand it, live it, and feel closer to Allah.',
+    sub: 'A structured, six month journey covering everything from correcting your recitation to understanding your beliefs — so you don\'t just follow Islam, you understand it, live it, and feel closer to Allah.',
     duration: '6 Months',
     price: 'Rs. 499',
     priceDetail: 'per month',
     syllabus: [
-      'Makhraj & Foundational Tajweed',
-      'Hifz-e-Hadith (Memorization and explanation of crucial Hadiths)',
-      'Daily Duas & Sunnah (Integrating Prophet\'s practices into routine)',
+      'Makhraj and Foundational Tajweed',
+      'Hifz e Hadith (Memorization and explanation of crucial Hadiths)',
+      'Daily Duas and Sunnah (Integrating Prophet\'s practices into routine)',
       'Aqaid (Clarifying fundamental Islamic beliefs and creed)',
-      'Akhlaq & Tarbiyah (Character development based on Seerah)',
-      'Namaz & Masail (Fiqh of purification and daily prayers)',
-      'Asma-ul-Husna (Diving deep into Allah\'s Beautiful Names)'
+      'Akhlaq and Tarbiyah (Character development based on Seerah)',
+      'Namaz and Masail (Fiqh of purification and daily prayers)',
+      'Asma ul Husna (Diving deep into Allah\'s Beautiful Names)'
     ],
     whatYouGet: [
       '📚 Comprehensive lecture notes for each module',
       '🧠 Weekly reflective quizzes to reinforce understanding',
-      '📅 Monthly self-assessments & progress reviews',
+      '📅 Monthly self assessments and progress reviews',
       '💬 Dedicated direct WhatsApp support line',
-      '🎓 Foundation Pre-Diploma Certificate'
+      '🎓 Foundation Pre Diploma Certificate'
     ],
     outcome: 'This course builds your foundation in Deen — helping you correct your recitation, understand your beliefs, and practice Islam with clarity in daily life. By the end, you won\'t just follow Islam — you\'ll understand it, live it, and feel closer to Allah.',
     courseDetails: {
-      'Format': 'Group Interactive Sessions or Personal (1-on-1)',
+      'Format': 'Group Interactive Sessions or Personal (1 on 1)',
       'Platform': 'Google Meet',
       'Duration': '6 Months',
       'Group Fee': 'Rs. 499/month',
@@ -217,101 +217,119 @@ export const coursesData: Course[] = [
       },
       {
         q: 'What is the main difference between the Group and Personal paths?',
-        a: 'The Group path provides a beautiful sisterhood environment. The Personal path allows a dedicated teacher to work 1-on-1 with you, adapting the schedule completely to your lifestyle.'
+        a: 'The Group path provides a beautiful sisterhood environment. The Personal path allows a dedicated teacher to work 1 on 1 with you, adapting the schedule completely to your lifestyle.'
       },
       {
         q: 'Is there an exam at the end?',
-        a: 'Yes, we conduct a gentle written and oral assessment at the end of the 6 months to celebrate your growth and award your Pre-Diploma.'
+        a: 'Yes, we conduct a gentle written and oral assessment at the end of the 6 months to celebrate your growth and award your Pre Diploma.'
       }
     ],
     image: heroLearningSetup
   },
   {
-    slug: 'juniors-deeniyat-mastercourse',
+    slug: 'juniorsDeeniyatMastercourse',
     category: 'kids',
     title: 'Juniors Deeniyat Mastercourse',
-    badge: 'Flagship Program',
+    badge: 'Popular',
     hook: 'A complete Islamic foundation, built to last a lifetime.',
-    sub: 'A structured, age-appropriate program for children ages 6–12 — covering Qur\'an, Seerah, Sahaba, daily sunnah, and akhlaq, so your child doesn\'t just learn Islam, they grow up loving it.',
-    duration: '1.5–2 Years',
+    sub: 'A structured, age appropriate program for children ages 6 to 12 — covering Qur\'an, Seerah, Sahaba, daily sunnah, and akhlaq, so your child doesn\'t just learn Islam, they grow up loving it.',
+    duration: '1.5 to 2 Years',
     price: 'Rs. 600',
-    priceDetail: 'per month',
+    priceDetail: 'per month (Group) / Rs. 1,000 (Private)',
     syllabus: [
-      'Tajweed & Makharij (Reciting Qur\'an correctly from the start)',
-      'Asma-ul-Husna (Learning who Allah is through His beautiful attributes)',
-      'Prophet Stories (Interactive lessons on the Prophets of Allah)',
-      'Sahaba Stories (Drawing inspiration from the companions)',
-      'Seerat-un-Nabi ﷺ (Nurturing deep love for our Prophet)',
-      'Daily Masnoon Duas & Sunnah (Establishing beautiful daily routines)',
-      'Aqaid & Islamic Tarbiyah (Building resilient Islamic morals and belief)'
+      'Tajweed and Makharij',
+      'Asma ul Husna',
+      'Prophet Stories',
+      'Sahaba Stories',
+      'Seerat un Nabi صلى الله عليه وسلم',
+      'Daily Masnoon Duas',
+      'Daily Sunnah and Hadith',
+      'Aqaid',
+      'Namaz and Masail',
+      'Islamic Tarbiyah (character and values development)'
     ],
     whatYouGet: [
-      '🎮 Interactive educational games & storytelling aids',
-      '🧩 Weekly fun quizzes and reward points system',
-      '💬 Dedicated WhatsApp support for parental progress tracking',
-      '🎓 Flagship Deeniyat Graduation Certificate'
+      '🎮 Interactive lessons with games and attractive visuals designed to hold a child\'s attention',
+      '🧩 Regular quizzes made fun, not stressful — built to reinforce learning through play',
+      '📝 Regular tests to track your child\'s progress',
+      '💬 WhatsApp support for parents outside class hours',
+      '🎓 Certificate on completion'
     ],
     outcome: 'Your child won\'t just learn about Islam — they\'ll grow up loving it. By the end, they\'ll read Qur\'an with correct tajweed, know the stories of the Prophets and Sahaba by heart, practice their daily sunnah with ease, and carry akhlaq rooted in the seerah — a strong Islamic foundation built to last a lifetime.',
-    howLearn: 'Our approach is calm, warm, and respectful, completely avoiding the rigid, pressure-heavy structures of traditional schooling. We focus on nurturing the natural fitrah (pure nature) of each child at their own natural pace.',
+    howLearn: 'Every class is designed to feel calm, warm, and genuinely enjoyable — never rushed, never pressured. Lessons come alive through attractive visuals, interactive games, and playful quizzes, so children stay engaged and actually look forward to class. Correction is always gentle, encouragement is constant, and every child learns at a pace that feels right for them.',
     courseDetails: {
-      'Age Group': 'Children ages 6–12',
-      'Format': 'Private (1-on-1) or Group Classes',
+      'Age Group': 'Ages 6 to 12 years',
+      'Format': 'Private (1 on 1) or Group',
       'Platform': 'Google Meet',
-      'Duration': '1.5 to 2 Years',
-      'Group Fee': 'Rs. 600/month',
-      'Private (1-on-1) Fee': 'Rs. 1,000/month'
+      'Duration': '1.5 to 2 years (varies by child\'s pace)',
+      'Fee (Private)': 'Rs. 1,000/month',
+      'Fee (Group)': 'Rs. 600/month'
     },
-    teacherNote: 'As someone who has taught children in this age group, I know a class only truly works when a child feels safe, engaged, and deeply loved. We teach with stories and encouragement, never with guilt or pressure.',
+    teacherNote: 'As someone who has taught children in this age group, I know a class only truly works when a child feels safe, engaged, and loved — not just taught. Every lesson I build is calm, gentle, and genuinely fun, with visuals, games, and quizzes that make learning feel like discovery, not pressure. I teach every child the way I\'d want my own child taught — with patience, warmth, and real care.\n— Mustara, Founder of Qalbiya Institute',
     whoThisIsFor: [
-      'Parents looking for a single, comprehensive program to ground their child\'s Islamic identity',
-      'Children who thrive with interactive, storyteller-style instruction rather than rote memorization',
-      'Families desiring to build consistent daily Islamic habits (prayers, duas, manners) in their home'
+      'For parents who want more than scattered Islamic lessons — who want their child to build one complete, lasting foundation in Deen, taught with structure and care.'
     ],
     faqs: [
       {
-        q: 'Do we have to commit to the full 2 years upfront?',
-        a: 'Not at all. Billing is monthly, and you can pause or withdraw your child at any time. We want your child to attend because they love the classes.'
+        q: 'Do we have to commit to the full 1.5 to 2 years right away?',
+        a: 'Not at all. Many parents start with just one month to see how their child responds. Once you see the change in your child\'s understanding, confidence, and love for their deen, most families choose to continue the full journey — but the choice is always yours.'
       },
       {
-        q: 'How do you track the progress of the children?',
-        a: 'We send regular, personalized progress updates to parents via WhatsApp, sharing what was covered and celebrating the child\'s micro-milestones.'
+        q: 'What age group is this course for?',
+        a: 'Children ages 6 to 12. Pacing is adjusted based on each child\'s age and learning speed.'
       },
       {
-        q: 'What is the difference between Group and Private formats?',
-        a: 'Group classes offer a beautiful social environment with other children. Private (1-on-1) classes allow the teacher to focus 100% on your child\'s unique pace, which is ideal for kids needing individual attention.'
+        q: 'How long does the course take?',
+        a: 'Typically 1.5 to 2 years, depending on your child\'s individual pace — this is a complete foundation, not a rushed program.'
+      },
+      {
+        q: 'What\'s the difference between private and group classes?',
+        a: 'Both follow the same complete syllabus. Private (1 on 1) classes offer individual attention and a schedule built around your child, while group classes follow a set schedule with other children, at a lower monthly fee.'
+      },
+      {
+        q: 'How will I know how my child is progressing?',
+        a: 'Regular tests are conducted throughout the course to track your child\'s progress, and parents receive WhatsApp support for any questions outside class hours.'
+      },
+      {
+        q: 'Will my child receive a certificate?',
+        a: 'Yes — a certificate is given upon completing the course.'
+      },
+      {
+        q: 'Is this online or in person?',
+        a: 'Fully online, conducted via Google Meet.'
       }
     ],
     image: kidsOnlineStudyGen
   },
   {
-    slug: 'noorani-qaida-kids',
+    slug: 'nooraniQaidaKids',
     category: 'kids',
-    title: 'Noorani Qaida (Kids\')',
+    title: 'Noorani Qaida (Kids)',
     badge: 'Foundation Path',
     hook: 'The first step to reading Qur\'an.',
     sub: 'A gentle, structured introduction to the Arabic letters and Noorani Qaida — helping your child begin their Qur\'an journey with a strong, correct foundation.',
-    duration: '4–5 Months',
+    duration: '4 to 5 Months',
     price: 'Rs. 500',
     priceDetail: 'per month',
     syllabus: [
-      'Arabic alphabet recognition, reading, and stroke-guided writing',
+      'Arabic alphabet recognition, reading, and stroke guided writing',
       'Perfecting correct pronunciation of challenging Arabic letters',
-      'Completing the classic Noorani Qaida curriculum step-by-step',
+      'Completing the classic Noorani Qaida curriculum step by step',
       'Learning foundational Tajweed rules (joining letters, basic vowels)',
       'Patient correction of common beginner vocal mistakes'
     ],
     whatYouGet: [
-      '🎮 Fun interactive lessons, digital flashcards & games',
-      '🧩 Age-appropriate bite-sized quizzes',
+      '🎮 Fun interactive lessons, digital flashcards and games',
+      '🧩 Age appropriate bite sized quizzes',
       '📓 Friendly weekly homework assignments',
-      '💬 Dedicated parent-teacher WhatsApp support line',
+      '💬 Dedicated parent teacher WhatsApp support line',
       '🎓 Noorani Qaida Graduation Certificate'
     ],
     outcome: 'By the end of this course, your child will take their very first real step into the Qur\'an — reading it, not just recognizing the letters — with a solid foundation that everything else in their Qur\'an journey will be built on.',
     howLearn: 'Every teacher is chosen and trained to teach children the way they actually learn best: through visual aids, patience, constant encouragement, and gentle correction that builds their confidence.',
     courseDetails: {
-      'Age Group': 'Children ages 6–12',
-      'Format': '1-on-1 Private Sessions',
+      'Age Group': 'Children ages 6 to 12',
+      'Format': '1 on 1 Private Sessions',
       'Platform': 'Google Meet',
       'Duration': '4 to 5 Months (varies based on child\'s pace)',
       'Fee': 'Rs. 500/month'
@@ -319,13 +337,13 @@ export const coursesData: Course[] = [
     teacherNote: 'Every teacher at Qalbiya is trained to build a warm connection with your child first. When a child loves their teacher, they naturally grow to love the Deen and the Qur\'an.',
     whoThisIsFor: [
       'Children starting their Qur\'an learning journey with zero prior Arabic knowledge',
-      'Children who need a highly encouraging, patient, and personalized 1-on-1 environment to build confidence',
+      'Children who need a highly encouraging, patient, and personalized 1 on 1 environment to build confidence',
       'Parents seeking to ensure correct pronunciation of Makharij from the absolute beginning'
     ],
     faqs: [
       {
-        q: 'Is this class strictly 1-on-1?',
-        a: 'Yes, our Noorani Qaida for Kids is taught exclusively in a 1-on-1 private format to ensure the instructor can carefully listen to and guide your child\'s exact pronunciation of every single letter.'
+        q: 'Is this class strictly 1 on 1?',
+        a: 'Yes, our Noorani Qaida for Kids is taught exclusively in a 1 on 1 private format to ensure the instructor can carefully listen to and guide your child\'s exact pronunciation of every single letter.'
       },
       {
         q: 'How long are the classes?',

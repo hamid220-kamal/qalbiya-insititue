@@ -94,32 +94,44 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
   return (
     <div className="space-y-16 pb-20 max-w-4xl mx-auto px-4 sm:px-6">
       
-      {/* Intro Header */}
-      <section className="text-center space-y-4 pt-10" id="scholarship-header">
+      {/* Hero Section */}
+      <section className="text-center space-y-4 pt-8 sm:pt-12" id="scholarship-hero">
         <div className="inline-flex items-center space-x-2 rounded-full border border-accent-gold/20 bg-panel-dark px-4.5 py-1.5 text-xs font-semibold text-accent-gold tracking-wide">
           <Heart className="w-3.5 h-3.5 text-rose-400" />
-          <span>Confidential Support Fund</span>
+          <span>Scholarship Program</span>
         </div>
-        <h1 className="serif-heading text-4xl sm:text-5xl font-bold text-text-cream tracking-tight">
-          Sponsor a Student / Apply for Support
+        <h1 className="serif-heading text-3xl sm:text-5xl font-bold text-text-cream tracking-tight max-w-3xl mx-auto leading-tight">
+          No sincere student should be turned away because of money.
         </h1>
         <p className="max-w-2xl mx-auto text-sm sm:text-base leading-relaxed text-text-sage">
-          The Qalbiya Sincerity Covenant ensures that no sincere seeker is ever turned away due to financial difficulty. If you are unable to pay the standard fee, please apply for support below.
+          Qalbiya Islamic Institute offers scholarships for students who genuinely cannot afford our courses. Every application is reviewed personally, with care.
         </p>
       </section>
 
-      {/* Main Info Box */}
-      <section className="p-6 sm:p-8 rounded-2xl border border-brand-border bg-panel-dark/60 space-y-4 text-xs sm:text-sm text-text-sage leading-relaxed" id="scholarship-rules">
-        <div className="flex items-start gap-3.5">
-          <ShieldCheck className="w-6 h-6 text-accent-gold shrink-0 mt-0.5" />
-          <div className="space-y-2">
-            <h3 className="serif-heading text-base font-bold text-text-cream">Our Confidentiality Commitment</h3>
-            <p>
-              Your application is treated with the highest level of respect and privacy. Only Ms. Mustara and our selection committee will see your application. We will never disclose who is attending on a scholarship to other peers or students.
-            </p>
-            <p>
-              Once your application is submitted, you can also click the quick-link to connect directly on WhatsApp to coordinate batch timings.
-            </p>
+      {/* How It Works Section */}
+      <section className="p-6 sm:p-8 rounded-3xl border border-brand-border bg-panel-dark/80 space-y-6 shadow-lg" id="how-scholarship-works">
+        <div className="space-y-2 border-b border-brand-border/60 pb-4">
+          <h2 className="serif-heading text-xl font-bold text-text-cream">How It Works</h2>
+          <p className="text-xs sm:text-sm text-text-sage leading-relaxed">
+            We review every scholarship application individually — there's no rigid checklist. If you have a genuine need and sincere intention to learn, we want to hear from you.
+          </p>
+        </div>
+
+        {/* 3 Steps */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="p-4 rounded-2xl bg-bg-deep/60 border border-brand-border/60 space-y-2">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent-gold text-bg-deep text-xs font-extrabold">1</span>
+            <p className="text-xs font-semibold text-text-cream">Fill out the scholarship application form below</p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-bg-deep/60 border border-brand-border/60 space-y-2">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent-gold text-bg-deep text-xs font-extrabold">2</span>
+            <p className="text-xs font-semibold text-text-cream">Our team reviews your application personally</p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-bg-deep/60 border border-brand-border/60 space-y-2">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent-gold text-bg-deep text-xs font-extrabold">3</span>
+            <p className="text-xs font-semibold text-text-cream">We reach out to you directly with a decision</p>
           </div>
         </div>
       </section>
@@ -136,23 +148,27 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="p-8 rounded-2xl border border-emerald-500/30 bg-panel-dark space-y-6 text-center"
+                className="p-8 rounded-3xl border border-emerald-500/30 bg-panel-dark space-y-6 text-center shadow-xl"
                 id="scholarship-success-panel"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400 mx-auto">
-                  <CheckCircle className="w-6 h-6" />
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400 mx-auto border border-emerald-500/20">
+                  <CheckCircle className="w-8 h-8" />
                 </div>
-                <div className="space-y-2">
-                  <h3 className="serif-heading text-2xl font-bold text-text-cream">Application Submitted Confidentially</h3>
-                  <p className="text-sm text-text-sage max-w-md mx-auto leading-relaxed">
-                    JazakAllahu Khairan. Your request for <strong>{submittedApp.fullName}</strong> regarding the <strong>{submittedApp.course}</strong> course has been securely saved.
+                
+                <div className="space-y-3 max-w-lg mx-auto">
+                  <h3 className="serif-heading text-2xl font-bold text-text-cream">
+                    Application Submitted
+                  </h3>
+                  <p className="text-xs sm:text-sm text-text-sage leading-relaxed">
+                    JazakAllahu Khairan for applying. Our team will personally review your application and reach out to you soon.
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl border border-brand-border bg-bg-deep/50 max-w-lg mx-auto text-xs text-text-sage text-left space-y-2">
-                  <p><strong>Seeker:</strong> {submittedApp.fullName} (Age {submittedApp.age})</p>
-                  <p><strong>WhatsApp:</strong> {submittedApp.whatsapp}</p>
-                  <p><strong>Contribution Capacity:</strong> {submittedApp.partialPayment}</p>
+                <div className="p-4 rounded-2xl border border-brand-border bg-bg-deep/60 max-w-md mx-auto text-xs text-text-sage text-left space-y-2">
+                  <p><strong className="text-text-cream">Applicant:</strong> {submittedApp.fullName} (Age {submittedApp.age})</p>
+                  <p><strong className="text-text-cream">Course:</strong> {submittedApp.course}</p>
+                  <p><strong className="text-text-cream">WhatsApp:</strong> {submittedApp.whatsapp}</p>
+                  <p><strong className="text-text-cream">Partial Contribution:</strong> {submittedApp.partialPayment}</p>
                 </div>
 
                 <div className="pt-2 flex flex-col sm:flex-row justify-center gap-4">
@@ -160,10 +176,10 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center space-x-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-bg-deep px-6 py-3.5 text-xs font-bold uppercase tracking-wider transition-all duration-300"
+                    className="inline-flex items-center justify-center space-x-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-bg-deep px-6 py-3.5 text-xs font-bold uppercase tracking-wider transition-all duration-300"
                     id="success-whatsapp-cta"
                   >
-                    <span>Coordinate via WhatsApp</span>
+                    <span>Notify via WhatsApp</span>
                     <ChevronRight className="w-4 h-4" />
                   </a>
 
@@ -177,10 +193,15 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
                 </div>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="p-6 sm:p-8 rounded-2xl border border-brand-border bg-panel-dark space-y-6" id="scholarship-application-form">
-                <h2 className="serif-heading text-xl sm:text-2xl font-bold text-text-cream border-b border-brand-border pb-3">
-                  Sponsorship Request Form
-                </h2>
+              <form onSubmit={handleSubmit} className="p-6 sm:p-10 rounded-3xl border border-brand-border bg-panel-dark space-y-6 shadow-xl" id="scholarship-application-form">
+                <div className="border-b border-brand-border/60 pb-4 space-y-1">
+                  <h2 className="serif-heading text-xl sm:text-2xl font-bold text-text-cream">
+                    Scholarship Application Form
+                  </h2>
+                  <p className="text-xs text-text-sage">
+                    Please complete the form below. Every application is reviewed personally with sincerity and confidentiality.
+                  </p>
+                </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Full Name */}
@@ -191,7 +212,7 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Sister Fatima Ahmed"
+                      placeholder="Enter your full name"
                       value={form.fullName}
                       onChange={(e) => setForm({ ...form, fullName: e.target.value })}
                       className="w-full rounded-xl border border-brand-border bg-bg-deep px-4 py-3 text-xs sm:text-sm text-text-cream placeholder-text-sage/40 focus:border-accent-gold focus:outline-none focus:ring-1 focus:ring-accent-gold/20 transition-all duration-300"
@@ -202,12 +223,12 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
                   {/* Age */}
                   <div className="space-y-2">
                     <label className="text-xs font-semibold uppercase tracking-wider text-text-cream">
-                      Age of the Seeker *
+                      Age *
                     </label>
                     <input
                       type="number"
                       required
-                      placeholder="e.g. 27"
+                      placeholder="Enter age"
                       value={form.age}
                       onChange={(e) => setForm({ ...form, age: e.target.value })}
                       className="w-full rounded-xl border border-brand-border bg-bg-deep px-4 py-3 text-xs sm:text-sm text-text-cream placeholder-text-sage/40 focus:border-accent-gold focus:outline-none focus:ring-1 focus:ring-accent-gold/20 transition-all duration-300"
@@ -218,7 +239,7 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
                   {/* WhatsApp */}
                   <div className="space-y-2">
                     <label className="text-xs font-semibold uppercase tracking-wider text-text-cream">
-                      WhatsApp Number *
+                      Contact Number (WhatsApp) *
                     </label>
                     <input
                       type="tel"
@@ -234,11 +255,11 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
                   {/* Email */}
                   <div className="space-y-2">
                     <label className="text-xs font-semibold uppercase tracking-wider text-text-cream">
-                      Email Address <span className="text-text-sage text-[10px] lowercase italic">(optional)</span>
+                      Email <span className="text-text-sage text-[10px] lowercase italic">(optional)</span>
                     </label>
                     <input
                       type="email"
-                      placeholder="e.g. fatima@example.com"
+                      placeholder="e.g. email@domain.com"
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       className="w-full rounded-xl border border-brand-border bg-bg-deep px-4 py-3 text-xs sm:text-sm text-text-cream placeholder-text-sage/40 focus:border-accent-gold focus:outline-none focus:ring-1 focus:ring-accent-gold/20 transition-all duration-300"
@@ -249,7 +270,7 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
                   {/* Desired Course */}
                   <div className="space-y-2 sm:col-span-2">
                     <label className="text-xs font-semibold uppercase tracking-wider text-text-cream">
-                      Desired Program of Study *
+                      Which course are you applying for? *
                     </label>
                     <select
                       value={form.course}
@@ -265,14 +286,30 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
                     </select>
                   </div>
 
-                  {/* Financial capability payment */}
+                  {/* Reason */}
                   <div className="space-y-2 sm:col-span-2">
                     <label className="text-xs font-semibold uppercase tracking-wider text-text-cream">
-                      What portion of the standard monthly contribution can you provide? *
+                      Why do you need this scholarship? *
+                    </label>
+                    <textarea
+                      required
+                      rows={4}
+                      placeholder="Share the main reason for financial need and your sincere intention to learn."
+                      value={form.reason}
+                      onChange={(e) => setForm({ ...form, reason: e.target.value })}
+                      className="w-full rounded-xl border border-brand-border bg-bg-deep px-4 py-3 text-xs sm:text-sm text-text-cream placeholder-text-sage/40 focus:border-accent-gold focus:outline-none focus:ring-1 focus:ring-accent-gold/20 transition-all duration-300 resize-none"
+                      id="input-reason"
+                    />
+                  </div>
+
+                  {/* Partial Payment */}
+                  <div className="space-y-2 sm:col-span-2">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-text-cream">
+                      Are you able to pay any partial amount toward the course fee? If yes, how much? *
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {[
-                        'None (Full Sponsorship)',
+                        'None (Full Scholarship)',
                         'Partial (Rs. 100/month)',
                         'Partial (Rs. 250/month)'
                       ].map((option) => (
@@ -285,7 +322,7 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
                               ? 'bg-accent-gold text-bg-deep border-accent-gold'
                               : 'bg-bg-deep text-text-sage border-brand-border hover:border-accent-gold/30'
                           }`}
-                          id={`payment-opt-${option.toLowerCase().replace(" ", "-").replace("(", "").replace(")", "").replace("/", "")}`}
+                          id={`payment-opt-${option.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
                         >
                           {option}
                         </button>
@@ -293,26 +330,10 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
                     </div>
                   </div>
 
-                  {/* Reason */}
+                  {/* Previous course? */}
                   <div className="space-y-2 sm:col-span-2">
                     <label className="text-xs font-semibold uppercase tracking-wider text-text-cream">
-                      Tell us why you are seeking a sponsorship *
-                    </label>
-                    <textarea
-                      required
-                      rows={4}
-                      placeholder="Please share a brief, sincere outline of your personal financial challenges or why this support will help your studies."
-                      value={form.reason}
-                      onChange={(e) => setForm({ ...form, reason: e.target.value })}
-                      className="w-full rounded-xl border border-brand-border bg-bg-deep px-4 py-3 text-xs sm:text-sm text-text-cream placeholder-text-sage/40 focus:border-accent-gold focus:outline-none focus:ring-1 focus:ring-accent-gold/20 transition-all duration-300 resize-none"
-                      id="input-reason"
-                    />
-                  </div>
-
-                  {/* Previous course? */}
-                  <div className="space-y-2">
-                    <label className="text-xs font-semibold uppercase tracking-wider text-text-cream">
-                      Have you studied with Qalbiya before? *
+                      Have you taken a course with Qalbiya Islamic Institute before? *
                     </label>
                     <div className="flex gap-4">
                       {['Yes', 'No'].map((opt) => (
@@ -336,11 +357,11 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
                   {/* Additional info */}
                   <div className="space-y-2 sm:col-span-2">
                     <label className="text-xs font-semibold uppercase tracking-wider text-text-cream">
-                      Additional Information <span className="text-text-sage text-[10px] lowercase italic">(optional)</span>
+                      Anything else you'd like us to know? <span className="text-text-sage text-[10px] lowercase italic">(optional)</span>
                     </label>
                     <textarea
                       rows={2}
-                      placeholder="Any other helpful details (e.g. batch availability, preferred teacher characteristics, etc.)"
+                      placeholder="Any additional information..."
                       value={form.additionalInfo}
                       onChange={(e) => setForm({ ...form, additionalInfo: e.target.value })}
                       className="w-full rounded-xl border border-brand-border bg-bg-deep px-4 py-3 text-xs sm:text-sm text-text-cream placeholder-text-sage/40 focus:border-accent-gold focus:outline-none focus:ring-1 focus:ring-accent-gold/20 transition-all duration-300 resize-none"
@@ -360,12 +381,12 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
                     {isSubmitting ? (
                       <>
                         <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-bg-deep mr-2"></span>
-                        <span>Filing request...</span>
+                        <span>Submitting...</span>
                       </>
                     ) : (
                       <>
                         <Send className="w-4 h-4" />
-                        <span>Submit Confidential Application</span>
+                        <span>Submit Application</span>
                       </>
                     )}
                   </button>
@@ -377,6 +398,16 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
 
         </div>
 
+      </section>
+
+      {/* Closing Section */}
+      <section className="p-8 sm:p-12 rounded-3xl border border-brand-border bg-panel-dark text-center space-y-3 shadow-lg" id="scholarship-closing">
+        <h2 className="serif-heading text-xl sm:text-2xl font-bold text-text-cream max-w-2xl mx-auto leading-relaxed">
+          If your heart wants to learn and your hands are tied — reach out. That's exactly who this is for.
+        </h2>
+        <p className="text-xs text-text-sage max-w-xl mx-auto">
+          Every inquiry is treated with dignity and total confidentiality.
+        </p>
       </section>
 
       {/* Local Application History Panel */}

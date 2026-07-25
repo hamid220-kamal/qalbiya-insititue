@@ -42,19 +42,19 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
   };
 
   const womenCourses = [
-    { slug: 'seerah-course', title: 'Seerah of Prophet ﷺ', duration: '2 Months', icon: Heart, tag: 'Popular' },
-    { slug: 'tajweed-1-1', title: 'Tajweed 1:1 Classes', duration: '5 Months', icon: BookOpen, tag: '1-on-1' },
-    { slug: 'noorani-qaida', title: 'Noorani Qaida Course', duration: '2 Months', icon: Book, tag: 'Beginner' },
-    { slug: 'pre-diploma-deeniyat', title: 'Pre-Diploma in Deeniyat', duration: '6 Months', icon: Sparkles, tag: 'Diploma' },
+    { slug: 'seerahCourse', title: 'Seerah of Prophet ﷺ', duration: '2 Months', icon: Heart, tag: 'Popular' },
+    { slug: 'tajweed1on1', title: 'Tajweed 1 on 1 Classes', duration: '5 Months', icon: BookOpen, tag: '1 on 1' },
+    { slug: 'nooraniQaida', title: 'Noorani Qaida Course', duration: '2 Months', icon: Book, tag: 'Beginner' },
+    { slug: 'preDiplomaDeeniyat', title: 'Pre Diploma in Deeniyat', duration: '6 Months', icon: Sparkles, tag: 'Diploma' },
   ];
 
   const kidsCourses = [
-    { slug: 'juniors-deeniyat-mastercourse', title: 'Juniors Deeniyat Mastercourse', duration: '1.5–2 Years', icon: GraduationCap, tag: 'Ages 6–12' },
-    { slug: 'noorani-qaida-kids', title: 'Noorani Qaida (Kids)', duration: '4–5 Months', icon: BookOpen, tag: '1-on-1' },
+    { slug: 'juniorsDeeniyatMastercourse', title: 'Juniors Deeniyat Mastercourse', duration: '1.5 to 2 Years', icon: GraduationCap, tag: 'Ages 6 to 12' },
+    { slug: 'nooraniQaidaKids', title: 'Noorani Qaida (Kids)', duration: '4 to 5 Months', icon: BookOpen, tag: '1 on 1' },
   ];
 
-  const isCoursesActive = currentRoute === 'home' || currentRoute === 'women' || currentRoute === 'kids' || currentRoute === 'course-detail';
-  const isSacredActive = currentRoute === 'asma-ul-husna' || currentRoute === 'five-pillars' || currentRoute === 'sacred-knowledge';
+  const isCoursesActive = currentRoute === 'home' || currentRoute === 'women' || currentRoute === 'kids' || currentRoute === 'courseDetail';
+  const isSacredActive = currentRoute === 'asmaUlHusna' || currentRoute === 'fivePillars' || currentRoute === 'sacredKnowledge';
 
   return (
     <header ref={headerRef} className="sticky top-0 z-50 w-full border-b border-[#E8DDD9] bg-[#FAF8F5]/95 text-[#23181A] backdrop-blur-md transition-all duration-300">
@@ -65,7 +65,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
           <div 
             className="flex cursor-pointer items-center space-x-2 group shrink-0"
             onClick={() => handleNavClick('home')}
-            id="nav-logo"
+            id="navLogo"
           >
             <h1 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#78122B] group-hover:opacity-90 transition-opacity">
               Qalbiya
@@ -75,23 +75,23 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
           {/* Desktop Main Navigation Buttons & Dropdown Toggles */}
           <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
             
-            {/* 1. Courses Dropdown Toggle */}
+            {/* 1. Programs Dropdown Toggle */}
             <div className="relative">
               <button
                 onClick={() => toggleDropdown('courses')}
-                className={`flex items-center gap-1 px-3 py-2 text-xs xl:text-sm font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3.5 py-2 text-xs xl:text-sm font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
                   isCoursesActive || activeDropdown === 'courses'
                     ? 'bg-[#F9E8EC] text-[#78122B]' 
                     : 'text-[#5C4D50] hover:text-[#78122B] hover:bg-[#FDFBF7]'
                 }`}
-                id="nav-toggle-courses"
+                id="navToggleCourses"
               >
                 <BookOpen className="w-4 h-4 shrink-0 text-[#78122B]" />
-                <span>All Courses</span>
+                <span>Programs</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'courses' ? 'rotate-180 text-[#78122B]' : ''}`} />
               </button>
 
-              {/* Courses Toggle Dropdown Panel */}
+              {/* Programs Dropdown Panel */}
               <AnimatePresence>
                 {activeDropdown === 'courses' && (
                   <motion.div
@@ -99,104 +99,72 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 8, scale: 0.98 }}
                     transition={{ duration: 0.18 }}
-                    className="absolute left-0 mt-2 w-[540px] rounded-2xl border border-[#E8DDD9] bg-[#FAF8F5] p-5 shadow-2xl z-50 grid grid-cols-2 gap-5"
-                    id="dropdown-courses-panel"
+                    className="absolute left-0 mt-2 w-[420px] rounded-2xl border border-[#E8DDD9] bg-[#FAF8F5] p-4 shadow-2xl z-50 space-y-2"
+                    id="dropdownCoursesPanel"
                   >
-                    {/* Women's Section */}
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between pb-2 border-b border-[#E8DDD9]">
-                        <span className="text-xs font-bold uppercase tracking-wider text-[#78122B] flex items-center gap-1.5">
-                          <Users className="w-3.5 h-3.5" /> Women's Courses
-                        </span>
-                        <button
-                          onClick={() => handleNavClick('women')}
-                          className="text-[11px] font-semibold text-[#78122B] hover:underline"
-                        >
-                          View Hub →
-                        </button>
+                    {/* Women's Programs Link Card */}
+                    <button
+                      onClick={() => handleNavClick('women')}
+                      className={`w-full text-left p-3.5 rounded-xl transition-all border flex items-start gap-3.5 cursor-pointer group/card ${
+                        currentRoute === 'women'
+                          ? 'bg-[#78122B] border-[#78122B] text-white shadow-md'
+                          : 'bg-white hover:bg-[#F9E8EC]/60 border-[#E8DDD9] text-[#23181A]'
+                      }`}
+                      id="dropdownLinkWomensPrograms"
+                    >
+                      <div className={`p-2 rounded-lg shrink-0 ${
+                        currentRoute === 'women' ? 'bg-white/10 text-white' : 'bg-[#F9E8EC] text-[#78122B]'
+                      }`}>
+                        <Users className="w-5 h-5" />
                       </div>
-                      <div className="space-y-1">
-                        {womenCourses.map((c) => {
-                          const IconComp = c.icon;
-                          const isSelected = currentRoute === 'course-detail' && selectedCourseSlug === c.slug;
-                          return (
-                            <button
-                              key={c.slug}
-                              onClick={() => handleNavClick('course-detail', c.slug)}
-                              className={`w-full text-left p-2.5 rounded-xl transition-all flex items-start gap-2.5 cursor-pointer ${
-                                isSelected ? 'bg-[#78122B] text-white shadow-xs' : 'hover:bg-[#F9E8EC] text-[#23181A]'
-                              }`}
-                            >
-                              <IconComp className={`w-4 h-4 mt-0.5 shrink-0 ${isSelected ? 'text-white' : 'text-[#78122B]'}`} />
-                              <div className="flex-1 min-w-0">
-                                <div className="flex items-center justify-between gap-1">
-                                  <span className="text-xs font-semibold truncate">{c.title}</span>
-                                  {c.tag && (
-                                    <span className={`text-[9px] px-1.5 py-0.5 rounded font-mono ${isSelected ? 'bg-white/20 text-white' : 'bg-[#F9E8EC] text-[#78122B]'}`}>
-                                      {c.tag}
-                                    </span>
-                                  )}
-                                </div>
-                                <p className={`text-[10px] ${isSelected ? 'text-white/80' : 'text-[#5C4D50]'}`}>{c.duration}</p>
-                              </div>
-                            </button>
-                          );
-                        })}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm font-bold">Women's Programs</span>
+                          <span className={`text-xs font-semibold group-hover/card:translate-x-1 transition-transform ${
+                            currentRoute === 'women' ? 'text-white' : 'text-[#78122B]'
+                          }`}>
+                            View Hub →
+                          </span>
+                        </div>
+                        <p className={`text-xs mt-0.5 line-clamp-1 ${
+                          currentRoute === 'women' ? 'text-white/80' : 'text-[#5C4D50]'
+                        }`}>
+                          Seerah, Tajweed 1 on 1, Noorani Qaida and Pre Diploma
+                        </p>
                       </div>
-                    </div>
+                    </button>
 
-                    {/* Kids' Section */}
-                    <div className="space-y-3 border-l border-[#E8DDD9] pl-5">
-                      <div className="flex items-center justify-between pb-2 border-b border-[#E8DDD9]">
-                        <span className="text-xs font-bold uppercase tracking-wider text-[#2E6B38] flex items-center gap-1.5">
-                          <GraduationCap className="w-3.5 h-3.5" /> Kids' Courses
-                        </span>
-                        <button
-                          onClick={() => handleNavClick('kids')}
-                          className="text-[11px] font-semibold text-[#2E6B38] hover:underline"
-                        >
-                          View Hub →
-                        </button>
+                    {/* Kids' Programs Link Card */}
+                    <button
+                      onClick={() => handleNavClick('kids')}
+                      className={`w-full text-left p-3.5 rounded-xl transition-all border flex items-start gap-3.5 cursor-pointer group/card ${
+                        currentRoute === 'kids'
+                          ? 'bg-[#8E4B59] border-[#8E4B59] text-white shadow-md'
+                          : 'bg-white hover:bg-[#F9E8EC]/60 border-[#E8DDD9] text-[#23181A]'
+                      }`}
+                      id="dropdownLinkKidsPrograms"
+                    >
+                      <div className={`p-2 rounded-lg shrink-0 ${
+                        currentRoute === 'kids' ? 'bg-white/10 text-white' : 'bg-[#F9E8EC] text-[#8E4B59]'
+                      }`}>
+                        <GraduationCap className="w-5 h-5" />
                       </div>
-                      <div className="space-y-1">
-                        {kidsCourses.map((c) => {
-                          const IconComp = c.icon;
-                          const isSelected = currentRoute === 'course-detail' && selectedCourseSlug === c.slug;
-                          return (
-                            <button
-                              key={c.slug}
-                              onClick={() => handleNavClick('course-detail', c.slug)}
-                              className={`w-full text-left p-2.5 rounded-xl transition-all flex items-start gap-2.5 cursor-pointer ${
-                                isSelected ? 'bg-[#2E6B38] text-white shadow-xs' : 'hover:bg-[#E2F0D9] text-[#23181A]'
-                              }`}
-                            >
-                              <IconComp className={`w-4 h-4 mt-0.5 shrink-0 ${isSelected ? 'text-white' : 'text-[#2E6B38]'}`} />
-                              <div className="flex-1 min-w-0">
-                                <div className="flex items-center justify-between gap-1">
-                                  <span className="text-xs font-semibold truncate">{c.title}</span>
-                                  {c.tag && (
-                                    <span className={`text-[9px] px-1.5 py-0.5 rounded font-mono ${isSelected ? 'bg-white/20 text-white' : 'bg-[#E2F0D9] text-[#2E6B38]'}`}>
-                                      {c.tag}
-                                    </span>
-                                  )}
-                                </div>
-                                <p className={`text-[10px] ${isSelected ? 'text-white/80' : 'text-[#5C4D50]'}`}>{c.duration}</p>
-                              </div>
-                            </button>
-                          );
-                        })}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm font-bold">Kids' Programs</span>
+                          <span className={`text-xs font-semibold group-hover/card:translate-x-1 transition-transform ${
+                            currentRoute === 'kids' ? 'text-white' : 'text-[#8E4B59]'
+                          }`}>
+                            View Hub →
+                          </span>
+                        </div>
+                        <p className={`text-xs mt-0.5 line-clamp-1 ${
+                          currentRoute === 'kids' ? 'text-white/80' : 'text-[#5C4D50]'
+                        }`}>
+                          Juniors Deeniyat Mastercourse & Noorani Qaida (Kids)
+                        </p>
                       </div>
-
-                      {/* Bottom Banner inside Dropdown */}
-                      <div className="pt-2">
-                        <button
-                          onClick={() => handleNavClick('scholarship')}
-                          className="w-full text-center py-2 px-3 rounded-lg bg-[#FDFBF7] border border-[#E8DDD9] text-[11px] font-semibold text-[#78122B] hover:bg-[#F9E8EC] transition-colors"
-                        >
-                          🎁 Apply for Financial Aid / Scholarship
-                        </button>
-                      </div>
-                    </div>
+                    </button>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -211,7 +179,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
                     ? 'bg-[#F9E8EC] text-[#78122B]' 
                     : 'text-[#5C4D50] hover:text-[#78122B] hover:bg-[#FDFBF7]'
                 }`}
-                id="nav-toggle-sacred"
+                id="navToggleSacred"
               >
                 <Sparkles className="w-4 h-4 shrink-0 text-[#78122B]" />
                 <span>Sacred Knowledge</span>
@@ -226,31 +194,31 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
                     exit={{ opacity: 0, y: 8, scale: 0.98 }}
                     transition={{ duration: 0.18 }}
                     className="absolute left-0 mt-2 w-64 rounded-2xl border border-[#E8DDD9] bg-[#FAF8F5] p-3 shadow-2xl z-50 space-y-1"
-                    id="dropdown-sacred-panel"
+                    id="dropdownSacredPanel"
                   >
                     <button
-                      onClick={() => handleNavClick('asma-ul-husna')}
+                      onClick={() => handleNavClick('asmaUlHusna')}
                       className={`w-full text-left p-2.5 rounded-xl transition-all flex items-center gap-3 cursor-pointer ${
-                        currentRoute === 'asma-ul-husna' ? 'bg-[#78122B] text-white' : 'hover:bg-[#F9E8EC] text-[#23181A]'
+                        currentRoute === 'asmaUlHusna' ? 'bg-[#78122B] text-white' : 'hover:bg-[#F9E8EC] text-[#23181A]'
                       }`}
                     >
-                      <Sparkles className={`w-4 h-4 shrink-0 ${currentRoute === 'asma-ul-husna' ? 'text-white' : 'text-[#78122B]'}`} />
+                      <Sparkles className={`w-4 h-4 shrink-0 ${currentRoute === 'asmaUlHusna' ? 'text-white' : 'text-[#78122B]'}`} />
                       <div>
                         <div className="text-xs font-semibold">Asma Ul Husna</div>
-                        <div className={`text-[10px] ${currentRoute === 'asma-ul-husna' ? 'text-white/80' : 'text-[#5C4D50]'}`}>99 Beautiful Names of Allah</div>
+                        <div className={`text-[10px] ${currentRoute === 'asmaUlHusna' ? 'text-white/80' : 'text-[#5C4D50]'}`}>99 Beautiful Names of Allah</div>
                       </div>
                     </button>
 
                     <button
-                      onClick={() => handleNavClick('five-pillars')}
+                      onClick={() => handleNavClick('fivePillars')}
                       className={`w-full text-left p-2.5 rounded-xl transition-all flex items-center gap-3 cursor-pointer ${
-                        currentRoute === 'five-pillars' ? 'bg-[#78122B] text-white' : 'hover:bg-[#F9E8EC] text-[#23181A]'
+                        currentRoute === 'fivePillars' ? 'bg-[#78122B] text-white' : 'hover:bg-[#F9E8EC] text-[#23181A]'
                       }`}
                     >
-                      <Compass className={`w-4 h-4 shrink-0 ${currentRoute === 'five-pillars' ? 'text-white' : 'text-[#78122B]'}`} />
+                      <Compass className={`w-4 h-4 shrink-0 ${currentRoute === 'fivePillars' ? 'text-white' : 'text-[#78122B]'}`} />
                       <div>
                         <div className="text-xs font-semibold">The 5 Pillars of Islam</div>
-                        <div className={`text-[10px] ${currentRoute === 'five-pillars' ? 'text-white/80' : 'text-[#5C4D50]'}`}>Core Pillars & Practical Guidance</div>
+                        <div className={`text-[10px] ${currentRoute === 'fivePillars' ? 'text-white/80' : 'text-[#5C4D50]'}`}>Core Pillars & Practical Guidance</div>
                       </div>
                     </button>
                   </motion.div>
@@ -260,13 +228,13 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
 
             {/* 3. Direct Menu Bar Page Buttons */}
             <button
-              onClick={() => handleNavClick('free-courses')}
+              onClick={() => handleNavClick('freeCourses')}
               className={`px-3 py-2 text-xs xl:text-sm font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
-                currentRoute === 'free-courses' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:text-[#78122B] hover:bg-[#FDFBF7]'
+                currentRoute === 'freeCourses' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:text-[#78122B] hover:bg-[#FDFBF7]'
               }`}
-              id="nav-btn-resources"
+              id="navBtnFreeCourses"
             >
-              Resources
+              Free Courses
             </button>
 
             <button
@@ -274,7 +242,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
               className={`px-3 py-2 text-xs xl:text-sm font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
                 currentRoute === 'scholarship' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:text-[#78122B] hover:bg-[#FDFBF7]'
               }`}
-              id="nav-btn-scholarship"
+              id="navBtnScholarship"
             >
               Scholarship
             </button>
@@ -284,7 +252,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
               className={`px-3 py-2 text-xs xl:text-sm font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
                 currentRoute === 'about' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:text-[#78122B] hover:bg-[#FDFBF7]'
               }`}
-              id="nav-btn-about"
+              id="navBtnAbout"
             >
               About
             </button>
@@ -294,7 +262,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
               className={`px-3 py-2 text-xs xl:text-sm font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
                 currentRoute === 'faq' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:text-[#78122B] hover:bg-[#FDFBF7]'
               }`}
-              id="nav-btn-faq"
+              id="navBtnFaq"
             >
               FAQ
             </button>
@@ -304,7 +272,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
               className={`px-3 py-2 text-xs xl:text-sm font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
                 currentRoute === 'contact' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:text-[#78122B] hover:bg-[#FDFBF7]'
               }`}
-              id="nav-btn-contact"
+              id="navBtnContact"
             >
               Contact
             </button>
@@ -316,7 +284,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
               onClick={() => setShowSearch(!showSearch)}
               className="p-2 text-[#5C4D50] hover:text-[#78122B] hover:bg-[#FDFBF7] transition-colors rounded-full cursor-pointer"
               aria-label="Search courses"
-              id="nav-search-btn"
+              id="navSearchBtn"
             >
               <Search className="w-4 h-4" />
             </button>
@@ -326,7 +294,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-5 py-2 rounded-lg bg-[#78122B] text-white text-xs xl:text-sm font-semibold tracking-wide hover:bg-[#630E23] transition-all duration-200 shadow-xs cursor-pointer"
-              id="nav-register-btn"
+              id="navRegisterBtn"
             >
               Register
             </a>
@@ -345,7 +313,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-lg border border-[#E8DDD9] bg-[#FDFBF7] text-[#23181A]"
               aria-label="Toggle navigation menu"
-              id="mobile-menu-toggle"
+              id="mobileMenuToggle"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -447,7 +415,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
                     currentRoute === 'free-courses' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                   }`}
                 >
-                  <span>Free Resources</span>
+                  <span>Free Courses</span>
                 </button>
 
                 <button
@@ -487,14 +455,23 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
                 </button>
               </div>
 
-              <div className="pt-4 border-t border-[#E8DDD9] space-y-2.5">
+              <div className="pt-4 border-t border-[#E8DDD9] space-y-1">
                 <button
                   onClick={() => handleNavClick('asma-ul-husna')}
-                  className={`flex w-full items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    currentRoute === 'asma-ul-husna' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                  className={`flex w-full items-center px-4 py-2.5 rounded-lg text-xs font-semibold transition-colors ${
+                    currentRoute === 'asma-ul-husna' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                   }`}
                 >
                   <span>Asma Ul Husna (99 Names)</span>
+                </button>
+
+                <button
+                  onClick={() => handleNavClick('five-pillars')}
+                  className={`flex w-full items-center px-4 py-2.5 rounded-lg text-xs font-semibold transition-colors ${
+                    currentRoute === 'five-pillars' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                  }`}
+                >
+                  <span>The 5 Pillars of Islam</span>
                 </button>
               </div>
 

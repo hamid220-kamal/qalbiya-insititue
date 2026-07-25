@@ -1,6 +1,6 @@
 {
   "name": "Qalbiya Islamic Institute",
-  "description": "Warm, spiritually grounded Islamic education for women and children.",
+  "description": "Warm, spiritually grounded online Islamic education for women and children offering Tajweed, Seerah, Noorani Qaida, and Deeniyat.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

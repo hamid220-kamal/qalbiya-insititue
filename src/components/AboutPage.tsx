@@ -94,7 +94,7 @@ export const AboutPage: React.FC = () => {
             </div>
             <h3 className="serif-heading text-lg font-bold text-text-cream">Genuine Compassion</h3>
             <p className="text-xs leading-relaxed text-text-sage">
-              If a mother needs to bring her newborn to her 1-on-1 session, or if a child needs to learn through drawings and play, we welcome and support that entirely.
+              If a mother needs to bring her newborn to her 1 on 1 session, or if a child needs to learn through drawings and play, we welcome and support that entirely.
             </p>
           </div>
         </div>

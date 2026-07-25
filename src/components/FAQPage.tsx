@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   HelpCircle, 
   ChevronDown, 
   MessageSquare, 
   Instagram, 
+  Search,
+  X,
+  Plus,
+  Minus,
   Sparkles,
   BookOpen,
   DollarSign,
@@ -20,15 +24,26 @@ interface FAQItem {
   id: string;
   question: string;
   answer: React.ReactNode;
+  rawAnswerText?: string;
   category: 'general' | 'classes' | 'payment';
 }
 
 export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
-  const [activeId, setActiveId] = useState<string | null>(null);
+  // Store open item IDs as a Set to allow multiple or single open items
+  const [openIds, setOpenIds] = useState<Set<string>>(new Set());
   const [activeCategory, setActiveCategory] = useState<'all' | 'general' | 'classes' | 'payment'>('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const toggleFAQ = (id: string) => {
-    setActiveId(activeId === id ? null : id);
+    setOpenIds(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
   };
 
   const faqItems: FAQItem[] = [
@@ -36,13 +51,15 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
       id: 'attendance',
       category: 'classes',
       question: 'Is attendance tracked?',
-      answer: 'Yes — attendance is tracked for all our courses to ensure consistent progress, commitment, and quality spiritual learning.'
+      answer: 'Yes — attendance is tracked for all our courses to ensure consistent progress, commitment, and quality spiritual learning.',
+      rawAnswerText: 'Yes attendance is tracked for all our courses to ensure consistent progress, commitment, and quality spiritual learning.'
     },
     {
       id: 'recordings',
       category: 'classes',
       question: 'Do I get a recording if I miss a live class?',
-      answer: 'This varies by course — some courses offer recordings and some don\'t. This will be clearly communicated to you at the time of enrollment.'
+      answer: 'This varies by course — some courses offer recordings and some don\'t. This will be clearly communicated to you at the time of enrollment.',
+      rawAnswerText: 'This varies by course some courses offer recordings and some don\'t. This will be clearly communicated to you at the time of enrollment.'
     },
     {
       id: 'trial',
@@ -61,7 +78,8 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
           </a>{' '}
           to ask about a trial for the course you're interested in.
         </span>
-      )
+      ),
+      rawAnswerText: 'Yes trial classes are available for select courses including Tajweed 1:1 Classes and the Juniors Deeniyat Mastercourse. Message us on WhatsApp to ask about a trial for the course you are interested in.'
     },
     {
       id: 'authenticity',
@@ -82,7 +100,8 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
           )}{' '}
           page.
         </span>
-      )
+      ),
+      rawAnswerText: 'All our courses are taught by qualified dedicated teachers rooted in authentic Quran and Sunnah teaching. You can read more about our founder and approach on our About page.'
     },
     {
       id: 'enroll',
@@ -112,13 +131,15 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
           )}{' '}
           pages, choose the course that fits, and message us on WhatsApp or Instagram to complete enrollment.
         </span>
-      )
+      ),
+      rawAnswerText: 'Browse our Womens Courses or Kids Courses pages, choose the course that fits, and message us on WhatsApp or Instagram to complete enrollment.'
     },
     {
       id: 'payment',
       category: 'payment',
       question: 'How do I pay?',
-      answer: 'Payment details are shared directly with you once you reach out to enroll. We currently accept standard, convenient methods including bank transfers, UPI (GPay, PhonePe, Paytm), and secure international wire methods.'
+      answer: 'Payment details are shared directly with you once you reach out to enroll. We currently accept standard, convenient methods including bank transfers, UPI (GPay, PhonePe, Paytm), and secure international wire methods.',
+      rawAnswerText: 'Payment details are shared directly with you once you reach out to enroll. We currently accept standard convenient methods including bank transfers, UPI GPay PhonePe Paytm, and secure international wire methods.'
     },
     {
       id: 'refunds',
@@ -139,25 +160,29 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
           )}{' '}
           for details, and feel free to ask us any questions before enrolling.
         </span>
-      )
+      ),
+      rawAnswerText: 'All course fees are non-refundable. Please see our Refund Policy for details, and feel free to ask us any questions before enrolling.'
     },
     {
       id: 'format',
       category: 'classes',
       question: 'Are classes live or pre-recorded?',
-      answer: 'All classes are conducted live online via Google Meet — not pre-recorded. This ensures real-time interaction, active correction, and personal teacher-student engagement.'
+      answer: 'All classes are conducted live online via Google Meet — not pre-recorded. This ensures real-time interaction, active correction, and personal teacher-student engagement.',
+      rawAnswerText: 'All classes are conducted live online via Google Meet not pre-recorded. This ensures real-time interaction, active correction, and personal teacher-student engagement.'
     },
     {
       id: 'beginners',
       category: 'general',
       question: 'Do you offer classes for beginners?',
-      answer: 'Yes — several of our courses, including Noorani Qaida (Women\'s & Kids\') and Pre-Diploma in Deeniyat, are designed specifically for beginners with no prior knowledge required.'
+      answer: 'Yes — several of our courses, including Noorani Qaida (Women\'s & Kids\') and Pre-Diploma in Deeniyat, are designed specifically for beginners with no prior knowledge required.',
+      rawAnswerText: 'Yes several of our courses including Noorani Qaida Womens & Kids and Pre-Diploma in Deeniyat are designed specifically for beginners with no prior knowledge required.'
     },
     {
       id: 'missed',
       category: 'classes',
       question: 'What if I have to miss a class?',
-      answer: 'This depends on the course format. For 1-on-1 classes, missed content is simply covered in the next session. For group classes, please check the specific course page or contact us for guidance.'
+      answer: 'This depends on the course format. For 1-on-1 classes, missed content is simply covered in the next session. For group classes, please check the specific course page or contact us for guidance.',
+      rawAnswerText: 'This depends on the course format. For 1-on-1 classes missed content is simply covered in the next session. For group classes please check the specific course page or contact us for guidance.'
     },
     {
       id: 'free',
@@ -178,7 +203,8 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
           )}{' '}
           page for our current free offerings, including weekly Tarbiyah & Tazkiyah sessions.
         </span>
-      )
+      ),
+      rawAnswerText: 'Yes check our Free Courses page for our current free offerings including weekly Tarbiyah & Tazkiyah sessions.'
     },
     {
       id: 'scholarships',
@@ -199,7 +225,8 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
           )}{' '}
           page to apply.
         </span>
-      )
+      ),
+      rawAnswerText: 'Yes we offer scholarships for students who genuinely cannot afford our courses. Visit our Scholarship page to apply.'
     },
     {
       id: 'ages',
@@ -220,16 +247,37 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
           )}{' '}
           if you have a child outside this range — we're happy to discuss custom options.
         </span>
-      )
+      ),
+      rawAnswerText: 'Our current childrens courses are designed for ages 6–12. Please contact us directly if you have a child outside this range we are happy to discuss custom options.'
     }
   ];
 
-  const filteredFaqs = faqItems.filter(item => 
-    activeCategory === 'all' || item.category === activeCategory
-  );
+  const filteredFaqs = useMemo(() => {
+    return faqItems.filter(item => {
+      const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
+      const query = searchQuery.trim().toLowerCase();
+      if (!query) return matchesCategory;
+
+      const matchesQ = item.question.toLowerCase().includes(query);
+      const matchesA = item.rawAnswerText ? item.rawAnswerText.toLowerCase().includes(query) : false;
+      
+      return matchesCategory && (matchesQ || matchesA);
+    });
+  }, [activeCategory, searchQuery]);
+
+  const handleExpandAll = () => {
+    const allFilteredIds = new Set(filteredFaqs.map(f => f.id));
+    setOpenIds(allFilteredIds);
+  };
+
+  const handleCollapseAll = () => {
+    setOpenIds(new Set());
+  };
+
+  const allVisibleAreExpanded = filteredFaqs.length > 0 && filteredFaqs.every(f => openIds.has(f.id));
 
   return (
-    <div className="space-y-12 pb-24 max-w-3xl mx-auto px-4 sm:px-6 pt-10" id="faq-page-container">
+    <div className="space-y-10 pb-24 max-w-3xl mx-auto px-4 sm:px-6 pt-10" id="faq-page-container">
       
       {/* Page Header */}
       <section className="text-center space-y-4" id="faq-header">
@@ -244,69 +292,157 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
         </p>
       </section>
 
-      {/* Category Tabs */}
-      <div className="flex flex-wrap justify-center gap-2" id="faq-tabs">
-        {(['all', 'general', 'classes', 'payment'] as const).map((cat) => (
-          <button
-            key={cat}
-            onClick={() => {
-              setActiveCategory(cat);
-              setActiveId(null);
-            }}
-            className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 border ${
-              activeCategory === cat
-                ? 'bg-accent-gold text-panel-dark border-accent-gold shadow-md'
-                : 'bg-panel-dark border-brand-border text-text-sage hover:text-text-cream hover:border-text-sage/30'
-            }`}
-            id={`faq-tab-btn-${cat}`}
-          >
-            {cat === 'all' && 'All Questions'}
-            {cat === 'general' && 'General Info'}
-            {cat === 'classes' && 'Classes & Formats'}
-            {cat === 'payment' && 'Fees & Payments'}
-          </button>
-        ))}
+      {/* Live Search Bar */}
+      <div className="relative max-w-xl mx-auto" id="faq-search-bar">
+        <div className="relative flex items-center">
+          <Search className="absolute left-4 w-4 h-4 text-text-sage/60 pointer-events-none" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search questions or topics..."
+            className="w-full pl-11 pr-10 py-3 rounded-2xl bg-panel-dark border border-brand-border text-text-cream text-xs sm:text-sm placeholder:text-text-sage/50 focus:outline-none focus:border-accent-gold/60 focus:ring-1 focus:ring-accent-gold/30 transition-all shadow-xs"
+            id="faq-search-input"
+          />
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={() => setSearchQuery('')}
+              className="absolute right-3.5 p-1 rounded-full text-text-sage/60 hover:text-text-cream hover:bg-panel-light transition-colors cursor-pointer"
+              title="Clear search"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Category Tabs & Expand/Collapse Controls */}
+      <div className="space-y-4" id="faq-controls">
+        <div className="flex flex-wrap justify-center gap-2" id="faq-tabs">
+          {(['all', 'general', 'classes', 'payment'] as const).map((cat) => (
+            <button
+              key={cat}
+              onClick={() => {
+                setActiveCategory(cat);
+              }}
+              className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 border cursor-pointer ${
+                activeCategory === cat
+                  ? 'bg-accent-gold text-panel-dark border-accent-gold shadow-md'
+                  : 'bg-panel-dark border-brand-border text-text-sage hover:text-text-cream hover:border-text-sage/30'
+              }`}
+              id={`faq-tab-btn-${cat}`}
+            >
+              {cat === 'all' && 'All Questions'}
+              {cat === 'general' && 'General Info'}
+              {cat === 'classes' && 'Classes & Formats'}
+              {cat === 'payment' && 'Fees & Payments'}
+            </button>
+          ))}
+        </div>
+
+        {/* Status Bar & Bulk Expand / Collapse Buttons */}
+        <div className="flex items-center justify-between text-xs text-text-sage pt-2 px-1 border-b border-brand-border/40 pb-3">
+          <span className="font-mono text-[11px] text-text-sage/80">
+            Showing <strong className="text-text-cream font-bold">{filteredFaqs.length}</strong> {filteredFaqs.length === 1 ? 'question' : 'questions'}
+          </span>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={allVisibleAreExpanded ? handleCollapseAll : handleExpandAll}
+              className="text-[11px] font-mono font-bold uppercase tracking-wider text-accent-gold hover:text-text-cream flex items-center gap-1 transition-colors cursor-pointer"
+            >
+              {allVisibleAreExpanded ? (
+                <>
+                  <Minus className="w-3 h-3" />
+                  <span>Collapse All</span>
+                </>
+              ) : (
+                <>
+                  <Plus className="w-3 h-3" />
+                  <span>Expand All</span>
+                </>
+              )}
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Accordion FAQ List */}
-      <section className="space-y-4" id="faq-accordion-list">
-        {filteredFaqs.map((faq) => {
-          const isOpen = activeId === faq.id;
-          return (
-            <div 
-              key={faq.id} 
-              className="bg-panel-dark border border-brand-border hover:border-accent-gold/20 rounded-2xl overflow-hidden transition-all duration-300 shadow-sm"
-              id={`faq-item-container-${faq.id}`}
+      <section className="space-y-3.5" id="faq-accordion-list">
+        {filteredFaqs.length === 0 ? (
+          <div className="text-center py-12 px-4 rounded-2xl bg-panel-dark/40 border border-dashed border-brand-border space-y-3">
+            <HelpCircle className="w-8 h-8 text-text-sage/40 mx-auto" />
+            <p className="text-sm font-semibold text-text-cream">No matching questions found</p>
+            <p className="text-xs text-text-sage max-w-sm mx-auto">
+              Try searching with different keywords or switch categories above.
+            </p>
+            <button
+              onClick={() => {
+                setSearchQuery('');
+                setActiveCategory('all');
+              }}
+              className="mt-2 text-xs font-bold text-accent-gold underline hover:text-text-cream cursor-pointer"
             >
-              <button
-                onClick={() => toggleFAQ(faq.id)}
-                className="w-full flex items-center justify-between p-5 text-left text-text-cream font-medium hover:text-accent-gold transition-colors focus:outline-none"
-                aria-expanded={isOpen}
-                id={`faq-btn-${faq.id}`}
+              Reset filters
+            </button>
+          </div>
+        ) : (
+          filteredFaqs.map((faq) => {
+            const isOpen = openIds.has(faq.id);
+            return (
+              <div 
+                key={faq.id} 
+                className={`bg-panel-dark border rounded-2xl overflow-hidden transition-all duration-300 shadow-sm ${
+                  isOpen ? 'border-accent-gold/40 shadow-md ring-1 ring-accent-gold/20' : 'border-brand-border hover:border-accent-gold/30'
+                }`}
+                id={`faq-item-container-${faq.id}`}
               >
-                <span className="serif-heading text-base sm:text-lg pr-4 font-bold">{faq.question}</span>
-                <span className={`shrink-0 flex items-center justify-center rounded-lg w-8 h-8 bg-brand-border/40 text-text-sage group-hover:text-accent-gold transition-transform duration-300 ${isOpen ? 'rotate-180 bg-accent-gold/10 text-accent-gold' : ''}`}>
-                  <ChevronDown className="w-4 h-4" />
-                </span>
-              </button>
+                <button
+                  type="button"
+                  onClick={() => toggleFAQ(faq.id)}
+                  className="w-full flex items-center justify-between p-4 sm:p-5 text-left text-text-cream font-medium hover:text-accent-gold transition-colors focus:outline-none cursor-pointer group"
+                  aria-expanded={isOpen}
+                  id={`faq-btn-${faq.id}`}
+                >
+                  <div className="pr-4 space-y-1">
+                    <span className="serif-heading text-base sm:text-lg font-bold leading-snug block group-hover:text-accent-gold transition-colors">
+                      {faq.question}
+                    </span>
+                    <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-text-sage/60 inline-block bg-brand-border/30 px-2 py-0.5 rounded">
+                      {faq.category === 'general' && 'General'}
+                      {faq.category === 'classes' && 'Classes'}
+                      {faq.category === 'payment' && 'Fees'}
+                    </span>
+                  </div>
 
-              <AnimatePresence initial={false}>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25, ease: 'easeInOut' }}
-                  >
-                    <div className="px-5 pb-5 pt-1 text-sm text-text-sage leading-relaxed border-t border-brand-border/30">
-                      {faq.answer}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          );
-        })}
+                  <span className={`shrink-0 flex items-center justify-center rounded-xl w-8 h-8 sm:w-9 sm:h-9 transition-all duration-300 ${
+                    isOpen 
+                      ? 'rotate-180 bg-accent-gold text-panel-dark shadow-sm' 
+                      : 'bg-brand-border/40 text-text-sage group-hover:text-accent-gold group-hover:bg-brand-border'
+                  }`}>
+                    <ChevronDown className="w-4 h-4" />
+                  </span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.28, ease: [0.25, 1, 0.5, 1] }}
+                    >
+                      <div className="px-4 sm:px-5 pb-5 pt-1 text-xs sm:text-sm text-text-sage leading-relaxed border-t border-brand-border/40 bg-panel-light/30">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })
+        )}
       </section>
 
       {/* Still Have Questions Footer CTA */}
@@ -340,3 +476,4 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
     </div>
   );
 };
+

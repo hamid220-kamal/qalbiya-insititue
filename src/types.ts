@@ -37,4 +37,4 @@ export interface ScholarshipApplication {
   additionalInfo?: string;
 }
 
-export type Route = 'home' | 'about' | 'women' | 'kids' | 'free-courses' | 'scholarship' | 'course-detail' | 'contact' | 'refund-policy' | 'terms-and-conditions' | 'privacy-policy' | 'faq' | 'sacred-knowledge' | 'asma-ul-husna' | 'five-pillars';
+export type Route = 'home' | 'about' | 'women' | 'kids' | 'freeCourses' | 'scholarship' | 'courseDetail' | 'contact' | 'refundPolicy' | 'termsAndConditions' | 'privacyPolicy' | 'faq' | 'sacredKnowledge' | 'asmaUlHusna' | 'fivePillars';

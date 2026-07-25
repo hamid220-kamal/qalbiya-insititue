@@ -80,7 +80,7 @@ export const FivePillarsPage: React.FC<FivePillarsPageProps> = ({ onNavigate }) 
       reflection: "Hajj is the journey of a lifetime that mirrors our eternal journey back to God. Wearing two simple unstitched cloths reminds me of my mortal simplicity and fills me with awe at the universal brotherhood of humanity united in worship.",
       wisdom: "Hajj is a supreme demonstration of universal human equality before God. Millions dress in identical simple white garments (Ihram), erasing distinctions of race, wealth, and status, echoing the assembly of the Day of Judgment.",
       practice: "Even if you haven't performed Hajj yet, learn the history of Prophet Ibrahim (AS) and Hajar (AS) to understand the profound symbolism of sacrifice and trust in Allah.",
-      qalbiyaIntegration: "Our Seerat-un-Nabi masterclasses walk students step-by-step through the Farewell Pilgrimage of the Prophet ﷺ and its enduring lessons for humanity."
+      qalbiyaIntegration: "Our Seerah masterclasses walk students step by step through the Farewell Pilgrimage of the Prophet ﷺ and its enduring lessons for humanity."
     }
   ];
 
