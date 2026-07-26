@@ -11,6 +11,7 @@ import { FreeCoursesPage } from './components/FreeCoursesPage';
 import { ScholarshipPage } from './components/ScholarshipPage';
 import { CourseDetailView } from './components/CourseDetailView';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { DhikrDuroodWidget } from './components/DhikrDuroodWidget';
 import { ContactPage } from './components/ContactPage';
 import { RefundPolicyPage } from './components/RefundPolicyPage';
 import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
@@ -44,47 +45,48 @@ export default function App() {
     return 'home';
   };
 
-  // Helper to construct clean URL path (no # hash)
-  const getPathForRoute = (route: Route, courseSlug?: string): string => {
+  // Helper to construct clean URL hash for SEO & instant sharing
+  const getHashForRoute = (route: Route, courseSlug?: string): string => {
     switch (route) {
       case 'asmaUlHusna':
-        return '/asma-ul-husna';
+        return '#/asma-ul-husna';
       case 'fivePillars':
-        return '/five-pillars';
+        return '#/five-pillars';
       case 'sacredKnowledge':
-        return '/sacred-knowledge';
+        return '#/sacred-knowledge';
       case 'freeCourses':
-        return '/free-courses';
+        return '#/free-courses';
       case 'courseDetail':
-        return courseSlug ? `/course/${courseSlug}` : '/women';
+        return courseSlug ? `#/course/${courseSlug}` : '#/women';
       case 'refundPolicy':
-        return '/refund-policy';
+        return '#/refund-policy';
       case 'termsAndConditions':
-        return '/terms-and-conditions';
+        return '#/terms-and-conditions';
       case 'privacyPolicy':
-        return '/privacy-policy';
+        return '#/privacy-policy';
       case 'about':
-        return '/about';
+        return '#/about';
       case 'women':
-        return '/women';
+        return '#/women';
       case 'kids':
-        return '/kids';
+        return '#/kids';
       case 'scholarship':
-        return '/scholarship';
+        return '#/scholarship';
       case 'contact':
-        return '/contact';
+        return '#/contact';
       case 'faq':
-        return '/faq';
+        return '#/faq';
       case 'home':
       default:
-        return '/';
+        return '#/';
     }
   };
 
-  // Helper to parse current URL pathname (clean, no hash)
+  // Helper to parse current URL location
   const parseUrlLocation = (): { route: Route; courseSlug?: string } => {
-    const path = window.location.pathname || '/';
-    const raw = path.replace(/^\//, '').replace(/\/+$/, '');
+    const hash = window.location.hash || '';
+    const path = window.location.pathname || '';
+    let raw = hash ? hash.replace(/^#\/?/, '') : path.replace(/^\//, '');
 
     if (!raw || raw === '/') {
       return { route: 'home' };
@@ -112,9 +114,11 @@ export default function App() {
     // Sync on initial load
     syncFromUrl();
 
-    // Listen for back/forward browser navigation
+    // Listen for back/forward browser navigation and hash changes
+    window.addEventListener('hashchange', syncFromUrl);
     window.addEventListener('popstate', syncFromUrl);
     return () => {
+      window.removeEventListener('hashchange', syncFromUrl);
       window.removeEventListener('popstate', syncFromUrl);
     };
   }, []);
@@ -218,10 +222,10 @@ export default function App() {
       setSelectedCourseSlug(undefined);
     }
 
-    // Update URL path for instant routing & shareable link
-    const newPath = getPathForRoute(targetRoute, courseSlug);
-    if (window.location.pathname !== newPath) {
-      window.history.pushState(null, '', newPath);
+    // Update URL hash for instant routing & shareable link
+    const newHash = getHashForRoute(targetRoute, courseSlug);
+    if (window.location.hash !== newHash) {
+      window.history.pushState(null, '', newHash);
     }
 
     // Scroll to top for seamless transitions
@@ -231,7 +235,7 @@ export default function App() {
   const handleSelectCourse = (slug: string) => {
     setSelectedCourseSlug(slug);
     setCurrentRoute('courseDetail');
-    window.history.pushState(null, '', `/course/${slug}`);
+    window.history.pushState(null, '', `#/course/${slug}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -354,6 +358,9 @@ export default function App() {
 
       {/* Floating WhatsApp Contact Button */}
       <FloatingWhatsApp />
+
+      {/* Floating Dhikr & Durood Interactive Counter Bubbles */}
+      <DhikrDuroodWidget />
 
     </div>
   );
