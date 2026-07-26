@@ -447,7 +447,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
                     }`}
                   >
                     <span>Women's Programs Hub</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded-md bg-[#78122B]/10 text-[#78122B] font-bold">1:1 & Group</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-md bg-[#78122B]/10 text-[#78122B] font-bold">1 on 1, Group</span>
                   </button>
 
                   <button
@@ -457,7 +457,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
                     }`}
                   >
                     <span>Kids' Tarbiyah Hub</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded-md bg-[#2E6B38]/10 text-[#2E6B38] font-bold">Ages 4-15</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-md bg-[#2E6B38]/10 text-[#2E6B38] font-bold">Ages 4 to 15</span>
                   </button>
 
                   <button

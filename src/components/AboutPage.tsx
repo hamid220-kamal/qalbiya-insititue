@@ -37,7 +37,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         </p>
         <div className="w-12 h-0.5 bg-[#78122B]/20 mx-auto" />
         <p className="text-base sm:text-lg leading-relaxed text-[#23181A] font-semibold italic">
-          Qalbiya exists to change that. Not through guilt. Not through more information. But through a return — slow, honest, and rooted.
+          Qalbiya exists to change that. Not through guilt. Not through more information. But through a return, slow, honest, and rooted.
         </p>
       </section>
 
