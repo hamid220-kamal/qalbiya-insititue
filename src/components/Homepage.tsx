@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Heart, BookOpen, GraduationCap, Users, Shield, ArrowRight, Star, 
   Check, MessageCircle, Sparkles, Quote, HelpCircle, ChevronDown, 
   Compass, Lightbulb, Sun, Award, Globe, Phone, Mail, Instagram,
-  ChevronRight, Laptop, Tablet, Smartphone
+  ChevronRight, ChevronLeft, Laptop, Tablet, Smartphone
 } from 'lucide-react';
 import { Course, Route } from '../types';
 import { CourseCard } from './CourseCard';
@@ -31,6 +31,44 @@ export const Homepage: React.FC<HomepageProps> = ({
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [phoneSubmitted, setPhoneSubmitted] = useState(false);
+
+  const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
+  const [isTestimonialsHovered, setIsTestimonialsHovered] = useState(false);
+  const testimonialScrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isTestimonialsHovered) return;
+    const interval = setInterval(() => {
+      setActiveTestimonialIndex((prev) => {
+        const nextIndex = (prev + 1) % 4; // testimonies.length = 4
+        if (testimonialScrollRef.current) {
+          const firstChild = testimonialScrollRef.current.children[0] as HTMLElement;
+          const cardWidth = firstChild ? firstChild.offsetWidth : 380;
+          const gap = 24;
+          testimonialScrollRef.current.scrollTo({
+            left: nextIndex * (cardWidth + gap),
+            behavior: 'smooth'
+          });
+        }
+        return nextIndex;
+      });
+    }, 2500); // 2.5 seconds gap
+
+    return () => clearInterval(interval);
+  }, [isTestimonialsHovered]);
+
+  const scrollToTestimonial = (index: number) => {
+    setActiveTestimonialIndex(index);
+    if (testimonialScrollRef.current) {
+      const firstChild = testimonialScrollRef.current.children[0] as HTMLElement;
+      const cardWidth = firstChild ? firstChild.offsetWidth : 380;
+      const gap = 24;
+      testimonialScrollRef.current.scrollTo({
+        left: index * (cardWidth + gap),
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -523,44 +561,99 @@ export const Homepage: React.FC<HomepageProps> = ({
         </div>
       </section>
 
-      {/* Section 6: Heartfelt Transformations (Testimonials) */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 space-y-12" id="testimonials">
-        <div className="text-center space-y-3 max-w-2xl mx-auto">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#78122B]">
-            Student Voices
-          </span>
-          <h2 className="serif-heading text-3xl sm:text-4xl font-bold text-[#23181A]">
-            Heartfelt Transformations
-          </h2>
-          <p className="text-sm text-[#5C4D50]">
-            Hear from sisters and parents who have walked this journey with Qalbiya Institute.
-          </p>
+      {/* Section 6: Heartfelt Transformations (Testimonials - Horizontal Auto Scroll) */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 space-y-10 overflow-hidden" id="testimonials">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="space-y-3 max-w-2xl">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#78122B] inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F9E8EC]">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Student Voices</span>
+            </span>
+            <h2 className="serif-heading text-3xl sm:text-4xl font-bold text-[#23181A]">
+              Heartfelt Transformations
+            </h2>
+            <p className="text-sm text-[#5C4D50]">
+              Hear from sisters and parents who have walked this journey with Qalbiya Institute.
+            </p>
+          </div>
+
+          {/* Navigation Arrows */}
+          <div className="flex items-center gap-2 self-start md:self-auto">
+            <button
+              onClick={() => scrollToTestimonial((activeTestimonialIndex - 1 + testimonies.length) % testimonies.length)}
+              className="p-3 rounded-full border border-[#E8DDD9] bg-white hover:bg-[#F9E8EC] hover:text-[#78122B] text-[#5C4D50] transition-colors shadow-2xs cursor-pointer"
+              aria-label="Previous Testimonial"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => scrollToTestimonial((activeTestimonialIndex + 1) % testimonies.length)}
+              className="p-3 rounded-full border border-[#E8DDD9] bg-white hover:bg-[#F9E8EC] hover:text-[#78122B] text-[#5C4D50] transition-colors shadow-2xs cursor-pointer"
+              aria-label="Next Testimonial"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {testimonies.map((item, index) => (
-            <div 
-              key={index}
-              className="bg-white rounded-2xl border border-[#E8DDD9] p-6 sm:p-8 space-y-4 shadow-xs flex flex-col justify-between"
-            >
-              <div className="space-y-3">
-                <Quote className="w-8 h-8 text-[#78122B]/30" />
-                <p className="text-sm sm:text-base text-[#23181A] italic leading-relaxed">
-                  "{item.quote}"
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-[#E8DDD9] flex items-center justify-between">
-                <div>
-                  <h4 className="font-bold text-sm text-[#23181A]">{item.name}</h4>
-                  <p className="text-xs text-[#5C4D50]">{item.role}</p>
+        {/* Scrollable Container with cards */}
+        <div 
+          className="relative"
+          onMouseEnter={() => setIsTestimonialsHovered(true)}
+          onMouseLeave={() => setIsTestimonialsHovered(false)}
+        >
+          <div 
+            ref={testimonialScrollRef}
+            className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-1"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {testimonies.map((item, index) => (
+              <div 
+                key={index}
+                className={`snap-start shrink-0 w-[88vw] sm:w-[460px] bg-white rounded-3xl border transition-all duration-300 p-6 sm:p-8 space-y-6 flex flex-col justify-between shadow-xs hover:shadow-xl ${
+                  activeTestimonialIndex === index ? 'border-[#78122B] ring-2 ring-[#78122B]/10' : 'border-[#E8DDD9]'
+                }`}
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <Quote className="w-8 h-8 text-[#78122B]/40" />
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#78122B] bg-[#F9E8EC] px-3 py-1 rounded-full">
+                      {item.highlight}
+                    </span>
+                  </div>
+                  <p className="text-sm sm:text-base text-[#23181A] italic leading-relaxed font-serif">
+                    "{item.quote}"
+                  </p>
                 </div>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#78122B] bg-[#F9E8EC] px-2.5 py-1 rounded-md">
-                  {item.highlight}
-                </span>
+
+                <div className="pt-4 border-t border-[#E8DDD9] flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-[#78122B] text-white flex items-center justify-center font-serif font-bold text-sm shrink-0 shadow-2xs">
+                    {item.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-[#23181A]">{item.name}</h4>
+                    <p className="text-xs text-[#5C4D50]">{item.role}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Dots Indicator Bar */}
+          <div className="flex justify-center items-center gap-2 pt-6">
+            {testimonies.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => scrollToTestimonial(idx)}
+                className={`h-2.5 rounded-full transition-all cursor-pointer ${
+                  activeTestimonialIndex === idx 
+                    ? 'w-8 bg-[#78122B]' 
+                    : 'w-2.5 bg-[#E8DDD9] hover:bg-[#78122B]/40'
+                }`}
+                aria-label={`Go to testimonial ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
