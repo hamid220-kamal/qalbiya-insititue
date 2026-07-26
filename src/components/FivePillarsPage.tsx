@@ -115,7 +115,7 @@ export const FivePillarsPage: React.FC<FivePillarsPageProps> = ({ onNavigate }) 
             </button>
 
             <button
-              onClick={() => onNavigate('asma-ul-husna')}
+              onClick={() => onNavigate('asmaUlHusna')}
               className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-[#D4AF37] hover:text-[#23181A] text-white text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer border border-white/20"
             >
               <span>Explore Asma Ul Husna (99 Names)</span>

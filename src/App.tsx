@@ -24,6 +24,104 @@ export default function App() {
   const [selectedCourseSlug, setSelectedCourseSlug] = useState<string | undefined>(undefined);
   const [scholarshipPreselectSlug, setScholarshipPreselectSlug] = useState<string | undefined>(undefined);
 
+  // Helper to normalize any incoming route string (camelCase, kebab-case, or alias)
+  const normalizeRouteName = (input: string): Route => {
+    const clean = (input || '').toLowerCase().trim().replace(/^\/+|\/+$/g, '').replace(/^#\/?/, '');
+    if (['asma-ul-husna', 'asmaulhusna', 'asma_ul_husna', '99names', '99-names', 'asma'].includes(clean)) return 'asmaUlHusna';
+    if (['five-pillars', 'fivepillars', 'five_pillars', '5-pillars', '5pillars', 'pillars'].includes(clean)) return 'fivePillars';
+    if (['free-courses', 'freecourses', 'free_courses', 'free'].includes(clean)) return 'freeCourses';
+    if (['course-detail', 'coursedetail', 'course_detail', 'course'].includes(clean)) return 'courseDetail';
+    if (['refund-policy', 'refundpolicy', 'refund_policy'].includes(clean)) return 'refundPolicy';
+    if (['terms-and-conditions', 'termsandconditions', 'terms_and_conditions', 'terms'].includes(clean)) return 'termsAndConditions';
+    if (['privacy-policy', 'privacypolicy', 'privacy_policy', 'privacy'].includes(clean)) return 'privacyPolicy';
+    if (['sacred-knowledge', 'sacredknowledge', 'sacred'].includes(clean)) return 'sacredKnowledge';
+    if (clean === 'about') return 'about';
+    if (clean === 'women') return 'women';
+    if (clean === 'kids') return 'kids';
+    if (clean === 'scholarship') return 'scholarship';
+    if (clean === 'contact') return 'contact';
+    if (clean === 'faq') return 'faq';
+    return 'home';
+  };
+
+  // Helper to construct clean URL hash for SEO & instant sharing
+  const getHashForRoute = (route: Route, courseSlug?: string): string => {
+    switch (route) {
+      case 'asmaUlHusna':
+        return '#/asma-ul-husna';
+      case 'fivePillars':
+        return '#/five-pillars';
+      case 'sacredKnowledge':
+        return '#/sacred-knowledge';
+      case 'freeCourses':
+        return '#/free-courses';
+      case 'courseDetail':
+        return courseSlug ? `#/course/${courseSlug}` : '#/women';
+      case 'refundPolicy':
+        return '#/refund-policy';
+      case 'termsAndConditions':
+        return '#/terms-and-conditions';
+      case 'privacyPolicy':
+        return '#/privacy-policy';
+      case 'about':
+        return '#/about';
+      case 'women':
+        return '#/women';
+      case 'kids':
+        return '#/kids';
+      case 'scholarship':
+        return '#/scholarship';
+      case 'contact':
+        return '#/contact';
+      case 'faq':
+        return '#/faq';
+      case 'home':
+      default:
+        return '#/';
+    }
+  };
+
+  // Helper to parse current URL location
+  const parseUrlLocation = (): { route: Route; courseSlug?: string } => {
+    const hash = window.location.hash || '';
+    const path = window.location.pathname || '';
+    let raw = hash ? hash.replace(/^#\/?/, '') : path.replace(/^\//, '');
+
+    if (!raw || raw === '/') {
+      return { route: 'home' };
+    }
+
+    if (raw.startsWith('course/')) {
+      const slug = raw.split('course/')[1];
+      return { route: 'courseDetail', courseSlug: slug };
+    }
+
+    const norm = normalizeRouteName(raw);
+    return { route: norm };
+  };
+
+  // Initialize and sync route from browser URL location (Hash & History popstate)
+  useEffect(() => {
+    const syncFromUrl = () => {
+      const { route, courseSlug } = parseUrlLocation();
+      setCurrentRoute(route);
+      if (courseSlug) {
+        setSelectedCourseSlug(courseSlug);
+      }
+    };
+
+    // Sync on initial load
+    syncFromUrl();
+
+    // Listen for back/forward browser navigation and hash changes
+    window.addEventListener('hashchange', syncFromUrl);
+    window.addEventListener('popstate', syncFromUrl);
+    return () => {
+      window.removeEventListener('hashchange', syncFromUrl);
+      window.removeEventListener('popstate', syncFromUrl);
+    };
+  }, []);
+
   // Resolve current active course
   const activeCourse = coursesData.find((c) => c.slug === selectedCourseSlug);
 
@@ -32,7 +130,7 @@ export default function App() {
     let title = "Qalbiya Islamic Institute - Sacred Online Learning";
     let description = "Interactive, live online Islamic learning programs for women and kids, focusing on Quran, Tarbiyah, and classical sacred sciences under dedicated female mentorship.";
 
-    if (currentRoute === 'course-detail' && activeCourse) {
+    if (currentRoute === 'courseDetail' && activeCourse) {
       title = `${activeCourse.title} - Qalbiya Islamic Institute`;
       description = `${activeCourse.sub || activeCourse.hook || ''} Join this live interactive online class at Qalbiya. Programs designed with high academic standards.`.substring(0, 155) + '...';
     } else {
@@ -49,7 +147,7 @@ export default function App() {
           title = "Kids' Tarbiyah Classes - Qalbiya Islamic Institute";
           description = "Safe, engaging, and highly interactive live online Tarbiyah & Islamic lessons designed for kids to build strong character and basic sacred knowledge.";
           break;
-        case 'free-courses':
+        case 'freeCourses':
           title = "Free Sacred Lessons - Qalbiya Islamic Institute";
           description = "Access free weekly public lectures, short audio reflections, and essential Islamic study materials compiled by our scholars.";
           break;
@@ -61,15 +159,15 @@ export default function App() {
           title = "Contact Us & WhatsApp Support - Qalbiya Islamic Institute";
           description = "Get in touch with Ms. Mustara and our admissions team. Connect directly via WhatsApp or Instagram DM for fast support.";
           break;
-        case 'refund-policy':
+        case 'refundPolicy':
           title = "Refund Policy - Qalbiya Islamic Institute";
           description = "Read our official, transparent student satisfaction and refund guidelines for all paid courses at Qalbiya Islamic Institute.";
           break;
-        case 'terms-and-conditions':
+        case 'termsAndConditions':
           title = "Terms & Conditions - Qalbiya Islamic Institute";
           description = "View the official user terms, student code of conduct, and academy guidelines governing our interactive online learning platform.";
           break;
-        case 'privacy-policy':
+        case 'privacyPolicy':
           title = "Privacy Policy - Qalbiya Islamic Institute";
           description = "Understand how we collect, store, and carefully protect student data and details under our robust private hosting guidelines.";
           break;
@@ -77,12 +175,12 @@ export default function App() {
           title = "Frequently Asked Questions (FAQ) - Qalbiya Islamic Institute";
           description = "Get answers to student questions regarding Google Meet schedules, course recordings, class materials, payments, and batch timings.";
           break;
-        case 'asma-ul-husna':
-        case 'sacred-knowledge':
+        case 'asmaUlHusna':
+        case 'sacredKnowledge':
           title = "Asma Ul Husna (99 Names of Allah) - Qalbiya Islamic Institute";
           description = "Explore the 99 Beautiful Names of Allah (Asma Ul Husna). Reflect on divine attributes, translations, and daily invocations.";
           break;
-        case 'five-pillars':
+        case 'fivePillars':
           title = "The 5 Pillars of Islam - Qalbiya Islamic Institute";
           description = "Explore the 5 Foundational Pillars of Islam: Shahadah, Salah, Zakat, Sawm, and Hajj. Discover practical daily guidance and spiritual wisdom.";
           break;
@@ -104,29 +202,39 @@ export default function App() {
     metaDescription.setAttribute('content', description);
   }, [currentRoute, activeCourse]);
 
-  const handleNavigate = (route: Route, courseSlug?: string, sacredTab?: 'asma-ul-husna' | 'pillars' | 'all') => {
-    if (route === 'sacred-knowledge') {
+  const handleNavigate = (route: string | Route, courseSlug?: string, sacredTab?: 'asma-ul-husna' | 'pillars' | 'all') => {
+    let targetRoute = normalizeRouteName(route as string);
+
+    if (route === 'sacred-knowledge' || route === 'sacredKnowledge') {
       if (sacredTab === 'pillars') {
-        setCurrentRoute('five-pillars');
+        targetRoute = 'fivePillars';
       } else {
-        setCurrentRoute('asma-ul-husna');
+        targetRoute = 'asmaUlHusna';
       }
-    } else {
-      setCurrentRoute(route);
     }
+
+    setCurrentRoute(targetRoute);
 
     if (courseSlug) {
       setSelectedCourseSlug(courseSlug);
-    } else if (route !== 'course-detail') {
+    } else if (targetRoute !== 'courseDetail') {
       setSelectedCourseSlug(undefined);
     }
+
+    // Update URL hash for instant routing & shareable link
+    const newHash = getHashForRoute(targetRoute, courseSlug);
+    if (window.location.hash !== newHash) {
+      window.history.pushState(null, '', newHash);
+    }
+
     // Scroll to top for seamless transitions
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSelectCourse = (slug: string) => {
     setSelectedCourseSlug(slug);
-    setCurrentRoute('course-detail');
+    setCurrentRoute('courseDetail');
+    window.history.pushState(null, '', `#/course/${slug}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -134,8 +242,7 @@ export default function App() {
     if (selectedCourseSlug) {
       setScholarshipPreselectSlug(selectedCourseSlug);
     }
-    setCurrentRoute('scholarship');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    handleNavigate('scholarship');
   };
 
   const renderActiveScreen = () => {
@@ -168,7 +275,7 @@ export default function App() {
             onNavigate={handleNavigate} 
           />
         );
-      case 'free-courses':
+      case 'freeCourses':
         return <FreeCoursesPage />;
       case 'scholarship':
         return (
@@ -179,20 +286,20 @@ export default function App() {
         );
       case 'contact':
         return <ContactPage />;
-      case 'refund-policy':
+      case 'refundPolicy':
         return <RefundPolicyPage />;
-      case 'terms-and-conditions':
+      case 'termsAndConditions':
         return <TermsAndConditionsPage onNavigate={handleNavigate} />;
-      case 'privacy-policy':
+      case 'privacyPolicy':
         return <PrivacyPolicyPage />;
       case 'faq':
         return <FAQPage onNavigate={handleNavigate} />;
-      case 'asma-ul-husna':
-      case 'sacred-knowledge':
+      case 'asmaUlHusna':
+      case 'sacredKnowledge':
         return <AsmaUlHusnaPage onNavigate={handleNavigate} />;
-      case 'five-pillars':
+      case 'fivePillars':
         return <FivePillarsPage onNavigate={handleNavigate} />;
-      case 'course-detail':
+      case 'courseDetail':
         if (activeCourse) {
           return (
             <CourseDetailView 

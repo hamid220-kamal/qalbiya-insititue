@@ -134,7 +134,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
 
               <div>
                 <button
-                  onClick={() => onNavigate('asma-ul-husna')}
+                  onClick={() => onNavigate('asmaUlHusna')}
                   className="text-white/90 hover:text-[#F3D797] hover:underline font-semibold text-xs sm:text-sm transition-colors cursor-pointer inline-flex items-center gap-1.5"
                   id="footer-primary-btn-asma-ul-husna"
                 >
@@ -169,7 +169,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
               </li>
               <li>
                 <button 
-                  onClick={() => onNavigate('free-courses')} 
+                  onClick={() => onNavigate('freeCourses')} 
                   className="text-white/90 hover:text-[#F3D797] hover:underline text-left transition-colors duration-300 font-medium py-1.5 md:py-0.5 block w-full cursor-pointer"
                   id="footer-btn-free"
                 >
@@ -178,7 +178,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
               </li>
               <li>
                 <button 
-                  onClick={() => onNavigate('asma-ul-husna')} 
+                  onClick={() => onNavigate('asmaUlHusna')} 
                   className="text-white/90 hover:text-[#F3D797] hover:underline text-left transition-colors duration-300 font-medium py-1.5 md:py-0.5 block w-full cursor-pointer"
                   id="footer-btn-asma-ul-husna"
                 >
@@ -187,7 +187,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
               </li>
               <li>
                 <button 
-                  onClick={() => onNavigate('five-pillars')} 
+                  onClick={() => onNavigate('fivePillars')} 
                   className="text-white/90 hover:text-[#F3D797] hover:underline text-left transition-colors duration-300 font-medium py-1.5 md:py-0.5 block w-full cursor-pointer"
                   id="footer-btn-5-pillars"
                 >
@@ -212,7 +212,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
             <ul className="space-y-1.5 md:space-y-2.5 text-sm">
               <li>
                 <button 
-                  onClick={() => onNavigate('refund-policy')} 
+                  onClick={() => onNavigate('refundPolicy')} 
                   className="text-white/90 hover:text-[#F3D797] hover:underline text-left transition-colors duration-300 font-medium py-1.5 md:py-0.5 block w-full cursor-pointer"
                   id="footer-btn-refund-policy"
                 >
@@ -221,7 +221,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
               </li>
               <li>
                 <button 
-                  onClick={() => onNavigate('terms-and-conditions')} 
+                  onClick={() => onNavigate('termsAndConditions')} 
                   className="text-white/90 hover:text-[#F3D797] hover:underline text-left transition-colors duration-300 font-medium py-1.5 md:py-0.5 block w-full cursor-pointer"
                   id="footer-btn-terms-and-conditions"
                 >
@@ -230,7 +230,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
               </li>
               <li>
                 <button 
-                  onClick={() => onNavigate('privacy-policy')} 
+                  onClick={() => onNavigate('privacyPolicy')} 
                   className="text-white/90 hover:text-[#F3D797] hover:underline text-left transition-colors duration-300 font-medium py-1.5 md:py-0.5 block w-full cursor-pointer"
                   id="footer-btn-privacy-policy"
                 >

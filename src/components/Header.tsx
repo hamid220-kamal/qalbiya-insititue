@@ -410,9 +410,9 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
                 </button>
 
                 <button
-                  onClick={() => handleNavClick('free-courses')}
+                  onClick={() => handleNavClick('freeCourses')}
                   className={`flex w-full items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    currentRoute === 'free-courses' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    currentRoute === 'freeCourses' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                   }`}
                 >
                   <span>Free Courses</span>
@@ -457,18 +457,18 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
 
               <div className="pt-4 border-t border-[#E8DDD9] space-y-1">
                 <button
-                  onClick={() => handleNavClick('asma-ul-husna')}
+                  onClick={() => handleNavClick('asmaUlHusna')}
                   className={`flex w-full items-center px-4 py-2.5 rounded-lg text-xs font-semibold transition-colors ${
-                    currentRoute === 'asma-ul-husna' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    currentRoute === 'asmaUlHusna' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                   }`}
                 >
                   <span>Asma Ul Husna (99 Names)</span>
                 </button>
 
                 <button
-                  onClick={() => handleNavClick('five-pillars')}
+                  onClick={() => handleNavClick('fivePillars')}
                   className={`flex w-full items-center px-4 py-2.5 rounded-lg text-xs font-semibold transition-colors ${
-                    currentRoute === 'five-pillars' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    currentRoute === 'fivePillars' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                   }`}
                 >
                   <span>The 5 Pillars of Islam</span>
