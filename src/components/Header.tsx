@@ -3,9 +3,10 @@ import { motion, AnimatePresence } from 'motion/react';
 import { 
   Menu, X, Search, Sparkles, ChevronDown, 
   BookOpen, GraduationCap, Heart, Book, Award, 
-  HelpCircle, Info, PhoneCall, Gift, Compass, Users 
+  HelpCircle, Info, PhoneCall, Gift, Compass, Users, MessageCircle
 } from 'lucide-react';
 import { Route } from '../types';
+import qalbiyaLogoImg from '../assets/images/qalbiya_official_logo_1785068312120.jpg';
 
 interface HeaderProps {
   currentRoute: Route;
@@ -63,13 +64,26 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
           
           {/* Logo */}
           <div 
-            className="flex cursor-pointer items-center space-x-2 group shrink-0"
+            className="flex cursor-pointer items-center space-x-3 group shrink-0"
             onClick={() => handleNavClick('home')}
             id="navLogo"
           >
-            <h1 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#78122B] group-hover:opacity-90 transition-opacity">
-              Qalbiya
-            </h1>
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-[#78122B]/20 bg-[#FAF8F5] shadow-xs group-hover:scale-105 transition-transform duration-300">
+              <img 
+                src={qalbiyaLogoImg} 
+                alt="Qalbiya Islamic Institute Emblem" 
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="flex flex-col">
+              <h1 className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-[#78122B] group-hover:text-[#630E23] transition-colors leading-tight">
+                Qalbiya
+              </h1>
+              <span className="text-[10px] font-mono font-bold tracking-widest text-[#5C4D50] uppercase">
+                Islamic Institute
+              </span>
+            </div>
           </div>
 
           {/* Desktop Main Navigation Buttons & Dropdown Toggles */}
@@ -381,108 +395,174 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
                 </button>
               </div>
 
-              <div className="flex-1 py-6 space-y-2">
-                <button
-                  onClick={() => handleNavClick('home')}
-                  className={`flex w-full items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    currentRoute === 'home' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
-                  }`}
-                >
-                  <span>Home</span>
-                </button>
+              <div className="flex-1 py-4 space-y-6">
+                
+                {/* Main Learning Hubs */}
+                <div className="space-y-1">
+                  <span className="px-3 text-[10px] font-bold text-[#78122B] uppercase tracking-wider block mb-1">
+                    Programs & Learning
+                  </span>
 
-                <button
-                  onClick={() => handleNavClick('women')}
-                  className={`flex w-full items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    currentRoute === 'women' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
-                  }`}
-                >
-                  <span>Women's Courses</span>
-                </button>
+                  <button
+                    onClick={() => handleNavClick('home')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                      currentRoute === 'home' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>Home</span>
+                    <span className="text-xs text-[#8C7A7E]">Main</span>
+                  </button>
 
-                <button
-                  onClick={() => handleNavClick('kids')}
-                  className={`flex w-full items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    currentRoute === 'kids' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
-                  }`}
-                >
-                  <span>Kids' Courses</span>
-                </button>
+                  <button
+                    onClick={() => handleNavClick('women')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                      currentRoute === 'women' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>Women's Programs</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-md bg-[#78122B]/10 text-[#78122B] font-bold">1:1 & Group</span>
+                  </button>
 
-                <button
-                  onClick={() => handleNavClick('freeCourses')}
-                  className={`flex w-full items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    currentRoute === 'freeCourses' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
-                  }`}
-                >
-                  <span>Free Courses</span>
-                </button>
+                  <button
+                    onClick={() => handleNavClick('kids')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                      currentRoute === 'kids' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>Kids' Tarbiyah Classes</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-md bg-[#2E6B38]/10 text-[#2E6B38] font-bold">Ages 4-15</span>
+                  </button>
 
-                <button
-                  onClick={() => handleNavClick('scholarship')}
-                  className={`flex w-full items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    currentRoute === 'scholarship' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
-                  }`}
-                >
-                  <span>Scholarship</span>
-                </button>
+                  <button
+                    onClick={() => handleNavClick('freeCourses')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                      currentRoute === 'freeCourses' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>Free Sacred Lessons</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-md bg-[#D4AF37]/20 text-[#A37B24] font-bold">Public</span>
+                  </button>
+                </div>
 
-                <button
-                  onClick={() => handleNavClick('about')}
-                  className={`flex w-full items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    currentRoute === 'about' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
-                  }`}
-                >
-                  <span>About Us</span>
-                </button>
+                {/* Sacred Knowledge Center */}
+                <div className="space-y-1 pt-3 border-t border-[#E8DDD9]">
+                  <span className="px-3 text-[10px] font-bold text-[#78122B] uppercase tracking-wider block mb-1">
+                    Sacred Knowledge Center
+                  </span>
 
-                <button
-                  onClick={() => handleNavClick('faq')}
-                  className={`flex w-full items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    currentRoute === 'faq' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
-                  }`}
-                >
-                  <span>FAQ</span>
-                </button>
+                  <button
+                    onClick={() => handleNavClick('asmaUlHusna')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors ${
+                      currentRoute === 'asmaUlHusna' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>Asma Ul Husna (99 Names)</span>
+                    <span className="text-[#8C7A7E]">99</span>
+                  </button>
 
-                <button
-                  onClick={() => handleNavClick('contact')}
-                  className={`flex w-full items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    currentRoute === 'contact' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
-                  }`}
-                >
-                  <span>Contact</span>
-                </button>
+                  <button
+                    onClick={() => handleNavClick('fivePillars')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors ${
+                      currentRoute === 'fivePillars' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>The 5 Pillars of Islam</span>
+                    <span className="text-[#8C7A7E]">5</span>
+                  </button>
+                </div>
+
+                {/* Academy & Support */}
+                <div className="space-y-1 pt-3 border-t border-[#E8DDD9]">
+                  <span className="px-3 text-[10px] font-bold text-[#78122B] uppercase tracking-wider block mb-1">
+                    Academy & Support
+                  </span>
+
+                  <button
+                    onClick={() => handleNavClick('scholarship')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors ${
+                      currentRoute === 'scholarship' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>Scholarship Fund</span>
+                    <span className="text-[10px] text-[#78122B] font-bold">Financial Aid</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleNavClick('about')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors ${
+                      currentRoute === 'about' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>About Qalbiya</span>
+                    <span className="text-[#8C7A7E]">Mission</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleNavClick('faq')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors ${
+                      currentRoute === 'faq' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>Frequently Asked Questions</span>
+                    <span className="text-[#8C7A7E]">FAQ</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleNavClick('contact')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors ${
+                      currentRoute === 'contact' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>Contact Us</span>
+                    <span className="text-[#8C7A7E]">Support</span>
+                  </button>
+                </div>
+
+                {/* Policies & Institutional Guidelines */}
+                <div className="space-y-1 pt-3 border-t border-[#E8DDD9]">
+                  <span className="px-3 text-[10px] font-bold text-[#8C7A7E] uppercase tracking-wider block mb-1">
+                    Policies & Terms
+                  </span>
+
+                  <button
+                    onClick={() => handleNavClick('refundPolicy')}
+                    className={`flex w-full items-center justify-between px-3.5 py-1.5 rounded-lg text-xs transition-colors ${
+                      currentRoute === 'refundPolicy' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#8C7A7E] hover:text-[#23181A]'
+                    }`}
+                  >
+                    <span>Refund Policy</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleNavClick('termsAndConditions')}
+                    className={`flex w-full items-center justify-between px-3.5 py-1.5 rounded-lg text-xs transition-colors ${
+                      currentRoute === 'termsAndConditions' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#8C7A7E] hover:text-[#23181A]'
+                    }`}
+                  >
+                    <span>Terms & Conditions</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleNavClick('privacyPolicy')}
+                    className={`flex w-full items-center justify-between px-3.5 py-1.5 rounded-lg text-xs transition-colors ${
+                      currentRoute === 'privacyPolicy' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#8C7A7E] hover:text-[#23181A]'
+                    }`}
+                  >
+                    <span>Privacy Policy</span>
+                  </button>
+                </div>
+
               </div>
 
-              <div className="pt-4 border-t border-[#E8DDD9] space-y-1">
-                <button
-                  onClick={() => handleNavClick('asmaUlHusna')}
-                  className={`flex w-full items-center px-4 py-2.5 rounded-lg text-xs font-semibold transition-colors ${
-                    currentRoute === 'asmaUlHusna' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
-                  }`}
-                >
-                  <span>Asma Ul Husna (99 Names)</span>
-                </button>
-
-                <button
-                  onClick={() => handleNavClick('fivePillars')}
-                  className={`flex w-full items-center px-4 py-2.5 rounded-lg text-xs font-semibold transition-colors ${
-                    currentRoute === 'fivePillars' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
-                  }`}
-                >
-                  <span>The 5 Pillars of Islam</span>
-                </button>
-              </div>
-
-              <div className="pt-4 border-t border-[#E8DDD9]">
+              <div className="pt-4 border-t border-[#E8DDD9] space-y-2">
                 <a 
                   href="https://wa.me/918145363290?text=Assalamu%20Alaikum%2C%20I%20am%20interested%20in%20registering%20for%20classes%20at%20Qalbiya%20Islamic%20Institute."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center px-4 py-3 rounded-lg bg-[#78122B] text-white text-sm font-semibold text-center"
+                  className="flex w-full items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#78122B] hover:bg-[#630E23] text-white text-sm font-semibold text-center shadow-sm cursor-pointer"
                 >
-                  Register
+                  <MessageCircle className="w-4 h-4 text-[#F3D797]" />
+                  <span>Register via WhatsApp</span>
                 </a>
               </div>
             </motion.div>

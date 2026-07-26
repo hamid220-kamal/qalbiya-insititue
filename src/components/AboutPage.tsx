@@ -1,122 +1,186 @@
 import React from 'react';
-import { Heart, Compass, Sparkles, BookOpen, Quote, ShieldAlert } from 'lucide-react';
-import studyCompanionship from '../assets/images/study_companionship_1784048738488.jpg';
+import { ArrowRight, Heart, Sparkles } from 'lucide-react';
+import founderWorkspace from '../assets/images/founder_workspace_1784048720294.jpg';
 
-export const AboutPage: React.FC = () => {
+interface AboutPageProps {
+  onNavigate?: (route: string) => void;
+}
+
+export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   return (
-    <div className="space-y-20 pb-20 max-w-5xl mx-auto px-4 sm:px-6">
+    <div className="space-y-20 md:space-y-28 pb-20 max-w-5xl mx-auto px-4 sm:px-6">
       
-      {/* Intro Header */}
-      <section className="text-center space-y-4 pt-10">
-        <span className="text-xs font-bold uppercase tracking-widest text-accent-gold">Our Sacred Vision</span>
-        <h1 className="serif-heading text-4xl sm:text-5xl font-bold text-text-cream tracking-tight">
-          Sincerity, companionship, <br />and the search for Allah's pleasure.
+      {/* SECTION 1 — Opening Hook */}
+      <section className="text-center pt-10 sm:pt-14 space-y-6 max-w-4xl mx-auto">
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#F9E8EC] text-[#78122B] text-xs font-semibold tracking-wide">
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>Our Origin & Purpose</span>
+        </span>
+        <h1 className="serif-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#23181A] leading-[1.25] tracking-tight">
+          Qalbiya wasn't built because the world needed another Islamic page. It was built because so many of us needed a way back.
         </h1>
-        <p className="max-w-2xl mx-auto text-sm sm:text-base leading-relaxed text-text-sage">
-          Qalbiya is not an online business; it is a spiritual commitment. Discover who we are and why we reject the standard corporate formulas for learning the Deen.
+      </section>
+
+      {/* SECTION 2 — The Gap / The Why */}
+      <section className="max-w-2xl mx-auto text-center space-y-6 bg-[#FDFBF7] p-8 sm:p-10 rounded-3xl border border-[#E8DDD9] shadow-xs">
+        <p className="text-base sm:text-lg leading-relaxed text-[#5C4D50] font-normal">
+          So many of us grew up knowing the rules of our deen, but never really knowing the heart of it. We memorized without meaning. We prayed without presence. And somewhere between the noise of the dunya and the pressure to keep up, our connection with Allah became something we performed — not something we felt.
+        </p>
+        <div className="w-12 h-0.5 bg-[#78122B]/20 mx-auto" />
+        <p className="text-base sm:text-lg leading-relaxed text-[#23181A] font-semibold italic">
+          Qalbiya exists to change that. Not through guilt. Not through more information. But through a return — slow, honest, and rooted.
         </p>
       </section>
 
-      {/* Main Narrative Split */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Story Text */}
-        <div className="lg:col-span-7 space-y-6 text-sm leading-relaxed text-text-sage">
-          <h2 className="serif-heading text-2xl font-bold text-text-cream">
+      {/* SECTION 3 — Founder Story */}
+      <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start pt-4">
+        {/* Founder Image Column */}
+        <div className="lg:col-span-5 space-y-4">
+          <div className="relative rounded-3xl overflow-hidden border border-[#E8DDD9] bg-[#FAF8F5] shadow-xl group">
+            <img
+              src={founderWorkspace}
+              alt="Ms. Mustara, Founder of Qalbiya Islamic Institute"
+              referrerPolicy="no-referrer"
+              className="w-full aspect-[4/5] object-cover filter brightness-[0.97] contrast-[1.02] group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#23181A]/80 via-[#23181A]/20 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
+              <span className="text-[11px] font-bold text-[#F3D797] uppercase tracking-widest block">Founder & Lead Mentor</span>
+              <p className="text-xl font-serif font-bold tracking-tight">Ms. Mustara</p>
+              <p className="text-xs text-white/80 font-medium">Qalbiya Islamic Institute</p>
+            </div>
+          </div>
+          <div className="p-4 rounded-2xl bg-[#F9E8EC]/60 border border-[#E8DDD9] text-center">
+            <p className="text-xs font-serif italic text-[#78122B]">
+              "If ilm never reaches our character and daily life — what was the point?"
+            </p>
+          </div>
+        </div>
+
+        {/* Story Text Column */}
+        <div className="lg:col-span-7 space-y-5 text-sm sm:text-base leading-relaxed text-[#5C4D50] max-w-prose">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#78122B] block">Founder's Journey</span>
+          <h2 className="serif-heading text-2xl sm:text-3xl font-bold text-[#23181A]">
             The Story Behind the Heart
           </h2>
+
           <p>
-            When I first began seeking sacred knowledge as an adult, I faced immense anxiety. The standard institutes I applied to felt cold, bureaucratic, and demanding. I felt like a statistic rather than a student of the Qur'an. I noticed many sister friends struggling with the same fear of judgment.
-          </p>
-          <p>
-            That is why I founded <strong>Qalbiya Islamic Institute</strong>. I wanted to establish a safe haven — a warm, non-intimidating circle of companions where an adult sister could start her Tajweed journey from the very first letter without a trace of embarrassment.
-          </p>
-          <p>
-            Since our humble beginnings, we have guided hundreds of sisters and children into beautiful, correct recitation and a heart-centered relationship with their Creator. Our teachers are chosen specifically for their patience, gentle hearts, and deep expertise.
+            My own perspective has always been simple: knowledge without action is of no benefit. If we gain ilm, but that ilm never reaches our character, never reaches our daily life — what was the point?
           </p>
 
-          <div className="p-6 rounded-2xl border border-brand-border bg-panel-dark/60 italic font-medium text-text-cream relative">
-            <Quote className="absolute -top-3 -left-2 w-8 h-8 text-accent-gold/20" />
-            "If your deen classes don't make you feel loved by your Creator and your teacher, something in the methodology is broken. We teach to heal, not to stress."
-            <span className="block text-xs font-semibold text-accent-gold mt-2.5">— Ms. Mustara, Founder</span>
-          </div>
-        </div>
+          <p>
+            Early in my own learning journey, I remember sitting through Seerah class after Seerah class — learning the life of the Prophet <span className="font-serif text-[#78122B] font-semibold">ﷺ</span>, his patience, his mercy, his character in the hardest moments. It was beautiful ilm. But slowly, a frustration started building in me. We were taught the story, but never asked to become it. No one paused to say, <em>"here's how you carry his sabr into your own hard days,"</em> or <em>"here's what his akhlaq looks like in your home, your relationships, your reactions."</em> The seerah stayed a story on a page, when it was meant to be a mirror.
+          </p>
 
-        {/* Story Visual Frame */}
-        <div className="lg:col-span-5 flex justify-center">
-          <div className="relative w-full max-w-sm aspect-[3/4] rounded-3xl overflow-hidden border border-brand-border bg-panel-dark shadow-2xl">
-            <img
-              src={studyCompanionship}
-              alt="Cozy sisters interactive online learning setup showing a mobile phone with Arabic studies"
-              referrerPolicy="no-referrer"
-              className="h-full w-full object-cover filter brightness-90 saturate-[0.8]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-bg-deep via-transparent to-transparent opacity-80" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <span className="text-[10px] font-bold text-accent-gold uppercase tracking-widest">Our Methodology</span>
-              <p className="text-base font-bold text-text-cream mt-0.5">Correct Tajweed & Authentic Belief</p>
-              <p className="text-xs text-text-sage mt-1">Grounded in traditional prophetic character.</p>
-            </div>
+          <p>
+            That disappointment built up over time — not from one class, but from realizing this was the pattern everywhere. Information was abundant. Structure was nowhere. And the people willing to actually walk students through <em>"here's how you apply this"</em> — they were almost impossible to find.
+          </p>
+
+          <div className="py-2">
+            <p className="text-lg sm:text-xl font-serif font-bold text-[#78122B] border-l-4 border-[#78122B] pl-4 py-1">
+              That gap is where Qalbiya began.
+            </p>
           </div>
+
+          <p>
+            I didn't want to build another place that fills your mind and leaves your life untouched. I wanted to build a place where every lesson comes with a next step — where ilm is never separated from amal, where growth isn't a feeling, it's a practice.
+          </p>
+
+          <p className="font-medium text-[#23181A]">
+            That's why every program at Qalbiya is built around one question: not <em>"what did you learn,"</em> but <strong>"what changed?"</strong>
+          </p>
         </div>
       </section>
 
-      {/* Core Convictions */}
-      <section className="space-y-10" id="core-convictions">
-        <div className="text-center space-y-2">
-          <h2 className="serif-heading text-2xl font-bold text-text-cream">Our Pillars of Covenant</h2>
-          <p className="text-xs text-text-sage">The principles that separate us from typical corporate setups</p>
+      {/* SECTION 4 — Mission Statement */}
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#78122B] to-[#540B1D] text-white p-8 sm:p-14 text-center shadow-2xl space-y-4">
+        <div className="absolute top-0 right-0 -mt-8 -mr-8 w-40 h-40 bg-white/5 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 -mb-8 -ml-8 w-40 h-40 bg-[#F3D797]/10 rounded-full blur-2xl pointer-events-none" />
+        
+        <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-white/10 text-[#F3D797] mb-2">
+          <Heart className="w-6 h-6 fill-current" />
         </div>
+        
+        <span className="block text-xs font-bold uppercase tracking-widest text-[#F3D797]/90">
+          Our Core Mission
+        </span>
+        
+        <blockquote className="serif-heading text-2xl sm:text-3xl lg:text-4xl font-bold max-w-3xl mx-auto leading-tight tracking-tight text-white">
+          "Qalbiya Islamic Institute exists to help hearts return — women to their Lord, and children to a faith they'll carry with love, not obligation."
+        </blockquote>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl border border-brand-border bg-panel-dark space-y-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-sage/10 text-accent-gold">
-              <Heart className="w-5 h-5" />
-            </div>
-            <h3 className="serif-heading text-lg font-bold text-text-cream">Zero Judgement Zone</h3>
-            <p className="text-xs leading-relaxed text-text-sage">
-              We never rush you, and we never shame you for incorrect letters or delayed homework. Sincerity and step-by-step progress are what we celebrate.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl border border-brand-border bg-panel-dark space-y-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-sage/10 text-accent-gold">
-              <Compass className="w-5 h-5" />
-            </div>
-            <h3 className="serif-heading text-lg font-bold text-text-cream">Spiritual Intimacy</h3>
-            <p className="text-xs leading-relaxed text-text-sage">
-              We keep our student batches small. Teachers build strong, lasting bonds with their students, becoming mentors in their daily life struggles.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl border border-brand-border bg-panel-dark space-y-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-sage/10 text-accent-gold">
-              <Sparkles className="w-5 h-5" />
-            </div>
-            <h3 className="serif-heading text-lg font-bold text-text-cream">Genuine Compassion</h3>
-            <p className="text-xs leading-relaxed text-text-sage">
-              If a mother needs to bring her newborn to her 1 on 1 session, or if a child needs to learn through drawings and play, we welcome and support that entirely.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Anti-Corporate Manifesto Callout */}
-      <section className="p-8 sm:p-12 rounded-3xl border border-dashed border-accent-gold/30 bg-panel-light/30 text-center space-y-6" id="anti-corporate-manifesto">
-        <ShieldAlert className="w-10 h-10 text-accent-gold mx-auto" />
-        <h3 className="serif-heading text-2xl font-bold text-text-cream">The Anti-Corporate Manifesto</h3>
-        <p className="max-w-3xl mx-auto text-sm leading-relaxed text-text-sage">
-          We reject automated emails, robotic ticketing systems, and hidden subscription terms. At Qalbiya, your primary contact method is directly WhatsApping or DM'ing the founder, <strong>Ms. Mustara</strong>, or your direct mentor. There are no middlemen. Sincerity and human communication are our baseline.
+        <p className="text-xs text-white/70 pt-2 font-mono uppercase tracking-wider">
+          — Qalbiya Islamic Institute
         </p>
-        <div className="flex justify-center gap-4 pt-2">
-          <a 
-            href="https://wa.me/918145363290?text=Assalamu%20Alaikum%20Ms.%20Mustara%2C%20I%20am%20interested%20in%20learning%20more%20about%20Qalbiya%20Islamic%20Institute."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-xl bg-accent-gold hover:bg-accent-gold-light text-bg-deep px-6 py-3 text-xs font-bold uppercase tracking-wider transition-all duration-300"
-            id="manifesto-wa-btn"
+      </section>
+
+      {/* SECTION 5 — What Makes Qalbiya Different */}
+      <section className="space-y-10">
+        <div className="text-center space-y-3 max-w-xl mx-auto">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#78122B]">Methodology</span>
+          <h2 className="serif-heading text-2xl sm:text-3xl font-bold text-[#23181A]">
+            What Makes Qalbiya Different
+          </h2>
+          <p className="text-sm text-[#5C4D50]">
+            Three foundational commitments guiding every class, mentorship, and curriculum we offer.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {/* Item 1 */}
+          <div className="p-8 rounded-3xl border border-[#E8DDD9] bg-[#FAF8F5] hover:bg-white hover:border-[#78122B]/30 hover:shadow-xl transition-all duration-300 space-y-4 group">
+            <div className="w-12 h-12 rounded-2xl bg-[#F9E8EC] text-[#78122B] flex items-center justify-center font-serif text-xl font-bold group-hover:scale-110 transition-transform">
+              1
+            </div>
+            <h3 className="serif-heading text-xl font-bold text-[#23181A]">
+              Rooted in Authentic Knowledge
+            </h3>
+            <p className="text-sm text-[#5C4D50] leading-relaxed">
+              Every lesson is grounded in authentic Qur'an and Sunnah — no diluted, trend-based Islam.
+            </p>
+          </div>
+
+          {/* Item 2 */}
+          <div className="p-8 rounded-3xl border border-[#E8DDD9] bg-[#FAF8F5] hover:bg-white hover:border-[#78122B]/30 hover:shadow-xl transition-all duration-300 space-y-4 group">
+            <div className="w-12 h-12 rounded-2xl bg-[#F9E8EC] text-[#78122B] flex items-center justify-center font-serif text-xl font-bold group-hover:scale-110 transition-transform">
+              2
+            </div>
+            <h3 className="serif-heading text-xl font-bold text-[#23181A]">
+              Heart-Centered Learning
+            </h3>
+            <p className="text-sm text-[#5C4D50] leading-relaxed">
+              We teach for transformation, not just information — the heart is engaged, not just the mind.
+            </p>
+          </div>
+
+          {/* Item 3 */}
+          <div className="p-8 rounded-3xl border border-[#E8DDD9] bg-[#FAF8F5] hover:bg-white hover:border-[#78122B]/30 hover:shadow-xl transition-all duration-300 space-y-4 group">
+            <div className="w-12 h-12 rounded-2xl bg-[#F9E8EC] text-[#78122B] flex items-center justify-center font-serif text-xl font-bold group-hover:scale-110 transition-transform">
+              3
+            </div>
+            <h3 className="serif-heading text-xl font-bold text-[#23181A]">
+              Built for Real Life
+            </h3>
+            <p className="text-sm text-[#5C4D50] leading-relaxed">
+              Designed for real, busy, imperfect lives — not idealized ones.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6 — Closing CTA */}
+      <section className="text-center bg-[#FDFBF7] p-10 sm:p-14 rounded-3xl border border-[#E8DDD9] space-y-6 shadow-sm">
+        <h3 className="serif-heading text-2xl sm:text-3xl font-bold text-[#23181A] max-w-xl mx-auto leading-snug">
+          If your heart has been quietly asking for a way back — you're in the right place.
+        </h3>
+        <div>
+          <button
+            onClick={() => onNavigate && onNavigate('home')}
+            className="inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-xl bg-[#78122B] hover:bg-[#630E23] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer group"
           >
-            Direct WhatsApp with Founder
-          </a>
+            <span>Explore Programs</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </button>
         </div>
       </section>
 

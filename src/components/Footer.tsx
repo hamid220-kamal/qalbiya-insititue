@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Send, Instagram, Compass, Heart, Sparkles } from 'lucide-react';
 import { Route } from '../types';
+import qalbiyaLogoImg from '../assets/images/qalbiya_official_logo_1785068312120.jpg';
 
 interface FooterProps {
   onNavigate: (route: Route, courseSlug?: string, sacredTab?: 'asma-ul-husna' | 'pillars') => void;
@@ -89,11 +90,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
           {/* Logo & Vision Block */}
           <div className="md:col-span-4 space-y-6">
             <div className="flex items-center space-x-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-[#F3D797] text-lg font-bold font-serif shadow-xs">
-                ق
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#F3D797]/40 bg-[#FAF8F5] shadow-xs shrink-0">
+                <img 
+                  src={qalbiyaLogoImg} 
+                  alt="Qalbiya Islamic Institute Emblem" 
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
-                <h3 className="font-serif text-lg font-bold tracking-wide text-white">
+                <h3 className="font-serif text-xl font-bold tracking-wide text-white">
                   QALBIYA
                 </h3>
                 <p className="text-[10px] font-mono font-bold tracking-widest text-[#F3D797] uppercase">

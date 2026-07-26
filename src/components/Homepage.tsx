@@ -12,6 +12,7 @@ import makkahBackground from '../assets/images/makkah_background_1784048674395.j
 import womensOnlineStudy from '../assets/images/womens_online_study_1784048690815.jpg';
 import kidsOnlineStudyGen from '../assets/images/kids_online_study_1784048706942.jpg';
 import heroLearningSetup from '../assets/images/hero_learning_setup_1784226560154.jpg';
+import heroQuranSeerahBooks from '../assets/images/hero_quran_seerah_books_1785067645819.jpg';
 
 interface HomepageProps {
   courses: Course[];
@@ -148,7 +149,7 @@ export const Homepage: React.FC<HomepageProps> = ({
             className="absolute inset-0 w-full h-full"
             animate={{
               scale: [1, 1.06, 1],
-              opacity: [0.75, 0.90, 0.75],
+              opacity: [0.80, 0.95, 0.80],
             }}
             transition={{
               duration: 20,
@@ -157,16 +158,16 @@ export const Homepage: React.FC<HomepageProps> = ({
             }}
           >
             <img 
-              src={womensOnlineStudy} 
-              alt="Online Islamic study setup with open laptop" 
+              src={heroQuranSeerahBooks} 
+              alt="Open Holy Quran on rehal stand surrounded by Tajweed, Seerah, and classical Islamic study books" 
               referrerPolicy="no-referrer"
-              className="w-full h-full object-cover filter brightness-95 contrast-105"
+              className="w-full h-full object-cover filter brightness-[0.92] contrast-[1.05]"
             />
           </motion.div>
 
           {/* Soft Tint Overlay for Perfect Contrast & Legibility while keeping image clearly visible */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF8F5]/40 via-[#FAF8F5]/20 to-[#FAF8F5]" />
-          <div className="absolute inset-0 bg-white/30 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF8F5]/50 via-[#FAF8F5]/30 to-[#FAF8F5]" />
+          <div className="absolute inset-0 bg-white/35 backdrop-blur-[1px]" />
 
           {/* Animated Gradient Blob 1 - Top Left Burgundy Glow */}
           <motion.div
@@ -219,62 +220,64 @@ export const Homepage: React.FC<HomepageProps> = ({
         </div>
 
         {/* Hero Content Container */}
-        <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8">
-          
-          {/* Top Pill Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 border border-[#E8DDD9] text-[#78122B] text-xs sm:text-sm font-semibold shadow-xs backdrop-blur-md"
-          >
-            <Sparkles className="w-4 h-4 text-[#78122B]" />
-            <span>Nurturing Hearts & Illuminating Minds Through Live Sacred Learning</span>
-          </motion.div>
+        <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
 
           {/* Main Title & Headline */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="space-y-4"
+            transition={{ duration: 0.8 }}
+            className="space-y-4 pt-4"
           >
             <h1 className="serif-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#23181A] leading-[1.12] tracking-tight">
-              Reconnect Your Heart to <br className="hidden sm:inline" />
-              <span className="text-[#78122B] italic">The Light of Deen</span>
+              Knowledge That Reaches the Heart. <br className="hidden sm:inline" />
+              <span className="text-[#78122B] italic">Amal That Changes the Life.</span>
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-[#5C4D50] max-w-2xl mx-auto font-medium leading-relaxed">
               Structured, compassionate, and authentic online Islamic learning tailored for <span className="font-bold text-[#78122B]">Women</span> and <span className="font-bold text-[#2E6B38]">Children</span> worldwide.
             </p>
+
+            {/* Direct Subject Highlights Tag Bar (Tajweed, Seerah, Quran Books) */}
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-xs sm:text-sm font-semibold text-[#5C4D50]">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-[#E8DDD9] text-[#78122B] shadow-2xs">
+                <BookOpen className="w-3.5 h-3.5" /> Tajweed & Qur'an Recitation
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-[#E8DDD9] text-[#2E6B38] shadow-2xs">
+                <Heart className="w-3.5 h-3.5" /> Seerah of Prophet ﷺ
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-[#E8DDD9] text-[#A37B24] shadow-2xs">
+                <GraduationCap className="w-3.5 h-3.5" /> Classical Deeniyat & Books
+              </span>
+            </div>
           </motion.div>
 
-          {/* Quick Hub Navigation Cards Buttons */}
+          {/* User-Friendly & Authentic CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-3"
           >
             {/* Women's Hub CTA */}
             <button
               onClick={() => onNavigate('women')}
-              className="w-full sm:w-auto min-w-[240px] px-8 py-4 rounded-2xl bg-[#78122B] hover:bg-[#630E23] text-white font-bold text-sm sm:text-base transition-all shadow-md hover:shadow-xl cursor-pointer flex items-center justify-center gap-3 group"
+              className="w-full sm:w-auto min-w-[250px] px-8 py-4 rounded-2xl bg-[#78122B] hover:bg-[#630E23] text-white font-bold text-sm sm:text-base transition-all shadow-md hover:shadow-xl cursor-pointer flex items-center justify-center gap-3 group"
               id="hero-btn-women-hub"
             >
-              <Users className="w-5 h-5" />
-              <span>Women's Programs</span>
+              <Users className="w-5 h-5 text-[#F3D797]" />
+              <span>Explore Women's Classes</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
 
             {/* Kids' Hub CTA */}
             <button
               onClick={() => onNavigate('kids')}
-              className="w-full sm:w-auto min-w-[240px] px-8 py-4 rounded-2xl bg-[#2E6B38] hover:bg-[#25572e] text-white font-bold text-sm sm:text-base transition-all shadow-md hover:shadow-xl cursor-pointer flex items-center justify-center gap-3 group"
+              className="w-full sm:w-auto min-w-[250px] px-8 py-4 rounded-2xl bg-[#2E6B38] hover:bg-[#25572e] text-white font-bold text-sm sm:text-base transition-all shadow-md hover:shadow-xl cursor-pointer flex items-center justify-center gap-3 group"
               id="hero-btn-kids-hub"
             >
-              <GraduationCap className="w-5 h-5" />
-              <span>Kids' Programs</span>
+              <GraduationCap className="w-5 h-5 text-[#F3D797]" />
+              <span>Explore Kids' Tarbiyah</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
           </motion.div>

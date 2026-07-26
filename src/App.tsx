@@ -256,7 +256,7 @@ export default function App() {
           />
         );
       case 'about':
-        return <AboutPage />;
+        return <AboutPage onNavigate={handleNavigate} />;
       case 'women':
         return (
           <ProgramsHub 
