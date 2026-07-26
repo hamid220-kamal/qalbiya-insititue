@@ -316,11 +316,12 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
 
           {/* Header Action Buttons & Universal Menu Bar Toggle */}
           <div className="flex items-center space-x-2 sm:space-x-3">
+            {/* Search & Register shown only on small/medium screens (lg has its own dedicated block) */}
             <button
               onClick={() => setShowSearch(!showSearch)}
-              className="p-2 text-[#5C4D50] hover:text-[#78122B] transition-colors rounded-lg hover:bg-[#FDFBF7]"
+              className="p-2 text-[#5C4D50] hover:text-[#78122B] transition-colors rounded-lg hover:bg-[#FDFBF7] lg:hidden"
               aria-label="Search"
-              id="navSearchBtn"
+              id="navSearchBtnMobile"
             >
               <Search className="w-5 h-5" />
             </button>
@@ -329,8 +330,8 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
               href="https://wa.me/918145363290?text=Assalamu%20Alaikum%2C%20I%20am%20interested%20in%20registering%20for%20classes%20at%20Qalbiya%20Islamic%20Institute."
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-xl bg-[#78122B] text-white text-xs xl:text-sm font-semibold tracking-wide hover:bg-[#630E23] transition-all duration-200 shadow-xs cursor-pointer"
-              id="navRegisterBtn"
+              className="inline-flex lg:hidden items-center justify-center px-4 py-2 rounded-xl bg-[#78122B] text-white text-xs font-semibold tracking-wide hover:bg-[#630E23] transition-all duration-200 shadow-xs cursor-pointer"
+              id="navRegisterBtnMobile"
             >
               Register
             </a>
