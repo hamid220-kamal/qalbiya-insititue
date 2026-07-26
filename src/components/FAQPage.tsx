@@ -15,6 +15,7 @@ import {
   GraduationCap
 } from 'lucide-react';
 import { Route } from '../types';
+import { ShareButton } from './ShareButton';
 
 interface FAQPageProps {
   onNavigate?: (route: Route) => void;
@@ -281,9 +282,16 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
       
       {/* Page Header */}
       <section className="text-center space-y-4" id="faq-header">
-        <span className="text-xs font-bold uppercase tracking-widest text-accent-gold flex items-center justify-center gap-1.5">
-          <HelpCircle className="w-4 h-4" /> Help Center
-        </span>
+        <div className="flex items-center justify-center gap-3">
+          <span className="text-xs font-bold uppercase tracking-widest text-accent-gold flex items-center justify-center gap-1.5">
+            <HelpCircle className="w-4 h-4" /> Help Center
+          </span>
+          <ShareButton 
+            title="Qalbiya Islamic Institute - Frequently Asked Questions"
+            text="Get answers to common questions about Qalbiya programs, 1-on-1 Tajweed, fees, and trial classes."
+            variant="compact"
+          />
+        </div>
         <h1 className="serif-heading text-4xl sm:text-5xl font-bold text-text-cream tracking-tight">
           Frequently Asked Questions
         </h1>

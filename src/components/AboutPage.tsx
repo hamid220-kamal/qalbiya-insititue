@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Heart, Sparkles } from 'lucide-react';
 import founderWorkspace from '../assets/images/founder_workspace_1784048720294.jpg';
+import { ShareButton } from './ShareButton';
 
 interface AboutPageProps {
   onNavigate?: (route: string) => void;
@@ -10,12 +11,20 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   return (
     <div className="space-y-20 md:space-y-28 pb-20 max-w-5xl mx-auto px-4 sm:px-6">
       
-      {/* SECTION 1 — Opening Hook */}
+      {/* SECTION 1 — Opening Hook & Share */}
       <section className="text-center pt-10 sm:pt-14 space-y-6 max-w-4xl mx-auto">
-        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#F9E8EC] text-[#78122B] text-xs font-semibold tracking-wide">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Our Origin & Purpose</span>
-        </span>
+        <div className="flex items-center justify-center gap-3">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#F9E8EC] text-[#78122B] text-xs font-semibold tracking-wide">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Our Origin & Purpose</span>
+          </span>
+          <ShareButton 
+            title="About Qalbiya Islamic Institute - Our Purpose & Story"
+            text="Qalbiya exists to connect knowledge to the heart — not through guilt, but through a slow, honest, and rooted return."
+            variant="compact"
+            lightTheme
+          />
+        </div>
         <h1 className="serif-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#23181A] leading-[1.25] tracking-tight">
           Qalbiya wasn't built because the world needed another Islamic page. It was built because so many of us needed a way back.
         </h1>
@@ -28,7 +37,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         </p>
         <div className="w-12 h-0.5 bg-[#78122B]/20 mx-auto" />
         <p className="text-base sm:text-lg leading-relaxed text-[#23181A] font-semibold italic">
-          Qalbiya exists to change that. Not through guilt. Not through more information. But through a return — slow, honest, and rooted.
+          Qalbiya exists to change that. Not through guilt. Not through more information. But through a return, slow, honest, and rooted.
         </p>
       </section>
 

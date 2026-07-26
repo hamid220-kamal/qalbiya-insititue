@@ -4,6 +4,7 @@ import { Search, X, Sparkles, Heart, BookOpen, Compass, HelpCircle, ChevronRight
 import { asmaUlHusnaList, NameOfAllah } from '../data/asmaUlHusna';
 import makkahBg from '../assets/images/makkah_background_1784214785961.jpg';
 import { Route } from '../types';
+import { ShareButton } from './ShareButton';
 
 interface AsmaUlHusnaPageProps {
   onNavigate?: (route: Route) => void;
@@ -87,13 +88,21 @@ export const AsmaUlHusnaPage: React.FC<AsmaUlHusnaPageProps> = ({ onNavigate }) 
               <span>Return to Academy Home</span>
             </button>
 
-            <button
-              onClick={() => onNavigate('fivePillars')}
-              className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-[#D4AF37] hover:text-[#23181A] text-white text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer border border-white/20"
-            >
-              <span>Explore 5 Pillars of Islam</span>
-              <ChevronRight className="w-4 h-4" />
-            </button>
+            <div className="flex items-center gap-3">
+              <ShareButton 
+                title="99 Divine Names of Allah (Asma ul Husna) - Qalbiya Institute"
+                text="Reflect on and memorize the 99 Divine Names of Allah with translations, explanations, and du'as."
+                variant="button"
+              />
+
+              <button
+                onClick={() => onNavigate('fivePillars')}
+                className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-[#D4AF37] hover:text-[#23181A] text-white text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer border border-white/20"
+              >
+                <span>Explore 5 Pillars of Islam</span>
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         )}
 

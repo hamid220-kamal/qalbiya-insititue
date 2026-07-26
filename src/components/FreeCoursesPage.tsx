@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, Video, Heart, Sparkles, Send, Instagram, BookOpen, Gift } from 'lucide-react';
 import { Route } from '../types';
+import { ShareButton } from './ShareButton';
 
 interface FreeCoursesPageProps {
   onNavigate?: (route: Route) => void;
@@ -12,9 +13,16 @@ export const FreeCoursesPage: React.FC<FreeCoursesPageProps> = () => {
       
       {/* Hero Section */}
       <section className="text-center space-y-5 pt-8 sm:pt-12">
-        <div className="inline-flex items-center space-x-2 rounded-full border border-accent-gold/30 bg-accent-gold/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-accent-gold">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Knowledge & Spiritual Nurturing for All</span>
+        <div className="flex items-center justify-center gap-3">
+          <div className="inline-flex items-center space-x-2 rounded-full border border-accent-gold/30 bg-accent-gold/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-accent-gold">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Knowledge & Spiritual Nurturing for All</span>
+          </div>
+          <ShareButton 
+            title="Free Courses & Weekly Tarbiyah Circles - Qalbiya Institute"
+            text="Join Qalbiya's free weekly Tarbiyah circles and open learning sessions. Knowledge and tazkiyah for everyone."
+            variant="compact"
+          />
         </div>
         <h1 className="serif-heading text-3xl sm:text-5xl font-bold text-text-cream tracking-tight max-w-3xl mx-auto leading-tight">
           Some things are too important to have a price on them.

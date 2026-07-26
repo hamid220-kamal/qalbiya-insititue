@@ -152,8 +152,8 @@ export const Homepage: React.FC<HomepageProps> = ({
 
   const faqs = [
     {
-      q: "Are classes live or pre-recorded?",
-      a: "All our classes are held LIVE online via Google Meet or Zoom, ensuring real-time personal feedback, direct student-teacher interaction, and active recitation corrections."
+      q: "Are classes live or pre recorded?",
+      a: "All our classes are held LIVE online via Google Meet or Zoom, ensuring real time personal feedback, direct student teacher interaction, and active recitation corrections."
     },
     {
       q: "What if I miss a live session?",
@@ -161,15 +161,15 @@ export const Homepage: React.FC<HomepageProps> = ({
     },
     {
       q: "How are classes structured for children?",
-      a: "Kids' classes are short (30-45 minutes), interactive, and engaging. We focus on storytelling, visual aids, positive reinforcement, and gentle encouragement to foster a true love for Islam."
+      a: "Kids' classes are short (30 to 45 minutes), interactive, and engaging. We focus on storytelling, visual aids, positive reinforcement, and gentle encouragement to foster a true love for Islam."
     },
     {
       q: "Is financial aid or scholarship available?",
-      a: "Yes! We firmly believe sacred knowledge should never be out of reach. We offer flexible instalment plans and full/partial financial aid through our Qalbiya Scholarship Fund."
+      a: "Yes! We firmly believe sacred knowledge should never be out of reach. We offer flexible instalment plans and full or partial financial aid through our Qalbiya Scholarship Fund."
     },
     {
-      q: "Can I take a 1-on-1 trial class before enrolling?",
-      a: "Absolutely. You can schedule a complimentary 1-on-1 evaluation and trial session to experience our teaching methodology firsthand."
+      q: "Can I take a 1 on 1 trial class before enrolling?",
+      a: "Absolutely. You can schedule a complimentary 1 on 1 evaluation and trial session to experience our teaching methodology firsthand."
     }
   ];
 
@@ -295,15 +295,15 @@ export const Homepage: React.FC<HomepageProps> = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-3"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-3"
           >
             {/* Women's Hub CTA */}
             <button
               onClick={() => onNavigate('women')}
-              className="w-full sm:w-auto min-w-[250px] px-8 py-4 rounded-2xl bg-[#78122B] hover:bg-[#630E23] text-white font-bold text-sm sm:text-base transition-all shadow-md hover:shadow-xl cursor-pointer flex items-center justify-center gap-3 group"
+              className="w-full sm:w-auto max-w-xs sm:max-w-none min-w-[220px] sm:min-w-[250px] px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-[#78122B] hover:bg-[#630E23] text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 cursor-pointer flex items-center justify-center gap-2.5 sm:gap-3 group active:scale-98"
               id="hero-btn-women-hub"
             >
-              <Users className="w-5 h-5 text-[#F3D797]" />
+              <Users className="w-4 h-4 sm:w-5 sm:h-5 text-[#F3D797]" />
               <span>Explore Women's Classes</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
@@ -311,10 +311,10 @@ export const Homepage: React.FC<HomepageProps> = ({
             {/* Kids' Hub CTA */}
             <button
               onClick={() => onNavigate('kids')}
-              className="w-full sm:w-auto min-w-[250px] px-8 py-4 rounded-2xl bg-[#2E6B38] hover:bg-[#25572e] text-white font-bold text-sm sm:text-base transition-all shadow-md hover:shadow-xl cursor-pointer flex items-center justify-center gap-3 group"
+              className="w-full sm:w-auto max-w-xs sm:max-w-none min-w-[220px] sm:min-w-[250px] px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-[#2E6B38] hover:bg-[#25572e] text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 cursor-pointer flex items-center justify-center gap-2.5 sm:gap-3 group active:scale-98"
               id="hero-btn-kids-hub"
             >
-              <GraduationCap className="w-5 h-5 text-[#F3D797]" />
+              <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-[#F3D797]" />
               <span>Explore Kids' Tarbiyah</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
@@ -329,7 +329,7 @@ export const Homepage: React.FC<HomepageProps> = ({
           >
             <div className="flex items-center gap-1.5">
               <Check className="w-4 h-4 text-[#78122B]" />
-              <span>Live 1:1 & Small Group Classes</span>
+              <span>Live 1 on 1, Small Group Classes</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Check className="w-4 h-4 text-[#78122B]" />
@@ -390,11 +390,11 @@ export const Homepage: React.FC<HomepageProps> = ({
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-4 h-4 text-[#78122B] shrink-0" />
-                    <span>Personalized 1:1 Tajweed & Quran Recitation</span>
+                    <span>Personalized 1 on 1, Tajweed & Quran Recitation</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-4 h-4 text-[#78122B] shrink-0" />
-                    <span>Comprehensive Pre-Diploma in Deeniyat</span>
+                    <span>Comprehensive Pre Diploma in Deeniyat</span>
                   </li>
                 </ul>
               </div>
@@ -402,7 +402,7 @@ export const Homepage: React.FC<HomepageProps> = ({
               <div className="pt-4 border-t border-[#E8DDD9]">
                 <button
                   onClick={() => onNavigate('women')}
-                  className="w-full inline-flex h-12 items-center justify-center rounded-xl bg-[#78122B] hover:bg-[#630E23] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer group/btn gap-2"
+                  className="w-full inline-flex h-12 items-center justify-center rounded-xl bg-[#78122B] hover:bg-[#630E23] text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 cursor-pointer group/btn gap-2"
                   id="hub-card-btn-women"
                 >
                   <span>Explore Women's Programs</span>
@@ -424,7 +424,7 @@ export const Homepage: React.FC<HomepageProps> = ({
               <div className="absolute inset-0 bg-gradient-to-t from-[#23181A]/60 via-[#23181A]/20 to-transparent" />
               
               <span className="absolute top-4 left-4 rounded-full bg-[#2E6B38] text-white px-3.5 py-1 text-xs font-extrabold uppercase tracking-wider shadow-xs">
-                For Kids (Ages 6-12)
+                For Kids (Ages 6 to 12)
               </span>
             </div>
 
@@ -434,12 +434,12 @@ export const Homepage: React.FC<HomepageProps> = ({
                   Kids' Tarbiyah Learning Hub
                 </h3>
                 <p className="text-sm text-[#5C4D50] leading-relaxed">
-                  Interactive, loving, and story-driven classes designed to nurture a strong Islamic identity, excellent manners (Akhlaq), and fluent Quranic reading for young minds.
+                  Interactive, loving, and story driven classes designed to nurture a strong Islamic identity, excellent manners (Akhlaq), and fluent Quranic reading for young minds.
                 </p>
                 <ul className="text-xs text-[#5C4D50] space-y-2 pt-2">
                   <li className="flex items-center gap-2">
                     <Check className="w-4 h-4 text-[#2E6B38] shrink-0" />
-                    <span>Juniors Deeniyat Mastercourse (Multi-Year)</span>
+                    <span>Juniors Deeniyat Mastercourse (Multi Year)</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-4 h-4 text-[#2E6B38] shrink-0" />
@@ -455,7 +455,7 @@ export const Homepage: React.FC<HomepageProps> = ({
               <div className="pt-4 border-t border-[#E8DDD9]">
                 <button
                   onClick={() => onNavigate('kids')}
-                  className="w-full inline-flex h-12 items-center justify-center rounded-xl bg-[#2E6B38] hover:bg-[#25572e] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer group/btn gap-2"
+                  className="w-full inline-flex h-12 items-center justify-center rounded-xl bg-[#2E6B38] hover:bg-[#25572e] text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 cursor-pointer group/btn gap-2"
                   id="hub-card-btn-kids"
                 >
                   <span>Explore Kids' Programs</span>
@@ -741,7 +741,7 @@ export const Homepage: React.FC<HomepageProps> = ({
             </div>
             <button
               type="submit"
-              className="w-full sm:w-auto bg-[#F3D797] text-[#480117] font-bold px-6 py-3 rounded-xl text-sm hover:bg-[#E2C47E] transition-colors cursor-pointer shrink-0 shadow-xs"
+              className="w-full sm:w-auto bg-[#F3D797] text-[#480117] font-bold px-6 py-3 rounded-xl text-sm hover:bg-[#E2C47E] transition-all duration-300 cursor-pointer shrink-0 shadow-md hover:shadow-xl hover:-translate-y-0.5"
               id="homepage-phone-submit-btn"
             >
               Request Call
@@ -754,10 +754,10 @@ export const Homepage: React.FC<HomepageProps> = ({
             </p>
           )}
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 border-t border-white/10">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 border-t border-white/10">
             <button
               onClick={() => onNavigate('women')}
-              className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-xl bg-white text-[#78122B] px-8 text-sm font-bold hover:bg-[#FAF8F5] transition-colors shadow-xs gap-2 cursor-pointer"
+              className="w-full sm:w-auto max-w-xs sm:max-w-none min-w-[210px] inline-flex h-11 sm:h-12 items-center justify-center rounded-xl bg-white text-[#78122B] px-6 sm:px-8 text-sm font-bold hover:bg-[#FAF8F5] transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 gap-2 cursor-pointer"
               id="homepage-cta-explore-women"
             >
               <span>Explore Women's Hub</span>
@@ -768,7 +768,7 @@ export const Homepage: React.FC<HomepageProps> = ({
               href="https://wa.me/918145363290?text=Assalamu%20Alaikum%2C%20I%20would%20like%20to%20know%20more%20about%20Qalbiya%20programs."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-xl bg-[#25D366] text-white px-6 text-sm font-bold hover:bg-[#20bd5a] transition-colors shadow-xs gap-2"
+              className="w-full sm:w-auto max-w-xs sm:max-w-none min-w-[180px] inline-flex h-11 sm:h-12 items-center justify-center rounded-xl bg-[#25D366] text-white px-6 text-sm font-bold hover:bg-[#20bd5a] transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 gap-2 cursor-pointer"
               id="homepage-whatsapp-link"
             >
               <MessageCircle className="w-4 h-4 fill-current" />

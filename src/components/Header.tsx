@@ -4,10 +4,10 @@ import { motion, AnimatePresence } from 'motion/react';
 import {
   Menu, X, Search, Sparkles, ChevronDown,
   BookOpen, GraduationCap, Compass, Users, MessageCircle,
-  ChevronRight, Heart, HelpCircle, Info, ShieldCheck, Award
+  ChevronRight
 } from 'lucide-react';
 import { Route } from '../types';
-import qalbiyaLogoImg from '../assets/images/logo.jpeg';
+import qalbiyaLogoImg from '../assets/images/qalbiya_official_logo_1785068312120.jpg';
 
 interface HeaderProps {
   currentRoute: Route;
@@ -22,20 +22,21 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<'courses' | 'sacred' | null>(null);
+
   const headerRef = useRef<HTMLDivElement>(null);
 
   // Close dropdowns on outside click
   useEffect(() => {
-    const handleOutside = (e: MouseEvent) => {
-      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
         setActiveDropdown(null);
       }
     };
-    document.addEventListener('mousedown', handleOutside);
-    return () => document.removeEventListener('mousedown', handleOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Prevent background scrolling when mobile menu is open
+  // Lock body scroll when mobile drawer open
   useEffect(() => {
     if (mobileOpen) {
       document.documentElement.style.overflow = 'hidden';
@@ -56,8 +57,9 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
     setActiveDropdown(null);
   };
 
-  const toggle = (name: 'courses' | 'sacred') =>
+  const toggleDropdown = (name: 'courses' | 'sacred') => {
     setActiveDropdown(prev => (prev === name ? null : name));
+  };
 
   const isCoursesActive =
     currentRoute === 'home' || currentRoute === 'women' ||
@@ -104,19 +106,19 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
             </div>
           </button>
 
-          {/* ── Desktop Main Navigation ───────────────────────────────────────── */}
+          {/* ── Desktop Nav ───────────────────────────────────────────────────── */}
           <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
 
             {/* Programs dropdown */}
             <div className="relative">
               <button
-                onClick={() => toggle('courses')}
+                onClick={() => toggleDropdown('courses')}
                 className={navBtn(isCoursesActive || activeDropdown === 'courses')}
                 id="navToggleCourses"
                 aria-expanded={activeDropdown === 'courses'}
               >
                 <BookOpen className="w-[15px] h-[15px] text-[#78122B]" />
-                Programs
+                <span>Programs</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'courses' ? 'rotate-180 text-[#78122B]' : ''}`}
                 />
@@ -187,13 +189,13 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
             {/* Sacred Knowledge dropdown */}
             <div className="relative">
               <button
-                onClick={() => toggle('sacred')}
+                onClick={() => toggleDropdown('sacred')}
                 className={navBtn(isSacredActive || activeDropdown === 'sacred')}
                 id="navToggleSacred"
                 aria-expanded={activeDropdown === 'sacred'}
               >
                 <Sparkles className="w-[15px] h-[15px] text-[#78122B]" />
-                Sacred Knowledge
+                <span>Sacred Knowledge</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'sacred' ? 'rotate-180 text-[#78122B]' : ''}`}
                 />
@@ -211,8 +213,9 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
                   >
                     <button
                       onClick={() => go('asmaUlHusna')}
-                      className={`w-full text-left p-2.5 rounded-xl flex items-center gap-3 transition-all cursor-pointer
-                        ${currentRoute === 'asmaUlHusna' ? 'bg-[#78122B] text-white' : 'hover:bg-[#FAF4F5] text-[#23181A]'}`}
+                      className={`w-full text-left p-2.5 rounded-xl flex items-center gap-3 transition-all cursor-pointer ${
+                        currentRoute === 'asmaUlHusna' ? 'bg-[#78122B] text-white' : 'hover:bg-[#FAF4F5] text-[#23181A]'
+                      }`}
                     >
                       <Sparkles className={`w-4 h-4 shrink-0 ${currentRoute === 'asmaUlHusna' ? 'text-white' : 'text-[#78122B]'}`} />
                       <div>
@@ -225,8 +228,9 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
 
                     <button
                       onClick={() => go('fivePillars')}
-                      className={`w-full text-left p-2.5 rounded-xl flex items-center gap-3 transition-all cursor-pointer
-                        ${currentRoute === 'fivePillars' ? 'bg-[#78122B] text-white' : 'hover:bg-[#FAF4F5] text-[#23181A]'}`}
+                      className={`w-full text-left p-2.5 rounded-xl flex items-center gap-3 transition-all cursor-pointer ${
+                        currentRoute === 'fivePillars' ? 'bg-[#78122B] text-white' : 'hover:bg-[#FAF4F5] text-[#23181A]'
+                      }`}
                     >
                       <Compass className={`w-4 h-4 shrink-0 ${currentRoute === 'fivePillars' ? 'text-white' : 'text-[#78122B]'}`} />
                       <div>
