@@ -43,7 +43,7 @@ export const DirectMentorship: React.FC = () => {
               <div className="relative w-48 h-48 sm:w-56 sm:h-56 aspect-square rounded-2xl overflow-hidden border-2 border-[#E8DDD9] shadow-md bg-white z-10">
                 <img
                   src={founderWorkspace}
-                  alt="Ms. Mustara - Founder & Head Mentor of Qalbiya Islamic Institute"
+                  alt="Ms. Mustara, Founder & Head Mentor of Qalbiya Islamic Institute"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover filter brightness-95 transition-transform duration-700 hover:scale-105"
                 />

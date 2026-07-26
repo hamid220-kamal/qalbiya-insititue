@@ -52,15 +52,15 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
       id: 'attendance',
       category: 'classes',
       question: 'Is attendance tracked?',
-      answer: 'Yes — attendance is tracked for all our courses to ensure consistent progress, commitment, and quality spiritual learning.',
+      answer: 'Yes, attendance is tracked for all our courses to ensure consistent progress, commitment, and quality spiritual learning.',
       rawAnswerText: 'Yes attendance is tracked for all our courses to ensure consistent progress, commitment, and quality spiritual learning.'
     },
     {
       id: 'recordings',
       category: 'classes',
       question: 'Do I get a recording if I miss a live class?',
-      answer: 'This varies by course — some courses offer recordings and some don\'t. This will be clearly communicated to you at the time of enrollment.',
-      rawAnswerText: 'This varies by course some courses offer recordings and some don\'t. This will be clearly communicated to you at the time of enrollment.'
+      answer: 'This varies by course, as some courses offer recordings and some don\'t. This will be clearly communicated to you at the time of enrollment.',
+      rawAnswerText: 'This varies by course as some courses offer recordings and some don\'t. This will be clearly communicated to you at the time of enrollment.'
     },
     {
       id: 'trial',
@@ -68,7 +68,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
       question: 'Is there a trial or demo class before I enroll?',
       answer: (
         <span>
-          Yes — trial classes are available for select courses, including Tajweed 1:1 Classes and the Juniors Deeniyat Mastercourse.{' '}
+          Yes, trial classes are available for select courses, including Tajweed 1:1 Classes and the Juniors Deeniyat Mastercourse.{' '}
           <a
             href="https://wa.me/918145363290?text=Assalamu%20Alaikum%2C%20I%20would%20like%20to%20request%20a%20trial%20class."
             target="_blank"
@@ -168,14 +168,14 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
       id: 'format',
       category: 'classes',
       question: 'Are classes live or pre-recorded?',
-      answer: 'All classes are conducted live online via Google Meet — not pre-recorded. This ensures real-time interaction, active correction, and personal teacher-student engagement.',
+      answer: 'All classes are conducted live online via Google Meet, not pre-recorded. This ensures real-time interaction, active correction, and personal teacher-student engagement.',
       rawAnswerText: 'All classes are conducted live online via Google Meet not pre-recorded. This ensures real-time interaction, active correction, and personal teacher-student engagement.'
     },
     {
       id: 'beginners',
       category: 'general',
       question: 'Do you offer classes for beginners?',
-      answer: 'Yes — several of our courses, including Noorani Qaida (Women\'s & Kids\') and Pre-Diploma in Deeniyat, are designed specifically for beginners with no prior knowledge required.',
+      answer: 'Yes, several of our courses, including Noorani Qaida (Women\'s & Kids\') and Pre Diploma in Deeniyat, are designed specifically for beginners with no prior knowledge required.',
       rawAnswerText: 'Yes several of our courses including Noorani Qaida Womens & Kids and Pre-Diploma in Deeniyat are designed specifically for beginners with no prior knowledge required.'
     },
     {

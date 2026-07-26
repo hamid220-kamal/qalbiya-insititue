@@ -6,7 +6,7 @@ import {
   HelpCircle, Info, PhoneCall, Gift, Compass, Users, MessageCircle
 } from 'lucide-react';
 import { Route } from '../types';
-import qalbiyaLogoImg from '../assets/images/logo.jpeg';
+import qalbiyaLogoImg from '../assets/images/qalbiya_official_logo_1785068312120.jpg';
 
 interface HeaderProps {
   currentRoute: Route;

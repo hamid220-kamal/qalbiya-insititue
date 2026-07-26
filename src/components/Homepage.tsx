@@ -9,9 +9,8 @@ import {
 import { Course, Route } from '../types';
 import { CourseCard } from './CourseCard';
 import makkahBackground from '../assets/images/makkah_background_1784048674395.jpg';
-import womensOnlineStudy from '../assets/images/womens_online_study_1784048690815.jpg';
-import kidsOnlineStudyGen from '../assets/images/kids_online_study_1784048706942.jpg';
-import heroLearningSetup from '../assets/images/hero_learning_setup_1784226560154.jpg';
+import cinematicWomenStudy from '../assets/images/cinematic_women_study_1785071864678.jpg';
+import cinematicKidsTarbiyah from '../assets/images/cinematic_kids_tarbiyah_1785071899107.jpg';
 import heroQuranSeerahBooks from '../assets/images/hero_quran_seerah_books_1785067645819.jpg';
 
 interface HomepageProps {
@@ -117,7 +116,7 @@ export const Homepage: React.FC<HomepageProps> = ({
   // Pillars preview (5 cards)
   const pillarsPreview = [
     { number: '1', title: 'Shahada', desc: 'Faith & Monotheism in Allah & His Messenger ﷺ' },
-    { number: '2', title: 'Salah', desc: 'Daily 5 Prayers - Direct link to the Creator' },
+    { number: '2', title: 'Salah', desc: 'Daily 5 Prayers, direct link to the Creator' },
     { number: '3', title: 'Zakat', desc: 'Purification of Wealth through charity' },
     { number: '4', title: 'Sawm', desc: 'Fasting in Ramadan for Taqwa' },
     { number: '5', title: 'Hajj', desc: 'Pilgrimage to the Sacred House' },
@@ -363,7 +362,7 @@ export const Homepage: React.FC<HomepageProps> = ({
           <div className="bg-white rounded-3xl border border-[#E8DDD9] overflow-hidden shadow-sm hover:shadow-xl hover:border-[#78122B] transition-all duration-300 flex flex-col justify-between group">
             <div className="relative h-64 overflow-hidden border-b border-[#E8DDD9]">
               <img 
-                src={womensOnlineStudy} 
+                src={cinematicWomenStudy} 
                 alt="Women's Programs" 
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -416,7 +415,7 @@ export const Homepage: React.FC<HomepageProps> = ({
           <div className="bg-white rounded-3xl border border-[#E8DDD9] overflow-hidden shadow-sm hover:shadow-xl hover:border-[#2E6B38] transition-all duration-300 flex flex-col justify-between group">
             <div className="relative h-64 overflow-hidden border-b border-[#E8DDD9]">
               <img 
-                src={kidsOnlineStudyGen} 
+                src={cinematicKidsTarbiyah} 
                 alt="Kids' Programs" 
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"

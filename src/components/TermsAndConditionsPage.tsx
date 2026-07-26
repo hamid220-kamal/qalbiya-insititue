@@ -160,7 +160,7 @@ export const TermsAndConditionsPage: React.FC<TermsAndConditionsPageProps> = ({ 
               ) : (
                 <strong className="text-accent-gold">Refund Policy</strong>
               )}{' '}
-              — all payments are non-refundable.
+              , all payments are non-refundable.
             </p>
           </div>
         </div>

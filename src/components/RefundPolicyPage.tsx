@@ -25,7 +25,7 @@ export const RefundPolicyPage: React.FC = () => {
           <div className="space-y-2">
             <h2 className="serif-heading text-xl font-bold text-text-cream">Sincere Review Before Enrollment</h2>
             <p className="text-sm text-text-sage leading-relaxed">
-              At Qalbiya Islamic Institute, we ask every student to review course details — syllabus, duration, format, and fees — carefully before enrolling.
+              At Qalbiya Islamic Institute, we ask every student to review course details, including syllabus, duration, format, and fees, carefully before enrolling.
             </p>
           </div>
         </div>

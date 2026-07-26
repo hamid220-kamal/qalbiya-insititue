@@ -125,7 +125,7 @@ export const ContactPage: React.FC = () => {
   const contactFaqs = [
     {
       q: 'How fast will Ms. Mustara respond on WhatsApp?',
-      a: 'We strive to respond within a few hours (usually 1-2 hours during active working hours 9 AM - 9 PM IST). Inquiries sent during night hours will be answered the next morning.'
+      a: 'We strive to respond within a few hours (usually 1 to 2 hours during active working hours 9 AM to 9 PM IST). Inquiries sent during night hours will be answered the next morning.'
     },
     {
       q: 'Can I request a custom batch schedule for my daughter or son?',
