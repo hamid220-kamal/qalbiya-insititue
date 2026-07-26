@@ -1,6 +1,6 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Heart, BookOpen, MessageCircle, Instagram, ArrowRight, Quote, Laptop, Tablet, Smartphone, SlidersHorizontal, Check, X, Search, Users, User, Clock, RotateCcw, HelpCircle, ChevronRight, GraduationCap } from 'lucide-react';
+import { Heart, BookOpen, MessageCircle, Instagram, ArrowRight, Quote, SlidersHorizontal, Check, X, Search, Users, User, Clock, RotateCcw, HelpCircle, ChevronRight, GraduationCap } from 'lucide-react';
 import { Course, Route } from '../types';
 import { ShareButton } from './ShareButton';
 
@@ -278,7 +278,7 @@ export const ProgramsHub: React.FC<ProgramsHubProps> = ({
 
           <ShareButton 
             title={isKids ? "Kids' Tarbiyah & Qur'an Programs - Qalbiya Institute" : "Women's Islamic Programs - Qalbiya Institute"}
-            text={isKids ? "Raise a child who doesn't just know their deen — who loves it. Explore kids' programs at Qalbiya." : "Every woman's journey back to Allah looks different. Explore 1-on-1 and group courses at Qalbiya."}
+            text={isKids ? "Raise a child who doesn't just know their deen, who loves it. Explore kids' programs at Qalbiya." : "Every woman's journey back to Allah looks different. Explore 1 on 1 and group courses at Qalbiya."}
             variant="compact"
             lightTheme
           />
@@ -297,14 +297,14 @@ export const ProgramsHub: React.FC<ProgramsHubProps> = ({
 
         <h1 className="serif-heading text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#23181A] max-w-4xl mx-auto tracking-tight">
           {isKids 
-            ? "Raise a child who doesn't just know their deen — who loves it."
+            ? "Raise a child who doesn't just know their deen, who loves it."
             : "Every woman's journey back to Allah looks different. Here's yours."}
         </h1>
         
         <p className="max-w-2xl mx-auto text-sm sm:text-base leading-relaxed text-[#5C4D50] font-medium">
           {isKids
-            ? "Age-appropriate, structured, and rooted in authentic teaching — built for children ages 6–12."
-            : "Whether you're correcting your recitation, healing your character, or building your foundation from the ground up — there's a program made for exactly where you are."}
+            ? "Age appropriate, structured, and rooted in authentic teaching, built for children ages 6 to 12."
+            : "Whether you're correcting your recitation, healing your character, or building your foundation from the ground up, there's a program made for exactly where you are."}
         </p>
       </section>
 
@@ -362,11 +362,9 @@ export const ProgramsHub: React.FC<ProgramsHubProps> = ({
                       </span>
                     )}
 
-                    <div className="absolute top-3 right-3 z-10 flex items-center gap-1 rounded-full bg-slate-900/80 px-2.5 py-1 text-white text-[9px] font-extrabold uppercase tracking-widest backdrop-blur-xs">
-                      <Laptop className="w-3 h-3 text-[#F9E8EC]" />
-                      <Tablet className="w-3 h-3 text-[#F9E8EC]" />
-                      <Smartphone className="w-3 h-3 text-[#F9E8EC]" />
-                      <span className="ml-0.5">Live Online</span>
+                    <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 rounded-full bg-slate-900/80 px-2.5 py-1 text-white text-[9px] font-extrabold uppercase tracking-widest backdrop-blur-xs border border-white/20 shadow-xs">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>Live Online</span>
                     </div>
 
                     <img
@@ -439,8 +437,8 @@ export const ProgramsHub: React.FC<ProgramsHubProps> = ({
           <div className="space-y-2">
             <h3 className="serif-heading text-2xl sm:text-3xl font-bold text-[#23181A]">
               {isKids 
-                ? "Give your child a foundation that grows with them — in knowledge, in akhlaq, in love for their deen."
-                : "Not sure which one is right for you? Message us — we'll help you find your starting point."}
+                ? "Give your child a foundation that grows with them, in knowledge, in akhlaq, and in love for their deen."
+                : "Not sure which one is right for you? Message us, we'll help you find your starting point."}
             </h3>
             <p className="text-xs sm:text-sm text-[#5C4D50] max-w-xl mx-auto">
               Our team is available to answer any questions, evaluate your current reading level, and recommend the best starting path.

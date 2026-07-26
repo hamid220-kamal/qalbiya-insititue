@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Calendar, Layers, Clock, ArrowRight, Laptop, Tablet, Smartphone } from 'lucide-react';
+import { Calendar, Layers, Clock, ArrowRight } from 'lucide-react';
 import { Course } from '../types';
 import { motion } from 'motion/react';
 
@@ -78,12 +78,10 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect }) => {
           </div>
         )}
 
-        {/* Online Presence Device Indicator Overlay */}
+        {/* Online Presence Indicator Overlay */}
         <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 rounded-full bg-slate-900/85 px-2.5 py-1 text-white border border-white/20 backdrop-blur-sm shadow-xs">
-          <Laptop className="w-3 h-3 text-[#F9E8EC]" />
-          <Tablet className="w-3 h-3 text-[#F9E8EC]" />
-          <Smartphone className="w-3 h-3 text-[#F9E8EC]" />
-          <span className="text-[9px] font-extrabold uppercase tracking-widest text-[#F9E8EC] ml-1">Live Online</span>
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-[9px] font-extrabold uppercase tracking-widest text-[#F9E8EC]">Live Online</span>
         </div>
         
         <img

@@ -110,7 +110,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
             
             <p className="text-sm leading-relaxed text-white/95">
               "Allah does not look at your appearances or your wealth, but He looks at your hearts and your deeds."
-              <span className="block mt-2 text-xs italic font-semibold text-[#F3D797]">— Prophet Muhammad ﷺ</span>
+              <span className="block mt-2 text-xs italic font-semibold text-[#F3D797]">Prophet Muhammad ﷺ</span>
             </p>
 
             <div className="space-y-3 pt-2">
@@ -339,13 +339,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
             </div>
             <span className="hidden sm:inline text-white/30">&bull;</span>
             <a 
-              href="https://www.linkedin.com/in/syed-shahnawaz2027" 
+              href="https://www.instagram.com/byte._bros?igsh=MWs1a3hxNWl2Znl4aQ==" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-[#F3D797] hover:text-white font-bold transition-colors duration-300 underline decoration-[#F3D797]/50 hover:decoration-current cursor-pointer"
               id="developer-link-regular"
             >
-              Developed by SyedShahnawaz
+              Developed by ByteBrothers
             </a>
           </div>
         </div>

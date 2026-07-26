@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronLeft, Calendar, Layers, Clock, HelpCircle, ArrowRight, UserCheck, MessageSquare, ChevronDown, ChevronUp, Laptop, Tablet, Smartphone } from 'lucide-react';
+import { ChevronLeft, Calendar, Layers, Clock, HelpCircle, ArrowRight, UserCheck, MessageSquare, ChevronDown, ChevronUp } from 'lucide-react';
 import { Course } from '../types';
 import { ShareButton } from './ShareButton';
 
@@ -81,12 +81,10 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
         {/* Right image framing */}
         <div className="lg:col-span-5 flex justify-center">
           <div className="relative w-full max-w-sm aspect-[4/3] sm:aspect-square rounded-3xl overflow-hidden border border-brand-border bg-panel-dark shadow-2xl">
-            {/* Online Presence Device Indicator Overlay */}
-            <div className="absolute top-4 right-4 z-10 flex items-center gap-1.5 rounded-full bg-slate-950/80 px-3 py-1.5 text-white border border-white/10 backdrop-blur-sm shadow-md">
-              <Laptop className="w-3.5 h-3.5 text-[#D4AF37]" />
-              <Tablet className="w-3.5 h-3.5 text-[#D4AF37]" />
-              <Smartphone className="w-3.5 h-3.5 text-[#D4AF37]" />
-              <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#D4AF37] ml-1">Live Online Class</span>
+            {/* Online Presence Indicator Overlay */}
+            <div className="absolute top-4 right-4 z-10 flex items-center gap-2 rounded-full bg-slate-950/80 px-3 py-1.5 text-white border border-white/10 backdrop-blur-sm shadow-md">
+              <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
+              <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#D4AF37]">Live Online Class</span>
             </div>
 
             <img
@@ -115,7 +113,7 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
               </h2>
               {course.slug === 'juniors-deeniyat-mastercourse' && (
                 <p className="text-xs text-text-sage mt-2 leading-relaxed">
-                  This is Qalbiya's most complete children's program — a full Islamic foundation built over time, not rushed. Your child will grow through each stage of learning with structure, consistency, and genuine understanding.
+                  This is Qalbiya's most complete children's program, a full Islamic foundation built over time, not rushed. Your child will grow through each stage of learning with structure, consistency, and genuine understanding.
                 </p>
               )}
             </div>
@@ -212,7 +210,7 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
                 {/* Shining sweep effect */}
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
                 <span className="relative z-10 flex items-center justify-center gap-2">
-                  <Laptop className="w-3.5 h-3.5 text-bg-deep animate-pulse" />
+                  <MessageSquare className="w-3.5 h-3.5 text-bg-deep" />
                   <span>WhatsApp to Register</span>
                 </span>
               </a>
@@ -300,7 +298,7 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
           
           <h2 className="serif-heading text-2xl sm:text-3xl font-bold text-text-cream max-w-2xl mx-auto leading-snug">
             {course.category === 'kids' 
-              ? "Give your child a foundation that grows with them — in knowledge, in akhlaq, in love for their deen."
+              ? "Give your child a foundation that grows with them, in knowledge, in akhlaq, and in love for their deen."
               : "Give yourself a foundation that grounds your heart in light, knowledge, and daily peace."
             }
           </h2>

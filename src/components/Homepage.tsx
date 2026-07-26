@@ -4,7 +4,7 @@ import {
   Heart, BookOpen, GraduationCap, Users, Shield, ArrowRight, Star, 
   Check, MessageCircle, Sparkles, Quote, HelpCircle, ChevronDown, 
   Compass, Lightbulb, Sun, Award, Globe, Phone, Mail, Instagram,
-  ChevronRight, ChevronLeft, Laptop, Tablet, Smartphone
+  ChevronRight, ChevronLeft
 } from 'lucide-react';
 import { Course, Route } from '../types';
 import { CourseCard } from './CourseCard';
@@ -522,7 +522,7 @@ export const Homepage: React.FC<HomepageProps> = ({
               Knowledge That Transforms The Heart
             </h2>
             <p className="text-sm text-[#5C4D50]">
-              We go beyond memorization — cultivating true love for Allah and His Messenger ﷺ.
+              We go beyond memorization, cultivating true love for Allah and His Messenger ﷺ.
             </p>
           </div>
 
