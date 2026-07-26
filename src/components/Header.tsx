@@ -7,7 +7,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { Route } from '../types';
-import qalbiyaLogoImg from '../assets/images/qalbiya_official_logo_1785068312120.jpg';
+import qalbiyaLogoImg from '../assets/images/qalbiya_official_logo.png';
 
 interface HeaderProps {
   currentRoute: Route;
