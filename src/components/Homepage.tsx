@@ -295,28 +295,28 @@ export const Homepage: React.FC<HomepageProps> = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-3"
+            className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 pt-3"
           >
             {/* Women's Hub CTA */}
             <button
               onClick={() => onNavigate('women')}
-              className="w-full sm:w-auto min-w-[250px] px-8 py-4 rounded-2xl bg-[#78122B] hover:bg-[#630E23] text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 cursor-pointer flex items-center justify-center gap-3 group active:scale-98"
+              className="w-auto max-w-[270px] sm:max-w-none sm:w-auto min-w-[200px] sm:min-w-[250px] px-5 sm:px-8 py-2.5 sm:py-4 rounded-xl sm:rounded-2xl bg-[#78122B] hover:bg-[#630E23] text-white font-bold text-xs sm:text-base transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 cursor-pointer flex items-center justify-center gap-2 sm:gap-3 group active:scale-98"
               id="hero-btn-women-hub"
             >
-              <Users className="w-5 h-5 text-[#F3D797]" />
+              <Users className="w-4 h-4 sm:w-5 sm:h-5 text-[#F3D797]" />
               <span>Explore Women's Classes</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
             </button>
 
             {/* Kids' Hub CTA */}
             <button
               onClick={() => onNavigate('kids')}
-              className="w-full sm:w-auto min-w-[250px] px-8 py-4 rounded-2xl bg-[#2E6B38] hover:bg-[#25572e] text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 cursor-pointer flex items-center justify-center gap-3 group active:scale-98"
+              className="w-auto max-w-[270px] sm:max-w-none sm:w-auto min-w-[200px] sm:min-w-[250px] px-5 sm:px-8 py-2.5 sm:py-4 rounded-xl sm:rounded-2xl bg-[#2E6B38] hover:bg-[#25572e] text-white font-bold text-xs sm:text-base transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 cursor-pointer flex items-center justify-center gap-2 sm:gap-3 group active:scale-98"
               id="hero-btn-kids-hub"
             >
-              <GraduationCap className="w-5 h-5 text-[#F3D797]" />
+              <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-[#F3D797]" />
               <span>Explore Kids' Tarbiyah</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
             </button>
           </motion.div>
 
@@ -754,24 +754,24 @@ export const Homepage: React.FC<HomepageProps> = ({
             </p>
           )}
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 border-t border-white/10">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 border-t border-white/10">
             <button
               onClick={() => onNavigate('women')}
-              className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-xl bg-white text-[#78122B] px-8 text-sm font-bold hover:bg-[#FAF8F5] transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 gap-2 cursor-pointer"
+              className="w-auto max-w-[270px] sm:max-w-none sm:w-auto inline-flex h-10 sm:h-12 items-center justify-center rounded-xl bg-white text-[#78122B] px-5 sm:px-8 text-xs sm:text-sm font-bold hover:bg-[#FAF8F5] transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 gap-2 cursor-pointer"
               id="homepage-cta-explore-women"
             >
               <span>Explore Women's Hub</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
 
             <a
               href="https://wa.me/918145363290?text=Assalamu%20Alaikum%2C%20I%20would%20like%20to%20know%20more%20about%20Qalbiya%20programs."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-xl bg-[#25D366] text-white px-6 text-sm font-bold hover:bg-[#20bd5a] transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 gap-2 cursor-pointer"
+              className="w-auto max-w-[270px] sm:max-w-none sm:w-auto inline-flex h-10 sm:h-12 items-center justify-center rounded-xl bg-[#25D366] text-white px-5 sm:px-6 text-xs sm:text-sm font-bold hover:bg-[#20bd5a] transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 gap-2 cursor-pointer"
               id="homepage-whatsapp-link"
             >
-              <MessageCircle className="w-4 h-4 fill-current" />
+              <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" />
               <span>WhatsApp Us</span>
             </a>
           </div>
