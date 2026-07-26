@@ -2,6 +2,7 @@ import React, { useRef, useState, useMemo, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Heart, BookOpen, MessageCircle, Instagram, ArrowRight, Quote, Laptop, Tablet, Smartphone, SlidersHorizontal, Check, X, Search, Users, User, Clock, RotateCcw, HelpCircle, ChevronRight, GraduationCap } from 'lucide-react';
 import { Course, Route } from '../types';
+import { ShareButton } from './ShareButton';
 
 interface ProgramsHubProps {
   category: 'women' | 'kids';
@@ -260,18 +261,27 @@ export const ProgramsHub: React.FC<ProgramsHubProps> = ({
       
       {/* Breadcrumb Navigation Header */}
       <div className="bg-white border-b border-[#E8DDD9] py-3.5 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl flex items-center space-x-2 text-xs font-medium text-[#5C4D50]">
-          <button 
-            onClick={() => onNavigate('home')} 
-            className="hover:text-[#78122B] transition-colors cursor-pointer"
-            id="breadcrumb-home"
-          >
-            Homepage
-          </button>
-          <ChevronRight className="w-3.5 h-3.5 text-[#5C4D50]/60 shrink-0" />
-          <span className="font-bold text-[#78122B]">
-            {isKids ? "Kids' Programs" : "Women's Programs"}
-          </span>
+        <div className="mx-auto max-w-7xl flex items-center justify-between">
+          <div className="flex items-center space-x-2 text-xs font-medium text-[#5C4D50]">
+            <button 
+              onClick={() => onNavigate('home')} 
+              className="hover:text-[#78122B] transition-colors cursor-pointer"
+              id="breadcrumb-home"
+            >
+              Homepage
+            </button>
+            <ChevronRight className="w-3.5 h-3.5 text-[#5C4D50]/60 shrink-0" />
+            <span className="font-bold text-[#78122B]">
+              {isKids ? "Kids' Programs" : "Women's Programs"}
+            </span>
+          </div>
+
+          <ShareButton 
+            title={isKids ? "Kids' Tarbiyah & Qur'an Programs - Qalbiya Institute" : "Women's Islamic Programs - Qalbiya Institute"}
+            text={isKids ? "Raise a child who doesn't just know their deen — who loves it. Explore kids' programs at Qalbiya." : "Every woman's journey back to Allah looks different. Explore 1-on-1 and group courses at Qalbiya."}
+            variant="compact"
+            lightTheme
+          />
         </div>
       </div>
 

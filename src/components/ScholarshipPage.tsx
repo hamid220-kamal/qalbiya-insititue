@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { FileText, Send, Heart, BookOpen, AlertCircle, CheckCircle, ShieldCheck, ChevronRight } from 'lucide-react';
 import { Course, ScholarshipApplication } from '../types';
+import { ShareButton } from './ShareButton';
 
 interface ScholarshipPageProps {
   courses: Course[];
@@ -96,9 +97,16 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
       
       {/* Hero Section */}
       <section className="text-center space-y-4 pt-8 sm:pt-12" id="scholarship-hero">
-        <div className="inline-flex items-center space-x-2 rounded-full border border-accent-gold/20 bg-panel-dark px-4.5 py-1.5 text-xs font-semibold text-accent-gold tracking-wide">
-          <Heart className="w-3.5 h-3.5 text-rose-400" />
-          <span>Scholarship Program</span>
+        <div className="flex items-center justify-center gap-3">
+          <div className="inline-flex items-center space-x-2 rounded-full border border-accent-gold/20 bg-panel-dark px-4.5 py-1.5 text-xs font-semibold text-accent-gold tracking-wide">
+            <Heart className="w-3.5 h-3.5 text-rose-400" />
+            <span>Scholarship Program</span>
+          </div>
+          <ShareButton 
+            title="Qalbiya Islamic Institute - Financial Aid & Scholarships"
+            text="Financial support and partial/full sponsorships are available so no sincere student is turned away."
+            variant="compact"
+          />
         </div>
         <h1 className="serif-heading text-3xl sm:text-5xl font-bold text-text-cream tracking-tight max-w-3xl mx-auto leading-tight">
           No sincere student should be turned away because of money.

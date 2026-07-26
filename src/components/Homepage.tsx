@@ -300,7 +300,7 @@ export const Homepage: React.FC<HomepageProps> = ({
             {/* Women's Hub CTA */}
             <button
               onClick={() => onNavigate('women')}
-              className="w-full sm:w-auto min-w-[250px] px-8 py-4 rounded-2xl bg-[#78122B] hover:bg-[#630E23] text-white font-bold text-sm sm:text-base transition-all shadow-md hover:shadow-xl cursor-pointer flex items-center justify-center gap-3 group"
+              className="w-full sm:w-auto min-w-[250px] px-8 py-4 rounded-2xl bg-[#78122B] hover:bg-[#630E23] text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 cursor-pointer flex items-center justify-center gap-3 group active:scale-98"
               id="hero-btn-women-hub"
             >
               <Users className="w-5 h-5 text-[#F3D797]" />
@@ -311,7 +311,7 @@ export const Homepage: React.FC<HomepageProps> = ({
             {/* Kids' Hub CTA */}
             <button
               onClick={() => onNavigate('kids')}
-              className="w-full sm:w-auto min-w-[250px] px-8 py-4 rounded-2xl bg-[#2E6B38] hover:bg-[#25572e] text-white font-bold text-sm sm:text-base transition-all shadow-md hover:shadow-xl cursor-pointer flex items-center justify-center gap-3 group"
+              className="w-full sm:w-auto min-w-[250px] px-8 py-4 rounded-2xl bg-[#2E6B38] hover:bg-[#25572e] text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 cursor-pointer flex items-center justify-center gap-3 group active:scale-98"
               id="hero-btn-kids-hub"
             >
               <GraduationCap className="w-5 h-5 text-[#F3D797]" />
@@ -402,7 +402,7 @@ export const Homepage: React.FC<HomepageProps> = ({
               <div className="pt-4 border-t border-[#E8DDD9]">
                 <button
                   onClick={() => onNavigate('women')}
-                  className="w-full inline-flex h-12 items-center justify-center rounded-xl bg-[#78122B] hover:bg-[#630E23] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer group/btn gap-2"
+                  className="w-full inline-flex h-12 items-center justify-center rounded-xl bg-[#78122B] hover:bg-[#630E23] text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 cursor-pointer group/btn gap-2"
                   id="hub-card-btn-women"
                 >
                   <span>Explore Women's Programs</span>
@@ -455,7 +455,7 @@ export const Homepage: React.FC<HomepageProps> = ({
               <div className="pt-4 border-t border-[#E8DDD9]">
                 <button
                   onClick={() => onNavigate('kids')}
-                  className="w-full inline-flex h-12 items-center justify-center rounded-xl bg-[#2E6B38] hover:bg-[#25572e] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer group/btn gap-2"
+                  className="w-full inline-flex h-12 items-center justify-center rounded-xl bg-[#2E6B38] hover:bg-[#25572e] text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 cursor-pointer group/btn gap-2"
                   id="hub-card-btn-kids"
                 >
                   <span>Explore Kids' Programs</span>
@@ -741,7 +741,7 @@ export const Homepage: React.FC<HomepageProps> = ({
             </div>
             <button
               type="submit"
-              className="w-full sm:w-auto bg-[#F3D797] text-[#480117] font-bold px-6 py-3 rounded-xl text-sm hover:bg-[#E2C47E] transition-colors cursor-pointer shrink-0 shadow-xs"
+              className="w-full sm:w-auto bg-[#F3D797] text-[#480117] font-bold px-6 py-3 rounded-xl text-sm hover:bg-[#E2C47E] transition-all duration-300 cursor-pointer shrink-0 shadow-md hover:shadow-xl hover:-translate-y-0.5"
               id="homepage-phone-submit-btn"
             >
               Request Call
@@ -757,7 +757,7 @@ export const Homepage: React.FC<HomepageProps> = ({
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 border-t border-white/10">
             <button
               onClick={() => onNavigate('women')}
-              className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-xl bg-white text-[#78122B] px-8 text-sm font-bold hover:bg-[#FAF8F5] transition-colors shadow-xs gap-2 cursor-pointer"
+              className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-xl bg-white text-[#78122B] px-8 text-sm font-bold hover:bg-[#FAF8F5] transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 gap-2 cursor-pointer"
               id="homepage-cta-explore-women"
             >
               <span>Explore Women's Hub</span>
@@ -768,7 +768,7 @@ export const Homepage: React.FC<HomepageProps> = ({
               href="https://wa.me/918145363290?text=Assalamu%20Alaikum%2C%20I%20would%20like%20to%20know%20more%20about%20Qalbiya%20programs."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-xl bg-[#25D366] text-white px-6 text-sm font-bold hover:bg-[#20bd5a] transition-colors shadow-xs gap-2"
+              className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-xl bg-[#25D366] text-white px-6 text-sm font-bold hover:bg-[#20bd5a] transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 gap-2 cursor-pointer"
               id="homepage-whatsapp-link"
             >
               <MessageCircle className="w-4 h-4 fill-current" />

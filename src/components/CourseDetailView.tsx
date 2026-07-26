@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, Calendar, Layers, Clock, HelpCircle, ArrowRight, UserCheck, MessageSquare, ChevronDown, ChevronUp, Laptop, Tablet, Smartphone } from 'lucide-react';
 import { Course } from '../types';
+import { ShareButton } from './ShareButton';
 
 interface CourseDetailViewProps {
   course: Course;
@@ -26,8 +27,8 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
   return (
     <div className="space-y-16 pb-20 max-w-6xl mx-auto px-4 sm:px-6">
       
-      {/* Back Button */}
-      <div>
+      {/* Top Action Bar: Back Button & Share */}
+      <div className="flex items-center justify-between">
         <button
           onClick={onBack}
           className="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-text-sage hover:text-accent-gold transition-colors duration-300"
@@ -36,6 +37,12 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
           <ChevronLeft className="w-4 h-4 text-accent-gold" />
           <span>Back to Hub</span>
         </button>
+
+        <ShareButton 
+          title={`${course.title} - Qalbiya Islamic Institute`}
+          text={`Explore ${course.title} at Qalbiya Islamic Institute: "${course.hook}"`}
+          variant="button"
+        />
       </div>
 
       {/* Main Course Header Grid */}
@@ -217,6 +224,12 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
               >
                 <span>Request Financial Support</span>
               </button>
+
+              <ShareButton 
+                title={`${course.title} - Qalbiya Islamic Institute`}
+                text={`Learn about ${course.title}: "${course.hook}"`}
+                variant="banner"
+              />
             </div>
           </div>
 
