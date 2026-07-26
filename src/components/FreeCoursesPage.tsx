@@ -57,7 +57,7 @@ export const FreeCoursesPage: React.FC<FreeCoursesPageProps> = () => {
           </div>
 
           <p className="text-xs sm:text-sm leading-relaxed text-text-sage">
-            A weekly free session focused on purifying the heart and nurturing real character — because knowledge without tarbiyah is incomplete.
+            A weekly free session focused on purifying the heart and nurturing real character, because knowledge without tarbiyah is incomplete.
           </p>
 
           {/* Details Grid */}
@@ -138,7 +138,7 @@ export const FreeCoursesPage: React.FC<FreeCoursesPageProps> = () => {
           </div>
 
           <p className="text-xs sm:text-sm leading-relaxed text-text-sage">
-            A free, one month course to learn the art of Arabic calligraphy — starting soon, open to all.
+            A free, one month course to learn the art of Arabic calligraphy, starting soon and open to all.
           </p>
 
           {/* Details Grid */}
@@ -244,7 +244,7 @@ export const FreeCoursesPage: React.FC<FreeCoursesPageProps> = () => {
       <section className="p-8 sm:p-12 rounded-3xl border border-brand-border bg-panel-dark text-center space-y-6" id="free-closing-section">
         <div className="max-w-2xl mx-auto space-y-3">
           <h2 className="serif-heading text-2xl sm:text-3xl font-bold text-text-cream leading-snug">
-            Knowledge, tarbiyah, and tazkiyah are rights, not privileges. Join us — free of cost.
+            Knowledge, tarbiyah, and tazkiyah are rights, not privileges. Join us free of cost.
           </h2>
           <p className="text-xs sm:text-sm text-text-sage leading-relaxed">
             Message us on WhatsApp or Instagram to reserve your spot or request any free resource.

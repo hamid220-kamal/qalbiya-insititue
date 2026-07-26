@@ -135,7 +135,7 @@ export const AsmaUlHusnaPage: React.FC<AsmaUlHusnaPageProps> = ({ onNavigate }) 
             <p className="relative z-10 font-serif text-base sm:text-lg text-[#fdf5e9] italic leading-relaxed">
               "To Allah belong the best names, so invoke Him by them."
             </p>
-            <span className="block text-xs text-[#D4AF37] font-mono mt-3 font-bold uppercase tracking-widest">— Surah Al-A'raf [7:180]</span>
+            <span className="block text-xs text-[#D4AF37] font-mono mt-3 font-bold uppercase tracking-widest">Surah Al-A'raf [7:180]</span>
           </div>
         </motion.div>
 

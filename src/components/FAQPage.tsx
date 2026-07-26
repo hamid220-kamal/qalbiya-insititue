@@ -191,7 +191,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
       question: 'Do you offer free courses or sessions?',
       answer: (
         <span>
-          Yes — check our{' '}
+          Yes, check our{' '}
           {onNavigate ? (
             <button
               onClick={() => onNavigate('free-courses')}
@@ -213,7 +213,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
       question: 'Do you offer scholarships?',
       answer: (
         <span>
-          Yes — we offer scholarships for students who genuinely cannot afford our courses. Visit our{' '}
+          Yes, we offer scholarships for students who genuinely cannot afford our courses. Visit our{' '}
           {onNavigate ? (
             <button
               onClick={() => onNavigate('scholarship')}
@@ -235,7 +235,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
       question: 'Do you offer courses for children younger than 6 or older than 12?',
       answer: (
         <span>
-          Our current children's courses are designed for ages 6–12. Please{' '}
+          Our current children's courses are designed for ages 6 to 12. Please{' '}
           {onNavigate ? (
             <button
               onClick={() => onNavigate('contact')}
@@ -246,10 +246,10 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
           ) : (
             <strong className="text-accent-gold">contact us</strong>
           )}{' '}
-          if you have a child outside this range — we're happy to discuss custom options.
+          if you have a child outside this range, we are happy to discuss custom options.
         </span>
       ),
-      rawAnswerText: 'Our current childrens courses are designed for ages 6–12. Please contact us directly if you have a child outside this range we are happy to discuss custom options.'
+      rawAnswerText: 'Our current childrens courses are designed for ages 6 to 12. Please contact us directly if you have a child outside this range we are happy to discuss custom options.'
     }
   ];
 

@@ -121,7 +121,7 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
         <div className="space-y-2 border-b border-brand-border/60 pb-4">
           <h2 className="serif-heading text-xl font-bold text-text-cream">How It Works</h2>
           <p className="text-xs sm:text-sm text-text-sage leading-relaxed">
-            We review every scholarship application individually — there's no rigid checklist. If you have a genuine need and sincere intention to learn, we want to hear from you.
+            We review every scholarship application individually, with no rigid checklist. If you have a genuine need and sincere intention to learn, we want to hear from you.
           </p>
         </div>
 
@@ -411,7 +411,7 @@ export const ScholarshipPage: React.FC<ScholarshipPageProps> = ({ courses, initi
       {/* Closing Section */}
       <section className="p-8 sm:p-12 rounded-3xl border border-brand-border bg-panel-dark text-center space-y-3 shadow-lg" id="scholarship-closing">
         <h2 className="serif-heading text-xl sm:text-2xl font-bold text-text-cream max-w-2xl mx-auto leading-relaxed">
-          If your heart wants to learn and your hands are tied — reach out. That's exactly who this is for.
+          If your heart wants to learn and your hands are tied, reach out. That's exactly who this is for.
         </h2>
         <p className="text-xs text-text-sage max-w-xl mx-auto">
           Every inquiry is treated with dignity and total confidentiality.

@@ -153,7 +153,7 @@ export const FivePillarsPage: React.FC<FivePillarsPageProps> = ({ onNavigate }) 
           </h1>
           
           <p className="text-sm sm:text-base text-[#EAD5D8]/90 leading-relaxed max-w-2xl mx-auto">
-            Every Qalbiya educational program is built around these five sacred pillars—connecting outward devotion with inward tranquility and character transformation.
+            Every Qalbiya educational program is built around these five sacred pillars, connecting outward devotion with inward tranquility and character transformation.
           </p>
 
           {/* Hadith Quote Card */}
@@ -161,7 +161,7 @@ export const FivePillarsPage: React.FC<FivePillarsPageProps> = ({ onNavigate }) 
             <p className="relative z-10 font-serif text-base sm:text-lg text-[#fdf5e9] italic leading-relaxed">
               "Islam is built upon five pillars: testifying that there is no deity worthy of worship except Allah and that Muhammad is the Messenger of Allah, establishing regular prayer, paying zakat, making the pilgrimage to the House, and fasting in Ramadan."
             </p>
-            <span className="block text-xs text-[#D4AF37] font-mono mt-3 font-bold uppercase tracking-widest">— Prophet Muhammad ﷺ [Sahih Bukhari & Muslim]</span>
+            <span className="block text-xs text-[#D4AF37] font-mono mt-3 font-bold uppercase tracking-widest">Prophet Muhammad ﷺ [Sahih Bukhari & Muslim]</span>
           </div>
         </motion.div>
 

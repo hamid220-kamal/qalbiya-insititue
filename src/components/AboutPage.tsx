@@ -20,7 +20,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           </span>
           <ShareButton 
             title="About Qalbiya Islamic Institute - Our Purpose & Story"
-            text="Qalbiya exists to connect knowledge to the heart — not through guilt, but through a slow, honest, and rooted return."
+            text="Qalbiya exists to connect knowledge to the heart, not through guilt, but through a slow, honest, and rooted return."
             variant="compact"
             lightTheme
           />
@@ -33,7 +33,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       {/* SECTION 2 — The Gap / The Why */}
       <section className="max-w-2xl mx-auto text-center space-y-6 bg-[#FDFBF7] p-8 sm:p-10 rounded-3xl border border-[#E8DDD9] shadow-xs">
         <p className="text-base sm:text-lg leading-relaxed text-[#5C4D50] font-normal">
-          So many of us grew up knowing the rules of our deen, but never really knowing the heart of it. We memorized without meaning. We prayed without presence. And somewhere between the noise of the dunya and the pressure to keep up, our connection with Allah became something we performed — not something we felt.
+          So many of us grew up knowing the rules of our deen, but never really knowing the heart of it. We memorized without meaning. We prayed without presence. And somewhere between the noise of the dunya and the pressure to keep up, our connection with Allah became something we performed, not something we felt.
         </p>
         <div className="w-12 h-0.5 bg-[#78122B]/20 mx-auto" />
         <p className="text-base sm:text-lg leading-relaxed text-[#23181A] font-semibold italic">
@@ -61,7 +61,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           </div>
           <div className="p-4 rounded-2xl bg-[#F9E8EC]/60 border border-[#E8DDD9] text-center">
             <p className="text-xs font-serif italic text-[#78122B]">
-              "If ilm never reaches our character and daily life — what was the point?"
+              "If ilm never reaches our character and daily life, what was the point?"
             </p>
           </div>
         </div>
@@ -74,15 +74,15 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           </h2>
 
           <p>
-            My own perspective has always been simple: knowledge without action is of no benefit. If we gain ilm, but that ilm never reaches our character, never reaches our daily life — what was the point?
+            My own perspective has always been simple: knowledge without action is of no benefit. If we gain ilm, but that ilm never reaches our character, never reaches our daily life, what was the point?
           </p>
 
           <p>
-            Early in my own learning journey, I remember sitting through Seerah class after Seerah class — learning the life of the Prophet <span className="font-serif text-[#78122B] font-semibold">ﷺ</span>, his patience, his mercy, his character in the hardest moments. It was beautiful ilm. But slowly, a frustration started building in me. We were taught the story, but never asked to become it. No one paused to say, <em>"here's how you carry his sabr into your own hard days,"</em> or <em>"here's what his akhlaq looks like in your home, your relationships, your reactions."</em> The seerah stayed a story on a page, when it was meant to be a mirror.
+            Early in my own learning journey, I remember sitting through Seerah class after Seerah class, learning the life of the Prophet <span className="font-serif text-[#78122B] font-semibold">ﷺ</span>, his patience, his mercy, his character in the hardest moments. It was beautiful ilm. But slowly, a frustration started building in me. We were taught the story, but never asked to become it. No one paused to say, <em>"here's how you carry his sabr into your own hard days,"</em> or <em>"here's what his akhlaq looks like in your home, your relationships, your reactions."</em> The seerah stayed a story on a page, when it was meant to be a mirror.
           </p>
 
           <p>
-            That disappointment built up over time — not from one class, but from realizing this was the pattern everywhere. Information was abundant. Structure was nowhere. And the people willing to actually walk students through <em>"here's how you apply this"</em> — they were almost impossible to find.
+            That disappointment built up over time, not from one class, but from realizing this was the pattern everywhere. Information was abundant. Structure was nowhere. And the people willing to actually walk students through <em>"here's how you apply this"</em>, they were almost impossible to find.
           </p>
 
           <div className="py-2">
@@ -92,7 +92,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           </div>
 
           <p>
-            I didn't want to build another place that fills your mind and leaves your life untouched. I wanted to build a place where every lesson comes with a next step — where ilm is never separated from amal, where growth isn't a feeling, it's a practice.
+            I didn't want to build another place that fills your mind and leaves your life untouched. I wanted to build a place where every lesson comes with a next step, where ilm is never separated from amal, where growth isn't a feeling, it's a practice.
           </p>
 
           <p className="font-medium text-[#23181A]">
@@ -115,11 +115,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         </span>
         
         <blockquote className="serif-heading text-2xl sm:text-3xl lg:text-4xl font-bold max-w-3xl mx-auto leading-tight tracking-tight text-white">
-          "Qalbiya Islamic Institute exists to help hearts return — women to their Lord, and children to a faith they'll carry with love, not obligation."
+          "Qalbiya Islamic Institute exists to help hearts return, women to their Lord, and children to a faith they'll carry with love, not obligation."
         </blockquote>
 
         <p className="text-xs text-white/70 pt-2 font-mono uppercase tracking-wider">
-          — Qalbiya Islamic Institute
+          Qalbiya Islamic Institute
         </p>
       </section>
 
@@ -145,7 +145,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               Rooted in Authentic Knowledge
             </h3>
             <p className="text-sm text-[#5C4D50] leading-relaxed">
-              Every lesson is grounded in authentic Qur'an and Sunnah — no diluted, trend-based Islam.
+              Every lesson is grounded in authentic Qur'an and Sunnah, with no diluted or trend based teachings.
             </p>
           </div>
 
@@ -155,10 +155,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               2
             </div>
             <h3 className="serif-heading text-xl font-bold text-[#23181A]">
-              Heart-Centered Learning
+              Heart Centered Learning
             </h3>
             <p className="text-sm text-[#5C4D50] leading-relaxed">
-              We teach for transformation, not just information — the heart is engaged, not just the mind.
+              We teach for transformation, not just information, where the heart is engaged, not just the mind.
             </p>
           </div>
 
@@ -171,7 +171,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               Built for Real Life
             </h3>
             <p className="text-sm text-[#5C4D50] leading-relaxed">
-              Designed for real, busy, imperfect lives — not idealized ones.
+              Designed for real, busy, imperfect lives, not idealized ones.
             </p>
           </div>
         </div>
@@ -180,7 +180,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       {/* SECTION 6 — Closing CTA */}
       <section className="text-center bg-[#FDFBF7] p-10 sm:p-14 rounded-3xl border border-[#E8DDD9] space-y-6 shadow-sm">
         <h3 className="serif-heading text-2xl sm:text-3xl font-bold text-[#23181A] max-w-xl mx-auto leading-snug">
-          If your heart has been quietly asking for a way back — you're in the right place.
+          If your heart has been quietly asking for a way back, you're in the right place.
         </h3>
         <div>
           <button

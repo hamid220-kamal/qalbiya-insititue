@@ -1,10 +1,7 @@
 import { Course } from './types';
-import sacredLearningApproach from './assets/images/sacred_learning_approach_1784016791330.jpg';
-import quranRehalArchedWindow from './assets/images/quran_rehal_arched_window_1784016809949.jpg';
-import womensOnlineStudy from './assets/images/womens_online_study_1784048690815.jpg';
-import heroLearningSetup from './assets/images/hero_learning_setup_1784226560154.jpg';
-import kidsOnlineStudyGen from './assets/images/kids_online_study_1784048706942.jpg';
-import onlineLearningTablet from './assets/images/online_learning_tablet_1784039716228.jpg';
+import cinematicQuranRehal from './assets/images/cinematic_quran_rehal_1785071840478.jpg';
+import cinematicWomenStudy from './assets/images/cinematic_women_study_1785071864678.jpg';
+import cinematicKidsTarbiyah from './assets/images/cinematic_kids_tarbiyah_1785071899107.jpg';
 
 export const coursesData: Course[] = [
   {
@@ -30,17 +27,17 @@ export const coursesData: Course[] = [
       '👥 Private community support group',
       '🎓 Course Completion Certificate'
     ],
-    outcome: 'By the end of this course, you will have a deep, heart-centered understanding of the Prophet\'s life and character, with practical habits to emulate his beautiful example in your modern life.',
+    outcome: 'By the end of this course, you will have a deep, heart centered understanding of the Prophet\'s life and character, with practical habits to emulate his beautiful example in your modern life.',
     courseDetails: {
       'Format': 'Group Interactive Sessions',
       'Platform': 'Google Meet',
       'Duration': '2 Months',
       'Classes': '2 classes/week, 1hr each',
-      'Fee': 'Rs. 299/month or Rs. 500 one-time'
+      'Fee': 'Rs. 299/month or Rs. 500 one time'
     },
     teacherNote: 'Studying the Seerah is not about learning historical dates; it\'s about letting the light of his character illuminate your heart.',
     whoThisIsFor: [
-      'Sisters seeking a heart-centered reconnection with the Prophet ﷺ',
+      'Sisters seeking a heart centered reconnection with the Prophet ﷺ',
       'Sisters looking to improve their character and akhlaq',
       'Beginners and intermediate students alike'
     ],
@@ -58,7 +55,7 @@ export const coursesData: Course[] = [
         a: 'Class timings are shared upon registration, with multiple batches designed to fit different schedules.'
       }
     ],
-    image: sacredLearningApproach
+    image: cinematicWomenStudy
   },
   {
     slug: 'tajweed1on1',
@@ -83,7 +80,7 @@ export const coursesData: Course[] = [
       '💬 Dedicated WhatsApp support for daily audio corrections',
       '🎓 Course Completion Certificate'
     ],
-    outcome: 'By the end of this course, you\'ll recite the Qur\'an fluently, correctly, and with confidence — not guessing, not hesitating, but reciting the way it was meant to be recited.',
+    outcome: 'By the end of this course, you\'ll recite the Qur\'an fluently, correctly, and with confidence, not guessing, not hesitating, but reciting the way it was meant to be recited.',
     courseDetails: {
       'Format': '1 on 1 Personalized Session',
       'Platform': 'Google Meet',
@@ -91,7 +88,7 @@ export const coursesData: Course[] = [
       'Classes': '3 classes/week, 1hr each',
       'Fee': 'Rs. 800/month'
     },
-    teacherNote: 'I\'ve seen how much confidence a woman gains once her recitation finally feels right... and how that transforms her relationship with Allah\'s word.',
+    teacherNote: 'I\'ve seen how much confidence a woman gains once her recitation finally feels right, and how that transforms her relationship with Allah\'s word.',
     whoThisIsFor: [
       'Sisters starting from scratch who want personalized, gentle guidance',
       'Sisters who have been reciting for years but want to refine long standing pronunciation errors',
@@ -115,7 +112,7 @@ export const coursesData: Course[] = [
         a: 'Yes, we offer a free 1 on 1 assessment and trial class so you can experience our teaching method before committing.'
       }
     ],
-    image: quranRehalArchedWindow
+    image: cinematicQuranRehal
   },
   {
     slug: 'nooraniQaida',
@@ -123,7 +120,7 @@ export const coursesData: Course[] = [
     title: 'Noorani Qaida Course',
     badge: 'Popular · Joined by 200+ students',
     hook: 'Where your Qur\'an journey begins.',
-    sub: 'Learn the Arabic letters and Noorani Qaida with proper foundational Tajweed rules — the essential first step to reading the Qur\'an with confidence.',
+    sub: 'Learn the Arabic letters and Noorani Qaida with proper foundational Tajweed rules, the essential first step to reading the Qur\'an with confidence.',
     duration: '2 Months',
     price: 'Rs. 299',
     priceDetail: 'per month',
@@ -140,7 +137,7 @@ export const coursesData: Course[] = [
       '📝 Final comprehensive exam (written and oral)',
       '🎓 Course Completion Certificate'
     ],
-    outcome: 'By the end of this course, you\'ll take your very first real step into the Qur\'an — reading it, not just recognizing it, with correct articulation of each letter.',
+    outcome: 'By the end of this course, you\'ll take your very first real step into the Qur\'an, reading it, not just recognizing it, with correct articulation of each letter.',
     courseDetails: {
       'Format': 'Group Sessions or 1 on 1 (Student\'s choice)',
       'Platform': 'Google Meet',
@@ -168,7 +165,7 @@ export const coursesData: Course[] = [
         a: 'Yes, daily short practice homework is assigned. There is a gentle final oral and written review to ensure your fundamentals are perfectly set.'
       }
     ],
-    image: womensOnlineStudy
+    image: cinematicWomenStudy
   },
   {
     slug: 'preDiplomaDeeniyat',
@@ -176,7 +173,7 @@ export const coursesData: Course[] = [
     title: 'Pre Diploma in Deeniyat',
     badge: 'Popular',
     hook: 'Your complete foundation in Deen.',
-    sub: 'A structured, six month journey covering everything from correcting your recitation to understanding your beliefs — so you don\'t just follow Islam, you understand it, live it, and feel closer to Allah.',
+    sub: 'A structured, six month journey covering everything from correcting your recitation to understanding your beliefs, so you don\'t just follow Islam, you understand it, live it, and feel closer to Allah.',
     duration: '6 Months',
     price: 'Rs. 499',
     priceDetail: 'per month',
@@ -196,7 +193,7 @@ export const coursesData: Course[] = [
       '💬 Dedicated direct WhatsApp support line',
       '🎓 Foundation Pre Diploma Certificate'
     ],
-    outcome: 'This course builds your foundation in Deen — helping you correct your recitation, understand your beliefs, and practice Islam with clarity in daily life. By the end, you won\'t just follow Islam — you\'ll understand it, live it, and feel closer to Allah.',
+    outcome: 'This course builds your foundation in Deen, helping you correct your recitation, understand your beliefs, and practice Islam with clarity in daily life. By the end, you won\'t just follow Islam, you\'ll understand it, live it, and feel closer to Allah.',
     courseDetails: {
       'Format': 'Group Interactive Sessions or Personal (1 on 1)',
       'Platform': 'Google Meet',
@@ -204,7 +201,7 @@ export const coursesData: Course[] = [
       'Group Fee': 'Rs. 499/month',
       'Personal Fee': 'Rs. 699/month'
     },
-    teacherNote: 'This course exists for the woman I once was — someone who wanted to actually understand her deen, not just perform its daily rituals without feeling their spiritual weight.',
+    teacherNote: 'This course exists for the woman I once was, someone who wanted to actually understand her deen, not just perform its daily rituals without feeling their spiritual weight.',
     whoThisIsFor: [
       'Sisters tired of learning their deen in scattered fragments and wanting a structured, cohesive path',
       'Sisters wanting to ground their purification, prayers, and beliefs in authentic knowledge',
@@ -224,7 +221,7 @@ export const coursesData: Course[] = [
         a: 'Yes, we conduct a gentle written and oral assessment at the end of the 6 months to celebrate your growth and award your Pre Diploma.'
       }
     ],
-    image: heroLearningSetup
+    image: cinematicWomenStudy
   },
   {
     slug: 'juniorsDeeniyatMastercourse',
@@ -232,7 +229,7 @@ export const coursesData: Course[] = [
     title: 'Juniors Deeniyat Mastercourse',
     badge: 'Popular',
     hook: 'A complete Islamic foundation, built to last a lifetime.',
-    sub: 'A structured, age appropriate program for children ages 6 to 12 — covering Qur\'an, Seerah, Sahaba, daily sunnah, and akhlaq, so your child doesn\'t just learn Islam, they grow up loving it.',
+    sub: 'A structured, age appropriate program for children ages 6 to 12, covering Qur\'an, Seerah, Sahaba, daily sunnah, and akhlaq, so your child doesn\'t just learn Islam, they grow up loving it.',
     duration: '1.5 to 2 Years',
     price: 'Rs. 600',
     priceDetail: 'per month (Group) / Rs. 1,000 (Private)',
@@ -250,13 +247,13 @@ export const coursesData: Course[] = [
     ],
     whatYouGet: [
       '🎮 Interactive lessons with games and attractive visuals designed to hold a child\'s attention',
-      '🧩 Regular quizzes made fun, not stressful — built to reinforce learning through play',
+      '🧩 Regular quizzes made fun, not stressful, built to reinforce learning through play',
       '📝 Regular tests to track your child\'s progress',
       '💬 WhatsApp support for parents outside class hours',
       '🎓 Certificate on completion'
     ],
-    outcome: 'Your child won\'t just learn about Islam — they\'ll grow up loving it. By the end, they\'ll read Qur\'an with correct tajweed, know the stories of the Prophets and Sahaba by heart, practice their daily sunnah with ease, and carry akhlaq rooted in the seerah — a strong Islamic foundation built to last a lifetime.',
-    howLearn: 'Every class is designed to feel calm, warm, and genuinely enjoyable — never rushed, never pressured. Lessons come alive through attractive visuals, interactive games, and playful quizzes, so children stay engaged and actually look forward to class. Correction is always gentle, encouragement is constant, and every child learns at a pace that feels right for them.',
+    outcome: 'Your child won\'t just learn about Islam, they\'ll grow up loving it. By the end, they\'ll read Qur\'an with correct tajweed, know the stories of the Prophets and Sahaba by heart, practice their daily sunnah with ease, and carry akhlaq rooted in the seerah, a strong Islamic foundation built to last a lifetime.',
+    howLearn: 'Every class is designed to feel calm, warm, and genuinely enjoyable, never rushed, never pressured. Lessons come alive through attractive visuals, interactive games, and playful quizzes, so children stay engaged and actually look forward to class. Correction is always gentle, encouragement is constant, and every child learns at a pace that feels right for them.',
     courseDetails: {
       'Age Group': 'Ages 6 to 12 years',
       'Format': 'Private (1 on 1) or Group',
@@ -265,14 +262,14 @@ export const coursesData: Course[] = [
       'Fee (Private)': 'Rs. 1,000/month',
       'Fee (Group)': 'Rs. 600/month'
     },
-    teacherNote: 'As someone who has taught children in this age group, I know a class only truly works when a child feels safe, engaged, and loved — not just taught. Every lesson I build is calm, gentle, and genuinely fun, with visuals, games, and quizzes that make learning feel like discovery, not pressure. I teach every child the way I\'d want my own child taught — with patience, warmth, and real care.\n— Mustara, Founder of Qalbiya Institute',
+    teacherNote: 'As someone who has taught children in this age group, I know a class only truly works when a child feels safe, engaged, and loved, not just taught. Every lesson I build is calm, gentle, and genuinely fun, with visuals, games, and quizzes that make learning feel like discovery, not pressure. I teach every child the way I\'d want my own child taught, with patience, warmth, and real care.\nMustara, Founder of Qalbiya Institute',
     whoThisIsFor: [
-      'For parents who want more than scattered Islamic lessons — who want their child to build one complete, lasting foundation in Deen, taught with structure and care.'
+      'For parents who want more than scattered Islamic lessons, who want their child to build one complete, lasting foundation in Deen, taught with structure and care.'
     ],
     faqs: [
       {
         q: 'Do we have to commit to the full 1.5 to 2 years right away?',
-        a: 'Not at all. Many parents start with just one month to see how their child responds. Once you see the change in your child\'s understanding, confidence, and love for their deen, most families choose to continue the full journey — but the choice is always yours.'
+        a: 'Not at all. Many parents start with just one month to see how their child responds. Once you see the change in your child\'s understanding, confidence, and love for their deen, most families choose to continue the full journey, but the choice is always yours.'
       },
       {
         q: 'What age group is this course for?',
@@ -280,7 +277,7 @@ export const coursesData: Course[] = [
       },
       {
         q: 'How long does the course take?',
-        a: 'Typically 1.5 to 2 years, depending on your child\'s individual pace — this is a complete foundation, not a rushed program.'
+        a: 'Typically 1.5 to 2 years, depending on your child\'s individual pace, this is a complete foundation, not a rushed program.'
       },
       {
         q: 'What\'s the difference between private and group classes?',
@@ -292,14 +289,14 @@ export const coursesData: Course[] = [
       },
       {
         q: 'Will my child receive a certificate?',
-        a: 'Yes — a certificate is given upon completing the course.'
+        a: 'Yes, a certificate is given upon completing the course.'
       },
       {
         q: 'Is this online or in person?',
         a: 'Fully online, conducted via Google Meet.'
       }
     ],
-    image: kidsOnlineStudyGen
+    image: cinematicKidsTarbiyah
   },
   {
     slug: 'nooraniQaidaKids',
@@ -307,7 +304,7 @@ export const coursesData: Course[] = [
     title: 'Noorani Qaida (Kids)',
     badge: 'Foundation Path',
     hook: 'The first step to reading Qur\'an.',
-    sub: 'A gentle, structured introduction to the Arabic letters and Noorani Qaida — helping your child begin their Qur\'an journey with a strong, correct foundation.',
+    sub: 'A gentle, structured introduction to the Arabic letters and Noorani Qaida, helping your child begin their Qur\'an journey with a strong, correct foundation.',
     duration: '4 to 5 Months',
     price: 'Rs. 500',
     priceDetail: 'per month',
@@ -325,7 +322,7 @@ export const coursesData: Course[] = [
       '💬 Dedicated parent teacher WhatsApp support line',
       '🎓 Noorani Qaida Graduation Certificate'
     ],
-    outcome: 'By the end of this course, your child will take their very first real step into the Qur\'an — reading it, not just recognizing the letters — with a solid foundation that everything else in their Qur\'an journey will be built on.',
+    outcome: 'By the end of this course, your child will take their very first real step into the Qur\'an, reading it, not just recognizing the letters, with a solid foundation that everything else in their Qur\'an journey will be built on.',
     howLearn: 'Every teacher is chosen and trained to teach children the way they actually learn best: through visual aids, patience, constant encouragement, and gentle correction that builds their confidence.',
     courseDetails: {
       'Age Group': 'Children ages 6 to 12',
@@ -354,6 +351,6 @@ export const coursesData: Course[] = [
         a: 'Homework is gentle and highly visual (e.g. practicing a single line or playing a digital matching game). We aim to make it something they look forward to rather than a chore.'
       }
     ],
-    image: onlineLearningTablet
+    image: cinematicKidsTarbiyah
   }
 ];
