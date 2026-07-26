@@ -181,18 +181,18 @@ export const DhikrDuroodWidget: React.FC = () => {
 
   return (
     <>
-      {/* Floating Action Bar - Single Compact Horizontal Line with Equal Sized Circular Bubbles */}
-      <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2 sm:gap-2.5 p-1.5 rounded-full bg-[#1B1214]/90 border border-[#D4AF37]/40 shadow-[0_10px_30px_rgba(0,0,0,0.6)] backdrop-blur-md select-none">
+      {/* Floating Action Bar - Compact Vertical Stack with Equal Sized Circular Bubbles */}
+      <div className="fixed bottom-5 right-5 z-50 flex flex-col items-center gap-2.5 p-1.5 rounded-full bg-[#1B1214]/90 border border-[#D4AF37]/40 shadow-[0_10px_30px_rgba(0,0,0,0.6)] backdrop-blur-md select-none">
         
         {/* 1-Minute Dhikr Bubble */}
         <div className="relative flex items-center justify-center">
           <AnimatePresence>
             {hoveredDhikr && (
               <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10, scale: 0.9 }}
-                className="hidden sm:block absolute bottom-full mb-2.5 bg-[#1B1214] text-[#F3D797] text-[11px] font-semibold px-2.5 py-1 rounded-lg shadow-xl backdrop-blur-md border border-[#D4AF37]/40 whitespace-nowrap pointer-events-none"
+                initial={{ opacity: 0, x: 10, scale: 0.9 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: 10, scale: 0.9 }}
+                className="hidden sm:block absolute right-full mr-3 bg-[#1B1214] text-[#F3D797] text-[11px] font-semibold px-2.5 py-1 rounded-lg shadow-xl backdrop-blur-md border border-[#D4AF37]/40 whitespace-nowrap pointer-events-none"
               >
                 1-Min Dhikr
               </motion.div>
@@ -203,7 +203,7 @@ export const DhikrDuroodWidget: React.FC = () => {
             onClick={() => setActiveModal('dhikr')}
             onMouseEnter={() => setHoveredDhikr(true)}
             onMouseLeave={() => setHoveredDhikr(false)}
-            whileHover={{ scale: 1.12, translateY: -2 }}
+            whileHover={{ scale: 1.12, translateX: -2 }}
             whileTap={{ scale: 0.88 }}
             className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-[#78122B] text-[#F3D797] border border-[#D4AF37]/70 shadow-md transition-all relative group cursor-pointer"
             aria-label="Open 1-Minute Dhikr Counter"
@@ -225,10 +225,10 @@ export const DhikrDuroodWidget: React.FC = () => {
           <AnimatePresence>
             {hoveredDurood && (
               <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10, scale: 0.9 }}
-                className="hidden sm:block absolute bottom-full mb-2.5 bg-[#082819] text-[#F3D797] text-[11px] font-semibold px-2.5 py-1 rounded-lg shadow-xl backdrop-blur-md border border-[#D4AF37]/40 whitespace-nowrap pointer-events-none"
+                initial={{ opacity: 0, x: 10, scale: 0.9 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: 10, scale: 0.9 }}
+                className="hidden sm:block absolute right-full mr-3 bg-[#082819] text-[#F3D797] text-[11px] font-semibold px-2.5 py-1 rounded-lg shadow-xl backdrop-blur-md border border-[#D4AF37]/40 whitespace-nowrap pointer-events-none"
               >
                 Durood Shareef
               </motion.div>
@@ -239,7 +239,7 @@ export const DhikrDuroodWidget: React.FC = () => {
             onClick={() => setActiveModal('durood')}
             onMouseEnter={() => setHoveredDurood(true)}
             onMouseLeave={() => setHoveredDurood(false)}
-            whileHover={{ scale: 1.12, translateY: -2 }}
+            whileHover={{ scale: 1.12, translateX: -2 }}
             whileTap={{ scale: 0.88 }}
             className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-[#0B3C26] text-[#F3D797] border border-[#D4AF37]/70 shadow-md transition-all relative group cursor-pointer"
             aria-label="Open Durood Shareef Counter"
@@ -255,10 +255,10 @@ export const DhikrDuroodWidget: React.FC = () => {
           <AnimatePresence>
             {hoveredInsta && (
               <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10, scale: 0.9 }}
-                className="hidden sm:block absolute bottom-full mb-2.5 bg-slate-900/95 text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg shadow-xl backdrop-blur-md border border-white/20 whitespace-nowrap pointer-events-none"
+                initial={{ opacity: 0, x: 10, scale: 0.9 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: 10, scale: 0.9 }}
+                className="hidden sm:block absolute right-full mr-3 bg-slate-900/95 text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg shadow-xl backdrop-blur-md border border-white/20 whitespace-nowrap pointer-events-none"
               >
                 Instagram
               </motion.div>
@@ -271,7 +271,7 @@ export const DhikrDuroodWidget: React.FC = () => {
             rel="noopener noreferrer"
             onMouseEnter={() => setHoveredInsta(true)}
             onMouseLeave={() => setHoveredInsta(false)}
-            whileHover={{ scale: 1.12, translateY: -2 }}
+            whileHover={{ scale: 1.12, translateX: -2 }}
             whileTap={{ scale: 0.88 }}
             className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white border border-white/20 shadow-md transition-all relative group cursor-pointer"
             aria-label="Follow Qalbiya Institute on Instagram"
@@ -286,10 +286,10 @@ export const DhikrDuroodWidget: React.FC = () => {
           <AnimatePresence>
             {hoveredWa && (
               <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10, scale: 0.9 }}
-                className="hidden sm:block absolute bottom-full mb-2.5 bg-slate-900/95 text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg shadow-xl backdrop-blur-md border border-white/20 whitespace-nowrap pointer-events-none"
+                initial={{ opacity: 0, x: 10, scale: 0.9 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: 10, scale: 0.9 }}
+                className="hidden sm:block absolute right-full mr-3 bg-slate-900/95 text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg shadow-xl backdrop-blur-md border border-white/20 whitespace-nowrap pointer-events-none"
               >
                 WhatsApp
               </motion.div>
@@ -302,7 +302,7 @@ export const DhikrDuroodWidget: React.FC = () => {
             rel="noopener noreferrer"
             onMouseEnter={() => setHoveredWa(true)}
             onMouseLeave={() => setHoveredWa(false)}
-            whileHover={{ scale: 1.12, translateY: -2 }}
+            whileHover={{ scale: 1.12, translateX: -2 }}
             whileTap={{ scale: 0.88 }}
             className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white border border-white/20 shadow-md transition-all relative group cursor-pointer"
             aria-label="Contact Ms. Mustara on WhatsApp"
