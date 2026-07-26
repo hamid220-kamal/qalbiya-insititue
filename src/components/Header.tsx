@@ -314,22 +314,36 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
             </a>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
-          <div className="flex items-center space-x-3 lg:hidden">
+          {/* Header Action Buttons & Universal Menu Bar Toggle */}
+          <div className="flex items-center space-x-2 sm:space-x-3">
             <button
               onClick={() => setShowSearch(!showSearch)}
-              className="p-2 text-[#5C4D50] hover:text-[#78122B]"
+              className="p-2 text-[#5C4D50] hover:text-[#78122B] transition-colors rounded-lg hover:bg-[#FDFBF7]"
               aria-label="Search"
+              id="navSearchBtn"
             >
               <Search className="w-5 h-5" />
             </button>
+
+            <a 
+              href="https://wa.me/918145363290?text=Assalamu%20Alaikum%2C%20I%20am%20interested%20in%20registering%20for%20classes%20at%20Qalbiya%20Islamic%20Institute."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-xl bg-[#78122B] text-white text-xs xl:text-sm font-semibold tracking-wide hover:bg-[#630E23] transition-all duration-200 shadow-xs cursor-pointer"
+              id="navRegisterBtn"
+            >
+              Register
+            </a>
+
+            {/* Menu Bar Toggle Button - Always Accessible */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg border border-[#E8DDD9] bg-[#FDFBF7] text-[#23181A]"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-[#E8DDD9] bg-[#FDFBF7] text-[#23181A] hover:bg-[#F9E8EC] hover:text-[#78122B] hover:border-[#78122B]/30 transition-all duration-200 cursor-pointer shadow-2xs"
               aria-label="Toggle navigation menu"
-              id="mobileMenuToggle"
+              id="menuBarToggle"
             >
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isOpen ? <X className="h-5 w-5 text-[#78122B]" /> : <Menu className="h-5 w-5 text-[#78122B]" />}
+              <span className="text-xs font-bold text-[#23181A]">Menu</span>
             </button>
           </div>
 
@@ -365,77 +379,90 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
         )}
       </AnimatePresence>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Slide-out Page Navigation Drawer (Universal for Mobile & Desktop) */}
       <AnimatePresence>
         {isOpen && (
           <>
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs lg:hidden"
+              className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-xs"
               onClick={() => setIsOpen(false)}
             />
 
+            {/* Right Side Drawer Container */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-              className="fixed right-0 top-0 bottom-0 z-50 h-full w-72 max-w-[85vw] bg-[#FAF8F5] border-l border-[#E8DDD9] p-6 shadow-2xl flex flex-col lg:hidden overflow-y-auto"
-              id="mobile-nav-drawer"
+              className="fixed right-0 top-0 bottom-0 z-[101] h-full w-80 sm:w-96 max-w-[90vw] bg-[#FAF8F5] border-l border-[#E8DDD9] p-6 shadow-2xl flex flex-col overflow-y-auto"
+              id="main-nav-drawer"
             >
+              {/* Drawer Top Branding Header */}
               <div className="flex items-center justify-between pb-4 border-b border-[#E8DDD9]">
-                <h2 className="font-serif text-xl font-bold text-[#78122B]">Qalbiya</h2>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full overflow-hidden border border-[#78122B]/20 bg-[#FAF8F5]">
+                    <img src={qalbiyaLogoImg} alt="Qalbiya Logo" className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <h2 className="font-serif text-lg font-bold text-[#78122B] leading-tight">Qalbiya</h2>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#5C4D50]">Page Directory</span>
+                  </div>
+                </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1.5 rounded-lg border border-[#E8DDD9] text-[#5C4D50]"
+                  className="p-2 rounded-xl border border-[#E8DDD9] bg-white text-[#5C4D50] hover:bg-[#F9E8EC] hover:text-[#78122B] transition-colors cursor-pointer"
+                  aria-label="Close menu"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
 
+              {/* Categorized Pages List */}
               <div className="flex-1 py-4 space-y-6">
                 
-                {/* Main Learning Hubs */}
+                {/* Section 1: Main Programs & Hubs */}
                 <div className="space-y-1">
                   <span className="px-3 text-[10px] font-bold text-[#78122B] uppercase tracking-wider block mb-1">
-                    Programs & Learning
+                    Programs & Learning Hubs
                   </span>
 
                   <button
                     onClick={() => handleNavClick('home')}
-                    className={`flex w-full items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                    className={`flex w-full items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
                       currentRoute === 'home' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                     }`}
                   >
-                    <span>Home</span>
+                    <span>Home Page</span>
                     <span className="text-xs text-[#8C7A7E]">Main</span>
                   </button>
 
                   <button
                     onClick={() => handleNavClick('women')}
-                    className={`flex w-full items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                    className={`flex w-full items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
                       currentRoute === 'women' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                     }`}
                   >
-                    <span>Women's Programs</span>
+                    <span>Women's Programs Hub</span>
                     <span className="text-[10px] px-2 py-0.5 rounded-md bg-[#78122B]/10 text-[#78122B] font-bold">1:1 & Group</span>
                   </button>
 
                   <button
                     onClick={() => handleNavClick('kids')}
-                    className={`flex w-full items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                    className={`flex w-full items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
                       currentRoute === 'kids' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                     }`}
                   >
-                    <span>Kids' Tarbiyah Classes</span>
+                    <span>Kids' Tarbiyah Hub</span>
                     <span className="text-[10px] px-2 py-0.5 rounded-md bg-[#2E6B38]/10 text-[#2E6B38] font-bold">Ages 4-15</span>
                   </button>
 
                   <button
                     onClick={() => handleNavClick('freeCourses')}
-                    className={`flex w-full items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                    className={`flex w-full items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
                       currentRoute === 'freeCourses' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                     }`}
                   >
@@ -444,7 +471,74 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
                   </button>
                 </div>
 
-                {/* Sacred Knowledge Center */}
+                {/* Section 2: Individual Sacred Courses */}
+                <div className="space-y-1 pt-3 border-t border-[#E8DDD9]">
+                  <span className="px-3 text-[10px] font-bold text-[#78122B] uppercase tracking-wider block mb-1">
+                    Specific Courses & Syllabi
+                  </span>
+
+                  <button
+                    onClick={() => handleNavClick('courseDetail', 'seerahCourse')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
+                      selectedCourseSlug === 'seerahCourse' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>Seerah of Prophet ﷺ</span>
+                    <span className="text-[10px] text-[#8C7A7E]">Women</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleNavClick('courseDetail', 'tajweed1on1')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
+                      selectedCourseSlug === 'tajweed1on1' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>Tajweed 1 on 1 Classes</span>
+                    <span className="text-[10px] text-[#8C7A7E]">Women</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleNavClick('courseDetail', 'nooraniQaida')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
+                      selectedCourseSlug === 'nooraniQaida' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>Noorani Qaida Course</span>
+                    <span className="text-[10px] text-[#8C7A7E]">Adults</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleNavClick('courseDetail', 'preDiplomaDeeniyat')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
+                      selectedCourseSlug === 'preDiplomaDeeniyat' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>Pre Diploma in Deeniyat</span>
+                    <span className="text-[10px] text-[#8C7A7E]">6 Months</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleNavClick('courseDetail', 'juniorsDeeniyatMastercourse')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
+                      selectedCourseSlug === 'juniorsDeeniyatMastercourse' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>Juniors Deeniyat Mastercourse</span>
+                    <span className="text-[10px] text-[#2E6B38] font-bold">Kids</span>
+                  </button>
+
+                  <button
+                    onClick={() => handleNavClick('courseDetail', 'nooraniQaidaKids')}
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
+                      selectedCourseSlug === 'nooraniQaidaKids' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
+                    }`}
+                  >
+                    <span>Noorani Qaida (Kids)</span>
+                    <span className="text-[10px] text-[#2E6B38] font-bold">Kids</span>
+                  </button>
+                </div>
+
+                {/* Section 3: Sacred Knowledge Center */}
                 <div className="space-y-1 pt-3 border-t border-[#E8DDD9]">
                   <span className="px-3 text-[10px] font-bold text-[#78122B] uppercase tracking-wider block mb-1">
                     Sacred Knowledge Center
@@ -452,7 +546,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
 
                   <button
                     onClick={() => handleNavClick('asmaUlHusna')}
-                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors ${
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
                       currentRoute === 'asmaUlHusna' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                     }`}
                   >
@@ -462,7 +556,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
 
                   <button
                     onClick={() => handleNavClick('fivePillars')}
-                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors ${
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
                       currentRoute === 'fivePillars' ? 'bg-[#F9E8EC] text-[#78122B]' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                     }`}
                   >
@@ -471,15 +565,15 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
                   </button>
                 </div>
 
-                {/* Academy & Support */}
+                {/* Section 4: Academy & Financial Aid */}
                 <div className="space-y-1 pt-3 border-t border-[#E8DDD9]">
                   <span className="px-3 text-[10px] font-bold text-[#78122B] uppercase tracking-wider block mb-1">
-                    Academy & Support
+                    Academy & Financial Aid
                   </span>
 
                   <button
                     onClick={() => handleNavClick('scholarship')}
-                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors ${
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
                       currentRoute === 'scholarship' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                     }`}
                   >
@@ -489,17 +583,17 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
 
                   <button
                     onClick={() => handleNavClick('about')}
-                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors ${
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
                       currentRoute === 'about' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                     }`}
                   >
-                    <span>About Qalbiya</span>
+                    <span>About Qalbiya Institute</span>
                     <span className="text-[#8C7A7E]">Mission</span>
                   </button>
 
                   <button
                     onClick={() => handleNavClick('faq')}
-                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors ${
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
                       currentRoute === 'faq' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                     }`}
                   >
@@ -509,7 +603,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
 
                   <button
                     onClick={() => handleNavClick('contact')}
-                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors ${
+                    className={`flex w-full items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
                       currentRoute === 'contact' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#5C4D50] hover:bg-[#FDFBF7]'
                     }`}
                   >
@@ -518,15 +612,15 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
                   </button>
                 </div>
 
-                {/* Policies & Institutional Guidelines */}
+                {/* Section 5: Institutional Policies & Terms */}
                 <div className="space-y-1 pt-3 border-t border-[#E8DDD9]">
                   <span className="px-3 text-[10px] font-bold text-[#8C7A7E] uppercase tracking-wider block mb-1">
-                    Policies & Terms
+                    Policies & Guidelines
                   </span>
 
                   <button
                     onClick={() => handleNavClick('refundPolicy')}
-                    className={`flex w-full items-center justify-between px-3.5 py-1.5 rounded-lg text-xs transition-colors ${
+                    className={`flex w-full items-center justify-between px-3.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer ${
                       currentRoute === 'refundPolicy' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#8C7A7E] hover:text-[#23181A]'
                     }`}
                   >
@@ -535,7 +629,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
 
                   <button
                     onClick={() => handleNavClick('termsAndConditions')}
-                    className={`flex w-full items-center justify-between px-3.5 py-1.5 rounded-lg text-xs transition-colors ${
+                    className={`flex w-full items-center justify-between px-3.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer ${
                       currentRoute === 'termsAndConditions' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#8C7A7E] hover:text-[#23181A]'
                     }`}
                   >
@@ -544,7 +638,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
 
                   <button
                     onClick={() => handleNavClick('privacyPolicy')}
-                    className={`flex w-full items-center justify-between px-3.5 py-1.5 rounded-lg text-xs transition-colors ${
+                    className={`flex w-full items-center justify-between px-3.5 py-1.5 rounded-lg text-xs transition-colors cursor-pointer ${
                       currentRoute === 'privacyPolicy' ? 'bg-[#F9E8EC] text-[#78122B] font-semibold' : 'text-[#8C7A7E] hover:text-[#23181A]'
                     }`}
                   >
@@ -554,12 +648,13 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
 
               </div>
 
+              {/* Drawer Bottom Register CTA */}
               <div className="pt-4 border-t border-[#E8DDD9] space-y-2">
                 <a 
                   href="https://wa.me/918145363290?text=Assalamu%20Alaikum%2C%20I%20am%20interested%20in%20registering%20for%20classes%20at%20Qalbiya%20Islamic%20Institute."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#78122B] hover:bg-[#630E23] text-white text-sm font-semibold text-center shadow-sm cursor-pointer"
+                  className="flex w-full items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#78122B] hover:bg-[#630E23] text-white text-sm font-semibold text-center shadow-sm cursor-pointer transition-all"
                 >
                   <MessageCircle className="w-4 h-4 text-[#F3D797]" />
                   <span>Register via WhatsApp</span>
