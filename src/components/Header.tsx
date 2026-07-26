@@ -58,7 +58,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
   const isSacredActive = currentRoute === 'asmaUlHusna' || currentRoute === 'fivePillars' || currentRoute === 'sacredKnowledge';
 
   return (
-    <header ref={headerRef} className="sticky top-0 z-50 w-full border-b border-[#E8DDD9] bg-[#FAF8F5]/95 text-[#23181A] backdrop-blur-md transition-all duration-300">
+    <header ref={headerRef} className="sticky top-0 z-[100] w-full border-b border-[#E8DDD9] bg-[#FAF8F5]/95 text-[#23181A] backdrop-blur-md transition-all duration-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between gap-2">
           
@@ -388,7 +388,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-xs"
+              className="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-sm"
               onClick={() => setIsOpen(false)}
             />
 
@@ -398,7 +398,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-              className="fixed right-0 top-0 bottom-0 z-[101] h-full w-80 sm:w-96 max-w-[90vw] bg-[#FAF8F5] border-l border-[#E8DDD9] p-6 shadow-2xl flex flex-col overflow-y-auto"
+              className="fixed right-0 top-0 bottom-0 z-[9999] h-full w-[85vw] sm:w-96 max-w-full bg-[#FAF8F5] border-l border-[#E8DDD9] p-6 shadow-2xl flex flex-col overflow-y-auto"
               id="main-nav-drawer"
             >
               {/* Drawer Top Branding Header */}
