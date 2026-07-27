@@ -45,48 +45,55 @@ export default function App() {
     return 'home';
   };
 
-  // Helper to construct clean URL hash for SEO & instant sharing
-  const getHashForRoute = (route: Route, courseSlug?: string): string => {
+  // Helper to construct clean URL path for SEO & shareable links (without '#')
+  const getPathForRoute = (route: Route, courseSlug?: string): string => {
     switch (route) {
       case 'asmaUlHusna':
-        return '#/asma-ul-husna';
+        return '/asma-ul-husna';
       case 'fivePillars':
-        return '#/five-pillars';
+        return '/five-pillars';
       case 'sacredKnowledge':
-        return '#/sacred-knowledge';
+        return '/sacred-knowledge';
       case 'freeCourses':
-        return '#/free-courses';
+        return '/free-courses';
       case 'courseDetail':
-        return courseSlug ? `#/course/${courseSlug}` : '#/women';
+        return courseSlug ? `/course/${courseSlug}` : '/women';
       case 'refundPolicy':
-        return '#/refund-policy';
+        return '/refund-policy';
       case 'termsAndConditions':
-        return '#/terms-and-conditions';
+        return '/terms-and-conditions';
       case 'privacyPolicy':
-        return '#/privacy-policy';
+        return '/privacy-policy';
       case 'about':
-        return '#/about';
+        return '/about';
       case 'women':
-        return '#/women';
+        return '/women';
       case 'kids':
-        return '#/kids';
+        return '/kids';
       case 'scholarship':
-        return '#/scholarship';
+        return '/scholarship';
       case 'contact':
-        return '#/contact';
+        return '/contact';
       case 'faq':
-        return '#/faq';
+        return '/faq';
       case 'home':
       default:
-        return '#/';
+        return '/';
     }
   };
 
-  // Helper to parse current URL location
+  // Helper to parse current URL location (supporting clean paths and auto-migrating legacy '#' URLs)
   const parseUrlLocation = (): { route: Route; courseSlug?: string } => {
     const hash = window.location.hash || '';
     const path = window.location.pathname || '';
-    let raw = hash ? hash.replace(/^#\/?/, '') : path.replace(/^\//, '');
+    let raw = '';
+
+    // If legacy '#' hash exists in URL, strip it and prepare for clean path migration
+    if (hash && hash !== '#/' && hash !== '#') {
+      raw = hash.replace(/^#\/?/, '');
+    } else {
+      raw = path.replace(/^\//, '');
+    }
 
     if (!raw || raw === '/') {
       return { route: 'home' };
@@ -101,7 +108,7 @@ export default function App() {
     return { route: norm };
   };
 
-  // Initialize and sync route from browser URL location (Hash & History popstate)
+  // Initialize and sync route from browser URL location (History popstate & auto-clean legacy hashes)
   useEffect(() => {
     const syncFromUrl = () => {
       const { route, courseSlug } = parseUrlLocation();
@@ -109,17 +116,23 @@ export default function App() {
       if (courseSlug) {
         setSelectedCourseSlug(courseSlug);
       }
+
+      // Auto-remove '#' from address bar if legacy hash URL was accessed
+      const cleanPath = getPathForRoute(route, courseSlug);
+      if (window.location.hash || window.location.pathname !== cleanPath) {
+        window.history.replaceState(null, '', cleanPath);
+      }
     };
 
     // Sync on initial load
     syncFromUrl();
 
-    // Listen for back/forward browser navigation and hash changes
-    window.addEventListener('hashchange', syncFromUrl);
+    // Listen for back/forward browser navigation
     window.addEventListener('popstate', syncFromUrl);
+    window.addEventListener('hashchange', syncFromUrl);
     return () => {
-      window.removeEventListener('hashchange', syncFromUrl);
       window.removeEventListener('popstate', syncFromUrl);
+      window.removeEventListener('hashchange', syncFromUrl);
     };
   }, []);
 
@@ -222,10 +235,10 @@ export default function App() {
       setSelectedCourseSlug(undefined);
     }
 
-    // Update URL hash for instant routing & shareable link
-    const newHash = getHashForRoute(targetRoute, courseSlug);
-    if (window.location.hash !== newHash) {
-      window.history.pushState(null, '', newHash);
+    // Update clean URL path without '#'
+    const newPath = getPathForRoute(targetRoute, courseSlug);
+    if (window.location.pathname !== newPath || window.location.hash) {
+      window.history.pushState(null, '', newPath);
     }
 
     // Scroll to top for seamless transitions
@@ -235,7 +248,7 @@ export default function App() {
   const handleSelectCourse = (slug: string) => {
     setSelectedCourseSlug(slug);
     setCurrentRoute('courseDetail');
-    window.history.pushState(null, '', `#/course/${slug}`);
+    window.history.pushState(null, '', `/course/${slug}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
