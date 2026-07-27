@@ -317,7 +317,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
               className="inline-flex items-center justify-center px-4 sm:px-5 py-2 rounded-xl bg-[#78122B] text-white text-xs sm:text-sm font-semibold tracking-wide hover:bg-[#630E23] transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
               id="navRegisterBtn"
             >
-              Register
+              Enroll Now
             </a>
 
             {/* Mobile Drawer Toggle Button (Visible only on screens below lg) */}
@@ -773,7 +773,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate, select
                   className="flex w-full items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#78122B] hover:bg-[#630E23] text-white text-sm font-semibold text-center shadow-sm cursor-pointer transition-all"
                 >
                   <MessageCircle className="w-4 h-4 text-[#F3D797]" />
-                  <span>Register via WhatsApp</span>
+                  <span>Enroll via WhatsApp</span>
                 </a>
               </div>
             </motion.div>

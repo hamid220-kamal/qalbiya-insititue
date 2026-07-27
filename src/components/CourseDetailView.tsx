@@ -211,7 +211,7 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   <MessageSquare className="w-3.5 h-3.5 text-bg-deep" />
-                  <span>WhatsApp to Register</span>
+                  <span>WhatsApp to Enroll</span>
                 </span>
               </a>
 

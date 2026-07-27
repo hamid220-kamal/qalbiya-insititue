@@ -147,7 +147,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect }) => {
             className="inline-flex h-11 md:h-9 items-center justify-center rounded-xl bg-[#78122B] hover:bg-[#630E23] border border-[#78122B] px-3.5 text-xs font-semibold text-white transition-all duration-300 hover:shadow-xs"
             id={`course-card-wa-btn-${course.slug}`}
           >
-            Register
+            Enroll Now
           </a>
         </div>
       </div>
