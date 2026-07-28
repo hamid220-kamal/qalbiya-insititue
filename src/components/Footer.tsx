@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Send, Instagram, Compass, Heart, Sparkles } from 'lucide-react';
+import React from 'react';
+import { Instagram, Compass, Heart, Sparkles, MessageCircle } from 'lucide-react';
 import { Route } from '../types';
 import qalbiyaLogoImg from '../assets/images/logo.jpeg';
 
@@ -9,78 +9,6 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [isSubscribed, setIsSubscribed] = useState(false);
-  const [quickMessage, setQuickMessage] = useState('');
-  const [messageSent, setMessageSent] = useState(false);
-  const [isSending, setIsSending] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<string | null>(null);
-
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newsletterEmail.trim()) return;
-    
-    try {
-      const subs = JSON.parse(localStorage.getItem('qalbiya_newsletter') || '[]');
-      subs.push({ email: newsletterEmail, timestamp: new Date().toISOString() });
-      localStorage.setItem('qalbiya_newsletter', JSON.stringify(subs));
-    } catch (err) {
-      console.error("Local storage error:", err);
-    }
-    
-    setIsSubscribed(true);
-    setNewsletterEmail('');
-    setTimeout(() => setIsSubscribed(false), 5000);
-  };
-
-  const handleMessageSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!quickMessage.trim() || isSending) return;
-
-    setIsSending(true);
-    setSubmitStatus(null);
-
-    try {
-      const msgs = JSON.parse(localStorage.getItem('qalbiya_messages') || '[]');
-      msgs.push({ message: quickMessage, timestamp: new Date().toISOString() });
-      localStorage.setItem('qalbiya_messages', JSON.stringify(msgs));
-    } catch (err) {
-      console.error("Local storage backup error:", err);
-    }
-
-    try {
-      const response = await fetch('/api/send-message', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: quickMessage,
-          sourceRoute: currentRoute || 'general',
-        }),
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        setSubmitStatus(data.message || '✓ Message sent successfully!');
-        setMessageSent(true);
-        setQuickMessage('');
-      } else {
-        setSubmitStatus('❌ Failed to deliver message. Please try again.');
-      }
-    } catch (error) {
-      console.error('Error sending message:', error);
-      setSubmitStatus('✓ Saved locally! Ms. Mustara will be notified.');
-      setMessageSent(true);
-      setQuickMessage('');
-    } finally {
-      setIsSending(false);
-      setTimeout(() => {
-        setMessageSent(false);
-        setSubmitStatus(null);
-      }, 7000);
-    }
-  };
 
   return (
     <footer className="w-full bg-[#78122B] text-white border-t border-[#630E23] py-16 transition-all duration-300">
@@ -255,72 +183,37 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
             </ul>
           </div>
 
-          {/* Interactive Block: Fast Note & Newsletter */}
-          <div className="md:col-span-4 space-y-6">
+          {/* Interactive Block: WhatsApp Contact Buttons */}
+          <div className="md:col-span-4 space-y-4">
             <div className="space-y-3">
-              <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#F3D797]">Drop Ms. Mustara a Reflection</h4>
-              <p className="text-xs text-white/90">Have questions or simply want to send du'as? Leave your note below.</p>
+              <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#F3D797]">Connect With Us</h4>
+              <p className="text-xs text-white/90">Reach out directly via WhatsApp for questions or guidance.</p>
               
-              <form onSubmit={handleMessageSubmit} className="space-y-2" id="footer-message-form">
-                <div className="relative">
-                  <textarea
-                    value={quickMessage}
-                    onChange={(e) => setQuickMessage(e.target.value)}
-                    placeholder={isSending ? "Sending message..." : "Your message, question, or du'a..."}
-                    rows={2}
-                    disabled={isSending}
-                    className="w-full rounded-xl border border-white/30 bg-white px-3.5 py-2.5 text-sm text-[#23181A] placeholder-[#8C7A7E] focus:border-[#F3D797] focus:outline-none focus:ring-1 focus:ring-[#F3D797] resize-none transition-all duration-300 disabled:opacity-60 shadow-xs font-medium"
-                    id="footer-message-input"
-                  />
-                  <button
-                    type="submit"
-                    disabled={isSending || !quickMessage.trim()}
-                    className="absolute bottom-2.5 right-2.5 flex h-8 w-8 items-center justify-center rounded-lg bg-[#F3D797] text-[#480117] hover:bg-[#E2C47E] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shadow-xs font-bold"
-                    aria-label="Send message"
-                    id="footer-message-submit"
-                  >
-                    {isSending ? (
-                      <span className="w-3 h-3 border-2 border-[#480117] border-t-transparent rounded-full animate-spin" />
-                    ) : (
-                      <Send className="w-3.5 h-3.5" />
-                    )}
-                  </button>
-                </div>
-                {messageSent && submitStatus && (
-                  <p className="text-xs font-bold animate-pulse text-[#81E6A5]" id="footer-message-success">
-                    {submitStatus}
-                  </p>
-                )}
-              </form>
-            </div>
-
-            <div className="space-y-3 pt-2">
-              <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#F3D797]">Sacred Newsletter</h4>
-              <p className="text-xs text-white/90">Get spiritually enriching reflections & course schedules once a month.</p>
-              
-              <form onSubmit={handleNewsletterSubmit} className="flex gap-2" id="footer-newsletter-form">
-                <input
-                  type="email"
-                  required
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
-                  placeholder="your.email@example.com"
-                  className="flex-1 rounded-xl border border-white/30 bg-white px-3.5 py-2 text-sm text-[#23181A] placeholder-[#8C7A7E] focus:border-[#F3D797] focus:outline-none focus:ring-1 focus:ring-[#F3D797] transition-all duration-300 min-h-[44px] md:min-h-0 shadow-xs font-medium"
-                  id="footer-newsletter-input"
-                />
-                <button
-                  type="submit"
-                  className="rounded-xl bg-[#F3D797] hover:bg-[#E2C47E] text-[#480117] px-4 py-2 text-xs font-bold tracking-wider uppercase transition-all duration-300 cursor-pointer min-h-[44px] md:min-h-0 flex items-center justify-center shadow-xs"
-                  id="footer-newsletter-submit"
+              <div className="flex flex-col gap-3">
+                {/* Ms. Mustara WhatsApp Button */}
+                <a
+                  href="https://wa.me/918145363290?text=Assalamu%20Alaikum%20Ms.%20Mustara%2C%20I%20have%20questions%20regarding%20Qalbiya%20Islamic%20Institute."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2.5 rounded-xl bg-[#25D366] hover:bg-[#1fb759] text-white px-4 py-3 text-xs font-bold tracking-wider uppercase transition-all duration-300 cursor-pointer shadow-xs w-full"
+                  id="footer-whatsapp-mustara"
                 >
-                  Subscribe
-                </button>
-              </form>
-              {isSubscribed && (
-                <p className="text-xs text-[#81E6A5] font-semibold animate-pulse" id="footer-newsletter-success">
-                  ✓ Successfully subscribed with respect. Welcome!
-                </p>
-              )}
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Chat with Ms. Mustara</span>
+                </a>
+
+                {/* Student Help Desk WhatsApp Button */}
+                <a
+                  href="https://wa.me/919905101016?text=Assalamu%20Alaikum%2C%20I%20need%20help%20from%20the%20Student%20Help%20Desk%20regarding%20Qalbiya%20courses."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2.5 rounded-xl bg-[#128C7E] hover:bg-[#0d6f6a] text-white px-4 py-3 text-xs font-bold tracking-wider uppercase transition-all duration-300 cursor-pointer shadow-xs w-full"
+                  id="footer-whatsapp-helpdesk"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Student Help Desk</span>
+                </a>
+              </div>
             </div>
           </div>
 
