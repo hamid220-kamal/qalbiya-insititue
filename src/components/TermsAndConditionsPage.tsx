@@ -186,7 +186,8 @@ export const TermsAndConditionsPage: React.FC<TermsAndConditionsPageProps> = ({ 
       <section className="text-center p-8 rounded-2xl border border-dashed border-brand-border bg-panel-dark/40 space-y-5">
         <h3 className="serif-heading text-lg font-bold text-text-cream">Have any questions about these Terms?</h3>
         <p className="text-xs text-text-sage max-w-md mx-auto leading-relaxed">
-          For any questions about these terms, please contact us via WhatsApp or Instagram. We are here to support your learning journey.
+          For any questions about these terms, please contact us via WhatsApp or Instagram. We are here to support your learning journey. <span className="font-semibold text-accent-gold">We reply within 24 hours.</span>
+        </p>
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-2">
           <a
