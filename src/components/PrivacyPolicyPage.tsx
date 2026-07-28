@@ -2,7 +2,6 @@ import React from 'react';
 import { 
   ShieldCheck, 
   User, 
-  CreditCard, 
   MessageSquare, 
   Share2, 
   Heart, 

@@ -151,7 +151,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
           All course fees are non-refundable. Please see our{' '}
           {onNavigate ? (
             <button
-              onClick={() => onNavigate('refund-policy')}
+              onClick={() => onNavigate('refundPolicy')}
               className="text-accent-gold underline hover:text-text-cream transition-colors font-medium inline bg-transparent border-0 p-0 cursor-pointer align-baseline"
             >
               Refund Policy
@@ -194,7 +194,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
           Yes, check our{' '}
           {onNavigate ? (
             <button
-              onClick={() => onNavigate('free-courses')}
+              onClick={() => onNavigate('freeCourses')}
               className="text-accent-gold underline hover:text-text-cream transition-colors font-medium inline bg-transparent border-0 p-0 cursor-pointer align-baseline"
             >
               Free Courses
