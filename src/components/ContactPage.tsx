@@ -373,7 +373,32 @@ export const ContactPage: React.FC = () => {
           id="contact-direct-cards"
         >
           
-          {/* Card 1: WhatsApp Support Direct */}
+          {/* Card 1: Student Support Desk */}
+          <div className="bg-white border border-[#E8DDD9] rounded-2xl p-5 space-y-3 shadow-xs">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700 border border-blue-200">
+                <Phone className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-sm text-[#23181A]">Student Support Desk</h3>
+                <p className="text-xs text-[#5C4D50]">Direct phone support for students</p>
+              </div>
+            </div>
+            <p className="text-xs text-[#5C4D50] leading-relaxed">
+              Call our dedicated student support line for immediate assistance with classes, technical issues, and student inquiries.
+            </p>
+            <div className="pt-2 border-t border-[#E8DDD9] flex items-center justify-between">
+              <span className="font-mono text-xs font-bold text-[#23181A]">+91 99051 01016</span>
+              <a 
+                href="tel:+919905101016"
+                className="text-xs font-semibold text-blue-700 hover:underline flex items-center gap-1"
+              >
+                Call Now →
+              </a>
+            </div>
+          </div>
+
+          {/* Card 2: WhatsApp Support Direct */}
           <div className="bg-white border border-[#E8DDD9] rounded-2xl p-5 space-y-3 shadow-xs">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200">
@@ -390,7 +415,7 @@ export const ContactPage: React.FC = () => {
             <div className="pt-2 border-t border-[#E8DDD9] flex items-center justify-between">
               <span className="font-mono text-xs font-bold text-[#23181A]">+91 81453 63290</span>
               <a 
-                href="https://wa.me/918145363290?text=Assalamu%20Alaikum%20Ms.%20Mustara%2C%20I%20have%20an%20inquiry%20about%20Qalbiya%20Islamic%20Institute."
+                href="https://wa.me/918145363290?text=Assalamualaikum%2C%20Ma%27am%2C%0A%0AI%20have%20some%20queries%20regarding%20Qalbiya%20Islamic%20Institute.%20Could%20you%20please%20guide%20me%3F%0A%0AJazakAllahu%20Khair"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs font-semibold text-[#25D366] hover:underline flex items-center gap-1"
@@ -400,7 +425,7 @@ export const ContactPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Card 2: Instagram Handles */}
+          {/* Card 3: Instagram Handles */}
           <div className="bg-white border border-[#E8DDD9] rounded-2xl p-5 space-y-3 shadow-xs">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-pink-50 text-pink-700 border border-pink-200">
@@ -427,7 +452,7 @@ export const ContactPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Card 3: Email Support */}
+          {/* Card 4: Email Support */}
           <div className="bg-white border border-[#E8DDD9] rounded-2xl p-5 space-y-3 shadow-xs">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#F9E8EC] text-[#78122B] border border-[#78122B]/20">
