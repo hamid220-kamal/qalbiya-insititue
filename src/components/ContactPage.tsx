@@ -23,7 +23,6 @@ export const ContactPage: React.FC = () => {
     { label: 'Kids Deeniyat', value: 'Kids Deeniyat Inquiry' },
     { label: 'Noorani Qaida', value: 'Noorani Qaida Inquiry' },
     { label: 'Scholarship Aid', value: 'Scholarship / Aid Request' },
-    { label: 'Girls Community', value: 'Girls Only Community Request' },
     { label: 'General Question', value: 'General Inquiry' },
   ];
 
@@ -365,30 +364,6 @@ export const ContactPage: React.FC = () => {
               </button>
             </div>
 
-            {/* Girls Only Community CTA */}
-            <div className="mt-6 pt-6 border-t-2 border-[#E8DDD9] space-y-3">
-              <div className="bg-gradient-to-r from-pink-50 to-purple-50 border border-pink-200 rounded-2xl p-5 space-y-3">
-                <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-pink-200 text-pink-700">
-                    <Sparkles className="w-4 h-4" />
-                  </div>
-                  <h3 className="font-bold text-sm text-[#23181A]">Join Our Sisters' Community</h3>
-                </div>
-                <p className="text-xs text-[#5C4D50] leading-relaxed">
-                  Connect with our dedicated girls-only community for exclusive conversations, shared reflections, mutual support, and spiritually nurturing discussions. Build lasting bonds while on your Islamic learning journey with sisters who are walking the same sacred path.
-                </p>
-                <a
-                  href="https://wa.me/919905101016?text=Assalamu%20Alaikum%2C%20I%20would%20like%20to%20join%20the%20sisters%27%20community%20group.%20Please%20add%20me%20to%20the%20free%20girls-only%20community%20for%20exclusive%20reflections%20and%20support."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-full gap-2 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-sm cursor-pointer"
-                >
-                  <MessageSquare className="w-4 h-4 fill-current" />
-                  <span>Request Access to Community</span>
-                </a>
-              </div>
-            </div>
-
           </form>
         </motion.div>
 
@@ -611,6 +586,49 @@ export const ContactPage: React.FC = () => {
               </div>
             );
           })}
+        </div>
+      </motion.section>
+
+    </div>
+
+      {/* Join Girls Community Section */}
+      <motion.section 
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="bg-gradient-to-r from-pink-50 to-purple-50 border border-pink-200 rounded-3xl p-8 sm:p-10 space-y-6 shadow-xs"
+        id="girls-community-section"
+      >
+        <div className="flex items-center gap-3 border-b border-pink-200 pb-4">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-pink-200 text-pink-700">
+            <Sparkles className="w-5 h-5" />
+          </div>
+          <h2 className="serif-heading text-2xl font-bold text-[#23181A]">
+            Join Our Sisters' Community
+          </h2>
+        </div>
+
+        <p className="text-sm text-[#5C4D50] leading-relaxed max-w-2xl">
+          Connect with our dedicated girls-only community for exclusive conversations, shared reflections, mutual support, and spiritually nurturing discussions. Build lasting bonds while on your Islamic learning journey with sisters who are walking the same sacred path.
+        </p>
+
+        <div>
+          <a
+            href="https://wa.me/918145363290?text=Assalamu%20Alaikum%20Ma%27am%2C%0A%0AI%20would%20like%20to%20join%20the%20sisters%27%20community%20group.%20Please%20add%20me%20to%20the%20free%20girls-only%20community%20for%20exclusive%20reflections%20and%20support."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all shadow-sm cursor-pointer"
+            id="girls-community-cta-btn"
+          >
+            <MessageSquare className="w-4 h-4 fill-current" />
+            <span>Request Access via WhatsApp</span>
+          </a>
+        </div>
+
+        <div className="bg-white border border-pink-200 rounded-2xl p-4 text-xs text-[#5C4D50]">
+          <p className="font-semibold text-[#23181A] mb-2">📱 Direct Contact:</p>
+          <p className="font-mono text-sm font-bold text-[#78122B]">+91 81453 63290</p>
+          <p className="text-[11px] mt-2">Message Ms. Mustara directly to request access to the community.</p>
         </div>
       </motion.section>
 
