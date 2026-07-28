@@ -4,7 +4,7 @@ import {
   Heart, BookOpen, GraduationCap, Users, Shield, ArrowRight, Star, 
   Check, MessageCircle, Sparkles, Quote, HelpCircle, ChevronDown, 
   Compass, Lightbulb, Sun, Award, Globe, Phone, Mail, Instagram,
-  ChevronRight, ChevronLeft
+  ChevronRight, ChevronLeft, Send, CheckCircle2, AlertCircle, ExternalLink
 } from 'lucide-react';
 import { Course, Route } from '../types';
 import { CourseCard } from './CourseCard';
@@ -30,6 +30,17 @@ export const Homepage: React.FC<HomepageProps> = ({
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [phoneSubmitted, setPhoneSubmitted] = useState(false);
+
+  // Inquiry form states
+  const [inquiryName, setInquiryName] = useState('');
+  const [inquiryEmail, setInquiryEmail] = useState('');
+  const [inquiryWhatsapp, setInquiryWhatsapp] = useState('');
+  const [inquirySubject, setInquirySubject] = useState('General Inquiry');
+  const [inquiryMessage, setInquiryMessage] = useState('');
+  const [isInquirySubmitting, setIsInquirySubmitting] = useState(false);
+  const [inquirySuccess, setInquirySuccess] = useState<string | null>(null);
+  const [inquiryError, setInquiryError] = useState<string | null>(null);
+  const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState<string | null>(null);
 
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
   const [isTestimonialsHovered, setIsTestimonialsHovered] = useState(false);
@@ -83,6 +94,112 @@ export const Homepage: React.FC<HomepageProps> = ({
     setPhoneSubmitted(true);
     setPhoneNumber('');
     setTimeout(() => setPhoneSubmitted(false), 5000);
+  };
+
+  const quickTopics = [
+    { label: 'Tajweed 1 on 1', value: 'Tajweed 1 on 1 Inquiry' },
+    { label: 'Seerah Course', value: 'Seerah Course Inquiry' },
+    { label: 'Kids Deeniyat', value: 'Kids Deeniyat Inquiry' },
+    { label: 'Noorani Qaida', value: 'Noorani Qaida Inquiry' },
+    { label: 'Scholarship Aid', value: 'Scholarship / Aid Request' },
+    { label: 'General Question', value: 'General Inquiry' },
+  ];
+
+  const generateWhatsAppMessage = () => {
+    let text = `*Assalamu Alaikum Ms. Mustara,*\n\n`;
+    text += `*Name:* ${inquiryName.trim() || 'Not provided'}\n`;
+    text += `*Email:* ${inquiryEmail.trim() || 'Not provided'}\n`;
+    if (inquiryWhatsapp.trim()) {
+      text += `*WhatsApp:* ${inquiryWhatsapp.trim()}\n`;
+    }
+    text += `*Subject:* ${inquirySubject}\n\n`;
+    text += `*Message:*\n${inquiryMessage.trim() || 'I would like to inquire about classes at Qalbiya Islamic Institute.'}`;
+    return text;
+  };
+
+  const handleSendWhatsApp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!inquiryName.trim() || !inquiryEmail.trim() || !inquiryMessage.trim()) {
+      setInquiryError('Please fill in your Name, Email, and Message before sending.');
+      return;
+    }
+
+    setIsInquirySubmitting(true);
+    setInquiryError(null);
+    setInquirySuccess(null);
+
+    const fullMessageText = generateWhatsAppMessage();
+    const encodedText = encodeURIComponent(fullMessageText);
+    const waUrl = `https://wa.me/918145363290?text=${encodedText}`;
+    setLastWhatsAppUrl(waUrl);
+
+    try {
+      // Post inquiry to server API so it is persisted in inquiries.json
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: inquiryName.trim(),
+          email: inquiryEmail.trim(),
+          whatsapp: inquiryWhatsapp.trim(),
+          subject: inquirySubject,
+          message: inquiryMessage.trim()
+        })
+      });
+
+      setInquirySuccess('Your message details have been saved and WhatsApp is opening now!');
+      
+      // Open WhatsApp link in new tab
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+    } catch (err) {
+      console.error('Error logging contact inquiry:', err);
+      // Fallback: still open WhatsApp even if server fetch had an issue
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+      setInquirySuccess('Opening WhatsApp with your pre-filled inquiry details...');
+    } finally {
+      setIsInquirySubmitting(false);
+    }
+  };
+
+  const handleSubmitWebOnly = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!inquiryName.trim() || !inquiryEmail.trim() || !inquiryMessage.trim()) {
+      setInquiryError('Please fill in your Name, Email, and Message before submitting.');
+      return;
+    }
+
+    setIsInquirySubmitting(true);
+    setInquiryError(null);
+    setInquirySuccess(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: inquiryName.trim(),
+          email: inquiryEmail.trim(),
+          whatsapp: inquiryWhatsapp.trim(),
+          subject: inquirySubject,
+          message: inquiryMessage.trim()
+        })
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setInquirySuccess('Alhamdulillah! Your inquiry has been submitted successfully. Ms. Mustara will review it shortly.');
+        setInquiryName('');
+        setInquiryEmail('');
+        setInquiryWhatsapp('');
+        setInquiryMessage('');
+      } else {
+        setInquiryError(data.error || 'Failed to send inquiry. Please try WhatsApp directly.');
+      }
+    } catch (err) {
+      setInquiryError('Network error. Please try sending directly via WhatsApp.');
+    } finally {
+      setIsInquirySubmitting(false);
+    }
   };
 
   // Sample Names of Allah (4 preview cards)
@@ -711,71 +828,205 @@ export const Homepage: React.FC<HomepageProps> = ({
         </div>
       </section>
 
-      {/* Section 8: Sacred Guidance Request / Contact Call & Newsletter */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16" id="guidance-and-cta">
-        <div className="bg-[#78122B] text-white rounded-3xl p-8 sm:p-14 text-center space-y-8 shadow-xl relative overflow-hidden">
-          
-          <div className="space-y-3 max-w-2xl mx-auto">
-            <h2 className="serif-heading text-3xl sm:text-4xl font-bold leading-tight">
-              Begin Your Journey Back To Deen Today
+      {/* Section 8: Send an Inquiry Form */}
+      <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-16 pb-24" id="inquiry-form">
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-white border border-[#E8DDD9] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6"
+        >
+          <div className="border-b border-[#E8DDD9] pb-4 text-center">
+            <h2 className="serif-heading text-3xl sm:text-4xl font-bold text-[#23181A]">
+              Send an Inquiry
             </h2>
-            <p className="text-xs sm:text-sm text-white/80 font-medium max-w-lg mx-auto leading-relaxed">
-              Have questions or need guidance selecting the right program for yourself or your child? Our team is here to assist you with warmth and clarity.
+            <p className="text-sm text-[#5C4D50] mt-2">
+              Your details will be formatted into a WhatsApp message and saved securely.
             </p>
           </div>
 
-          {/* Quick Call Back Form */}
-          <form onSubmit={handlePhoneSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
-            <div className="relative w-full sm:flex-1">
-              <Phone className="w-4 h-4 text-[#8C7A7E] absolute left-3.5 top-3.5" />
-              <input
-                type="tel"
+          {/* Quick Topic Chips */}
+          <div className="space-y-3">
+            <label className="text-xs font-semibold text-[#23181A] uppercase tracking-wider block text-center">
+              Quick Subject Select
+            </label>
+            <div className="flex flex-wrap justify-center gap-2">
+              {quickTopics.map((topic) => (
+                <button
+                  key={topic.value}
+                  type="button"
+                  onClick={() => setInquirySubject(topic.value)}
+                  className={`text-xs px-3 py-1.5 rounded-full border transition-all cursor-pointer ${
+                    inquirySubject === topic.value
+                      ? 'bg-[#78122B] text-white border-[#78122B] font-semibold'
+                      : 'bg-[#FAF8F5] text-[#5C4D50] border-[#E8DDD9] hover:border-[#78122B] hover:text-[#78122B]'
+                  }`}
+                >
+                  {topic.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <form className="space-y-4">
+            
+            {/* Name & Email Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-[#23181A] uppercase tracking-wider mb-1">
+                  Full Name <span className="text-[#78122B]">*</span>
+                </label>
+                <input 
+                  type="text"
+                  value={inquiryName}
+                  onChange={(e) => setInquiryName(e.target.value)}
+                  placeholder="e.g. Sister Fatima"
+                  className="w-full bg-[#FAF8F5] border border-[#E8DDD9] rounded-xl px-3.5 py-2.5 text-sm text-[#23181A] placeholder-[#8C7A7E] focus:outline-none focus:ring-2 focus:ring-[#78122B]/30 focus:border-[#78122B] transition-all"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-[#23181A] uppercase tracking-wider mb-1">
+                  Email Address <span className="text-[#78122B]">*</span>
+                </label>
+                <input 
+                  type="email"
+                  value={inquiryEmail}
+                  onChange={(e) => setInquiryEmail(e.target.value)}
+                  placeholder="e.g. fatima@example.com"
+                  className="w-full bg-[#FAF8F5] border border-[#E8DDD9] rounded-xl px-3.5 py-2.5 text-sm text-[#23181A] placeholder-[#8C7A7E] focus:outline-none focus:ring-2 focus:ring-[#78122B]/30 focus:border-[#78122B] transition-all"
+                  required
+                />
+              </div>
+            </div>
+
+            {/* WhatsApp Number & Subject Dropdown */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-[#23181A] uppercase tracking-wider mb-1">
+                  WhatsApp Number
+                </label>
+                <input 
+                  type="tel"
+                  value={inquiryWhatsapp}
+                  onChange={(e) => setInquiryWhatsapp(e.target.value)}
+                  placeholder="+91 98765 43210"
+                  className="w-full bg-[#FAF8F5] border border-[#E8DDD9] rounded-xl px-3.5 py-2.5 text-sm text-[#23181A] placeholder-[#8C7A7E] focus:outline-none focus:ring-2 focus:ring-[#78122B]/30 focus:border-[#78122B] transition-all"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-[#23181A] uppercase tracking-wider mb-1">
+                  Inquiry Topic
+                </label>
+                <select
+                  value={inquirySubject}
+                  onChange={(e) => setInquirySubject(e.target.value)}
+                  className="w-full bg-[#FAF8F5] border border-[#E8DDD9] rounded-xl px-3.5 py-2.5 text-sm text-[#23181A] focus:outline-none focus:ring-2 focus:ring-[#78122B]/30 focus:border-[#78122B] transition-all"
+                >
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Seerah Course Inquiry">Seerah of Prophet ﷺ Course</option>
+                  <option value="Tajweed 1:1 Inquiry">Tajweed 1:1 Classes</option>
+                  <option value="Noorani Qaida Inquiry">Noorani Qaida Course</option>
+                  <option value="Pre-Diploma Deeniyat Inquiry">Pre-Diploma in Deeniyat</option>
+                  <option value="Kids Deeniyat Inquiry">Juniors Deeniyat Mastercourse</option>
+                  <option value="Scholarship / Aid Request">Scholarship & Financial Aid</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Message Textarea */}
+            <div>
+              <label className="block text-xs font-semibold text-[#23181A] uppercase tracking-wider mb-1">
+                Your Message or Question <span className="text-[#78122B]">*</span>
+              </label>
+              <textarea 
+                rows={4}
+                value={inquiryMessage}
+                onChange={(e) => setInquiryMessage(e.target.value)}
+                placeholder="Write your questions regarding class timings, batch schedules, or course details here..."
+                className="w-full bg-[#FAF8F5] border border-[#E8DDD9] rounded-xl px-3.5 py-2.5 text-sm text-[#23181A] placeholder-[#8C7A7E] focus:outline-none focus:ring-2 focus:ring-[#78122B]/30 focus:border-[#78122B] transition-all resize-none"
                 required
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                placeholder="Enter your phone number"
-                className="w-full bg-white text-[#23181A] pl-10 pr-4 py-3 rounded-xl text-sm placeholder-[#8C7A7E] focus:outline-none focus:ring-2 focus:ring-[#F3D797]"
-                id="homepage-phone-input"
               />
             </div>
-            <button
-              type="submit"
-              className="w-full sm:w-auto bg-[#F3D797] text-[#480117] font-bold px-6 py-3 rounded-xl text-sm hover:bg-[#E2C47E] transition-all duration-300 cursor-pointer shrink-0 shadow-md hover:shadow-xl hover:-translate-y-0.5"
-              id="homepage-phone-submit-btn"
-            >
-              Request Call
-            </button>
+
+            {/* Formatted Message Live Preview */}
+            <div className="bg-[#FAF8F5] border border-[#E8DDD9] rounded-xl p-3.5 space-y-1">
+              <span className="text-[11px] font-bold text-[#78122B] uppercase tracking-wider block">
+                ✨ Formatted WhatsApp Message Preview
+              </span>
+              <pre className="text-xs font-sans text-[#5C4D50] whitespace-pre-wrap leading-relaxed bg-white p-2.5 rounded-lg border border-[#E8DDD9]/80 max-h-32 overflow-y-auto">
+                {generateWhatsAppMessage()}
+              </pre>
+            </div>
+
+            {/* Error or Success Feedback Banners */}
+            <AnimatePresence>
+              {inquiryError && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="p-3 bg-red-50 border border-red-200 text-red-800 text-xs rounded-xl flex items-center gap-2"
+                >
+                  <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+                  <span>{inquiryError}</span>
+                </motion.div>
+              )}
+
+              {inquirySuccess && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="p-3.5 bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs rounded-xl space-y-1.5"
+                >
+                  <div className="flex items-center gap-2 font-semibold text-emerald-800">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{inquirySuccess}</span>
+                  </div>
+                  {lastWhatsAppUrl && (
+                    <div className="pt-1">
+                      <a 
+                        href={lastWhatsAppUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-emerald-800 hover:text-emerald-950 font-bold underline text-xs"
+                      >
+                        Click here if WhatsApp did not open automatically <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Submit Action Buttons */}
+            <div className="pt-2 flex flex-col sm:flex-row gap-3">
+              <button
+                type="button"
+                onClick={handleSendWhatsApp}
+                disabled={isInquirySubmitting}
+                className="flex-1 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              >
+                <MessageCircle className="w-4 h-4 fill-current" />
+                <span>{isInquirySubmitting ? 'Processing...' : 'Send via WhatsApp'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleSubmitWebOnly}
+                disabled={isInquirySubmitting}
+                className="bg-[#78122B] hover:bg-[#630E23] text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              >
+                <Send className="w-4 h-4" />
+                <span>Submit Web Form</span>
+              </button>
+            </div>
+
           </form>
-
-          {phoneSubmitted && (
-            <p className="text-xs text-[#F3D797] font-semibold animate-pulse">
-              ✓ Jazak Allah Khair! We will contact you shortly to guide your enrollment.
-            </p>
-          )}
-
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 border-t border-white/10">
-            <button
-              onClick={() => onNavigate('women')}
-              className="w-full sm:w-auto max-w-xs sm:max-w-none min-w-[210px] inline-flex h-11 sm:h-12 items-center justify-center rounded-xl bg-white text-[#78122B] px-6 sm:px-8 text-sm font-bold hover:bg-[#FAF8F5] transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 gap-2 cursor-pointer"
-              id="homepage-cta-explore-women"
-            >
-              <span>Explore Women's Hub</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-
-            <a
-              href="https://wa.me/918145363290?text=Assalamu%20Alaikum%2C%20I%20would%20like%20to%20know%20more%20about%20Qalbiya%20programs."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto max-w-xs sm:max-w-none min-w-[180px] inline-flex h-11 sm:h-12 items-center justify-center rounded-xl bg-[#25D366] text-white px-6 text-sm font-bold hover:bg-[#20bd5a] transition-all duration-300 shadow-md hover:shadow-2xl hover:-translate-y-1 gap-2 cursor-pointer"
-              id="homepage-whatsapp-link"
-            >
-              <MessageCircle className="w-4 h-4 fill-current" />
-              <span>WhatsApp Us</span>
-            </a>
-          </div>
-
-        </div>
+        </motion.div>
       </section>
 
     </div>
