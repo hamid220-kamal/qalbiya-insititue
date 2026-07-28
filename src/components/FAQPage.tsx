@@ -457,7 +457,8 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
       <section className="text-center p-8 rounded-2xl border border-dashed border-brand-border bg-panel-dark/40 space-y-5" id="faq-further-support">
         <h3 className="serif-heading text-lg font-bold text-text-cream">Still have questions?</h3>
         <p className="text-xs text-text-sage max-w-md mx-auto leading-relaxed">
-          If your question isn't answered here, feel free to reach out to our admissions team directly. We're happy to guide you on your journey.
+          If your question isn't answered here, feel free to reach out to our admissions team directly. We're happy to guide you on your journey. <span className="font-semibold text-accent-gold">We reply within 24 hours.</span>
+        </p>
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-2">
           <a

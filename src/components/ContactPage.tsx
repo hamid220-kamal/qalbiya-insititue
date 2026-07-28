@@ -158,7 +158,7 @@ export const ContactPage: React.FC = () => {
           Get in Touch with Qalbiya
         </h1>
         <p className="max-w-xl mx-auto text-sm sm:text-base leading-relaxed text-[#5C4D50]">
-          Have questions about course admissions, class schedules, or financial aid? Fill out your details below to auto-populate a direct message to Ms. Mustara on WhatsApp.
+          Have questions about course admissions, class schedules, or financial aid? Fill out your details below to auto-populate a direct message to Ms. Mustara on WhatsApp. <span className="font-semibold text-[#78122B]">We reply within 24 hours.</span>
         </p>
       </motion.section>
 
@@ -178,7 +178,7 @@ export const ContactPage: React.FC = () => {
               Send an Inquiry
             </h2>
             <p className="text-xs text-[#5C4D50] mt-1">
-              Your details will be formatted into a WhatsApp message and saved securely.
+              Your details will be formatted into a WhatsApp message and saved securely. <span className="font-semibold text-[#78122B]">We reply within 24 hours.</span>
             </p>
           </div>
 
@@ -609,7 +609,7 @@ export const ContactPage: React.FC = () => {
         </div>
 
         <p className="text-sm text-[#5C4D50] leading-relaxed max-w-2xl">
-          Connect with our dedicated girls-only community for exclusive conversations, shared reflections, mutual support, and spiritually nurturing discussions. Build lasting bonds while on your Islamic learning journey with sisters who are walking the same sacred path.
+          Connect with our dedicated girls-only community for exclusive conversations, shared reflections, mutual support, and spiritually nurturing discussions. Build lasting bonds while on your Islamic learning journey with sisters who are walking the same sacred path. <span className="font-semibold text-pink-700">We reply within 24 hours.</span>
         </p>
 
         <div>
