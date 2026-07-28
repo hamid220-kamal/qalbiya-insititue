@@ -1013,16 +1013,6 @@ export const Homepage: React.FC<HomepageProps> = ({
                 <MessageCircle className="w-4 h-4 fill-current" />
                 <span>{isInquirySubmitting ? 'Processing...' : 'Send via WhatsApp'}</span>
               </button>
-
-              <button
-                type="button"
-                onClick={handleSubmitWebOnly}
-                disabled={isInquirySubmitting}
-                className="bg-[#78122B] hover:bg-[#630E23] text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
-              >
-                <Send className="w-4 h-4" />
-                <span>Submit Web Form</span>
-              </button>
             </div>
 
           </form>

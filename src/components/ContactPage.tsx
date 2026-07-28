@@ -351,17 +351,6 @@ export const ContactPage: React.FC = () => {
                 <MessageSquare className="w-4 h-4 fill-current" />
                 <span>{isSubmitting ? 'Processing...' : 'Send via WhatsApp'}</span>
               </button>
-
-              <button
-                type="button"
-                onClick={handleSubmitWebOnly}
-                disabled={isSubmitting}
-                className="bg-[#78122B] hover:bg-[#630E23] text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
-                id="contact-form-submit-btn"
-              >
-                <Send className="w-4 h-4" />
-                <span>Submit Web Form</span>
-              </button>
             </div>
 
           </form>
