@@ -459,7 +459,6 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
         <p className="text-xs text-text-sage max-w-md mx-auto leading-relaxed">
           If your question isn't answered here, feel free to reach out to our admissions team directly. We're happy to guide you on your journey. <span className="font-semibold text-accent-gold">We reply within 24 hours.</span>
         </p>
-        </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-2">
           <a
             href="https://wa.me/918145363290?text=Assalamu%20Alaikum%2C%20I%20have%20a%20general%20question%20regarding%20Qalbiya%20Islamic%20Institute."
