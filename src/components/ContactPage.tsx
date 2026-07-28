@@ -623,6 +623,14 @@ export const ContactPage: React.FC = () => {
           <p className="text-sm text-[#5C4D50] max-w-2xl">
             Qalbiya Islamic Institute is exclusively for sisters seeking to deepen their connection with the Quran and Islamic knowledge. We create a supportive, women-centered learning environment where you can grow spiritually and academically.
           </p>
+          
+          {/* Class Frequency Badge */}
+          <div className="flex items-center gap-2 pt-2">
+            <span className="inline-block bg-[#78122B] text-white px-4 py-2 rounded-full text-xs font-bold">
+              📚 3 Classes Per Week
+            </span>
+            <span className="text-xs text-[#5C4D50] font-medium">Flexible timing to fit your schedule</span>
+          </div>
         </div>
 
         <form className="space-y-5 grid grid-cols-1 lg:grid-cols-2 gap-6">
