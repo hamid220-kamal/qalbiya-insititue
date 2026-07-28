@@ -100,6 +100,9 @@ export const DhikrDuroodWidget: React.FC<{ activeModal: 'dhikr' | 'durood' | nul
     return 0;
   });
   const [showVirtuesTab, setShowVirtuesTab] = useState(false);
+  const [hoveredDhikr, setHoveredDhikr] = useState(false);
+  const [hoveredDurood, setHoveredDurood] = useState(false);
+  const [hoveredInstagram, setHoveredInstagram] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
