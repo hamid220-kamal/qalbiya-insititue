@@ -188,7 +188,6 @@ export const TermsAndConditionsPage: React.FC<TermsAndConditionsPageProps> = ({ 
         <p className="text-xs text-text-sage max-w-md mx-auto leading-relaxed">
           For any questions about these terms, please contact us via WhatsApp or Instagram. We are here to support your learning journey. <span className="font-semibold text-accent-gold">We reply within 24 hours.</span>
         </p>
-        </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-2">
           <a
             href="https://wa.me/918145363290?text=Assalamu%20Alaikum%20Ms.%20Mustara%2C%20I%20have%20a%20question%20regarding%20the%20Terms%20%26%20Conditions."
