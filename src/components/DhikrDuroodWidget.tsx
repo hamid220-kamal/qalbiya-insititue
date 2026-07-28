@@ -76,12 +76,7 @@ const dhikrRoutine: DhikrItem[] = [
   },
 ];
 
-export const DhikrDuroodWidget: React.FC = () => {
-  const [activeModal, setActiveModal] = useState<'dhikr' | 'durood' | null>(null);
-  const [hoveredDhikr, setHoveredDhikr] = useState(false);
-  const [hoveredDurood, setHoveredDurood] = useState(false);
-  const [hoveredInsta, setHoveredInsta] = useState(false);
-  const [hoveredWa, setHoveredWa] = useState(false);
+export const DhikrDuroodWidget: React.FC<{ activeModal: 'dhikr' | 'durood' | null; setActiveModal: (modal: 'dhikr' | 'durood' | null) => void }> = ({ activeModal, setActiveModal }) => {
   const [soundEnabled, setSoundEnabled] = useState(true);
 
   // 1-Min Dhikr State

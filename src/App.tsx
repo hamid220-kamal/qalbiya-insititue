@@ -6,7 +6,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Homepage } from './components/Homepage';
 import { AboutPage } from './components/AboutPage';
-import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { FloatingActionMenu } from './components/FloatingActionMenu';
 import { DhikrDuroodWidget } from './components/DhikrDuroodWidget';
 
 // Lazy load heavy route components for code-splitting
@@ -36,6 +36,7 @@ export default function App() {
   const [currentRoute, setCurrentRoute] = useState<Route>('home');
   const [selectedCourseSlug, setSelectedCourseSlug] = useState<string | undefined>(undefined);
   const [scholarshipPreselectSlug, setScholarshipPreselectSlug] = useState<string | undefined>(undefined);
+  const [activeModal, setActiveModal] = useState<'dhikr' | 'durood' | null>(null);
 
   // Helper to normalize any incoming route string (camelCase, kebab-case, or alias)
   const normalizeRouteName = (input: string): Route => {
@@ -421,11 +422,14 @@ export default function App() {
       {/* Universal Footer */}
       <Footer onNavigate={handleNavigate} currentRoute={currentRoute} />
 
-      {/* Floating WhatsApp Contact Button */}
-      <FloatingWhatsApp />
+      {/* Unified Floating Action Menu - Opens all four options */}
+      <FloatingActionMenu 
+        onDhikrClick={() => setActiveModal('dhikr')}
+        onDuroodClick={() => setActiveModal('durood')}
+      />
 
-      {/* Floating Dhikr & Durood Interactive Counter Bubbles */}
-      <DhikrDuroodWidget />
+      {/* Dhikr & Durood Modals (triggered from FloatingActionMenu) */}
+      <DhikrDuroodWidget activeModal={activeModal} setActiveModal={setActiveModal} />
 
     </div>
   );
