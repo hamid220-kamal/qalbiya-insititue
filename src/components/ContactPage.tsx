@@ -27,7 +27,6 @@ export const ContactPage: React.FC = () => {
   const [enrollmentSubmitting, setEnrollmentSubmitting] = useState(false);
   const [enrollmentSuccess, setEnrollmentSuccess] = useState<string | null>(null);
   const [enrollmentError, setEnrollmentError] = useState<string | null>(null);
-  const [isContactMenuOpen, setIsContactMenuOpen] = useState(false);
 
   const quickTopics = [
     { label: 'Tajweed 1 on 1', value: 'Tajweed 1 on 1 Inquiry' },
