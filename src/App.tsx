@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Route } from './types';
 import { coursesData } from './data';
@@ -6,19 +6,31 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Homepage } from './components/Homepage';
 import { AboutPage } from './components/AboutPage';
-import { ProgramsHub } from './components/ProgramsHub';
-import { FreeCoursesPage } from './components/FreeCoursesPage';
-import { ScholarshipPage } from './components/ScholarshipPage';
-import { CourseDetailView } from './components/CourseDetailView';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { DhikrDuroodWidget } from './components/DhikrDuroodWidget';
-import { ContactPage } from './components/ContactPage';
-import { RefundPolicyPage } from './components/RefundPolicyPage';
-import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
-import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
-import { FAQPage } from './components/FAQPage';
-import { AsmaUlHusnaPage } from './components/AsmaUlHusnaPage';
-import { FivePillarsPage } from './components/FivePillarsPage';
+
+// Lazy load heavy route components for code-splitting
+const ProgramsHub = React.lazy(() => import('./components/ProgramsHub').then(m => ({ default: m.ProgramsHub })));
+const FreeCoursesPage = React.lazy(() => import('./components/FreeCoursesPage').then(m => ({ default: m.FreeCoursesPage })));
+const ScholarshipPage = React.lazy(() => import('./components/ScholarshipPage').then(m => ({ default: m.ScholarshipPage })));
+const CourseDetailView = React.lazy(() => import('./components/CourseDetailView').then(m => ({ default: m.CourseDetailView })));
+const ContactPage = React.lazy(() => import('./components/ContactPage').then(m => ({ default: m.ContactPage })));
+const RefundPolicyPage = React.lazy(() => import('./components/RefundPolicyPage').then(m => ({ default: m.RefundPolicyPage })));
+const TermsAndConditionsPage = React.lazy(() => import('./components/TermsAndConditionsPage').then(m => ({ default: m.TermsAndConditionsPage })));
+const PrivacyPolicyPage = React.lazy(() => import('./components/PrivacyPolicyPage').then(m => ({ default: m.PrivacyPolicyPage })));
+const FAQPage = React.lazy(() => import('./components/FAQPage').then(m => ({ default: m.FAQPage })));
+const AsmaUlHusnaPage = React.lazy(() => import('./components/AsmaUlHusnaPage').then(m => ({ default: m.AsmaUlHusnaPage })));
+const FivePillarsPage = React.lazy(() => import('./components/FivePillarsPage').then(m => ({ default: m.FivePillarsPage })));
+
+// Loading fallback component
+const RouteLoadingFallback = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="text-center space-y-4">
+      <div className="w-12 h-12 border-4 border-[#F3D797] border-t-[#78122B] rounded-full animate-spin mx-auto"></div>
+      <p className="text-[#78122B] font-semibold">Loading...</p>
+    </div>
+  </div>
+);
 
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState<Route>('home');
@@ -273,54 +285,94 @@ export default function App() {
         return <AboutPage onNavigate={handleNavigate} />;
       case 'women':
         return (
-          <ProgramsHub 
-            category="women" 
-            courses={coursesData} 
-            onSelectCourse={handleSelectCourse} 
-            onNavigate={handleNavigate} 
-          />
+          <Suspense fallback={<RouteLoadingFallback />}>
+            <ProgramsHub 
+              category="women" 
+              courses={coursesData} 
+              onSelectCourse={handleSelectCourse} 
+              onNavigate={handleNavigate} 
+            />
+          </Suspense>
         );
       case 'kids':
         return (
-          <ProgramsHub 
-            category="kids" 
-            courses={coursesData} 
-            onSelectCourse={handleSelectCourse} 
-            onNavigate={handleNavigate} 
-          />
+          <Suspense fallback={<RouteLoadingFallback />}>
+            <ProgramsHub 
+              category="kids" 
+              courses={coursesData} 
+              onSelectCourse={handleSelectCourse} 
+              onNavigate={handleNavigate} 
+            />
+          </Suspense>
         );
       case 'freeCourses':
-        return <FreeCoursesPage />;
+        return (
+          <Suspense fallback={<RouteLoadingFallback />}>
+            <FreeCoursesPage />
+          </Suspense>
+        );
       case 'scholarship':
         return (
-          <ScholarshipPage 
-            courses={coursesData} 
-            initialCourseSlug={scholarshipPreselectSlug} 
-          />
+          <Suspense fallback={<RouteLoadingFallback />}>
+            <ScholarshipPage 
+              courses={coursesData} 
+              initialCourseSlug={scholarshipPreselectSlug} 
+            />
+          </Suspense>
         );
       case 'contact':
-        return <ContactPage />;
+        return (
+          <Suspense fallback={<RouteLoadingFallback />}>
+            <ContactPage />
+          </Suspense>
+        );
       case 'refundPolicy':
-        return <RefundPolicyPage />;
+        return (
+          <Suspense fallback={<RouteLoadingFallback />}>
+            <RefundPolicyPage />
+          </Suspense>
+        );
       case 'termsAndConditions':
-        return <TermsAndConditionsPage onNavigate={handleNavigate} />;
+        return (
+          <Suspense fallback={<RouteLoadingFallback />}>
+            <TermsAndConditionsPage onNavigate={handleNavigate} />
+          </Suspense>
+        );
       case 'privacyPolicy':
-        return <PrivacyPolicyPage />;
+        return (
+          <Suspense fallback={<RouteLoadingFallback />}>
+            <PrivacyPolicyPage />
+          </Suspense>
+        );
       case 'faq':
-        return <FAQPage onNavigate={handleNavigate} />;
+        return (
+          <Suspense fallback={<RouteLoadingFallback />}>
+            <FAQPage onNavigate={handleNavigate} />
+          </Suspense>
+        );
       case 'asmaUlHusna':
       case 'sacredKnowledge':
-        return <AsmaUlHusnaPage onNavigate={handleNavigate} />;
+        return (
+          <Suspense fallback={<RouteLoadingFallback />}>
+            <AsmaUlHusnaPage onNavigate={handleNavigate} />
+          </Suspense>
+        );
       case 'fivePillars':
-        return <FivePillarsPage onNavigate={handleNavigate} />;
+        return (
+          <Suspense fallback={<RouteLoadingFallback />}>
+            <FivePillarsPage onNavigate={handleNavigate} />
+          </Suspense>
+        );
       case 'courseDetail':
         if (activeCourse) {
           return (
-            <CourseDetailView 
-              course={activeCourse} 
-              onBack={() => handleNavigate(activeCourse.category)} 
-              onNavigateToScholarship={handleNavigateToScholarshipFromCourse}
-            />
+            <Suspense fallback={<RouteLoadingFallback />}>
+              <CourseDetailView 
+                course={activeCourse} 
+                onBack={() => handleNavigate(activeCourse.category)} 
+                onNavigateToScholarship={handleNavigateToScholarshipFromCourse}
+              />
+            </Suspense>
           );
         }
         return (
