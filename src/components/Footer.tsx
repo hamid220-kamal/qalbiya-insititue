@@ -42,18 +42,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
             </p>
 
             <div className="space-y-3 pt-2">
-              <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#F3D797]">Primary Connections</h4>
+              <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#F3D797]">Connect With Us</h4>
               <div className="flex flex-col space-y-2.5 text-sm text-white/90">
-                <a 
-                  href="https://wa.me/918145363290?text=Assalamu%20Alaikum%20Ms.%20Mustara%2C%20I%20have%20an%20inquiry%20regarding%20Qalbiya%20Islamic%20Institute." 
-                  className="flex items-center space-x-2.5 text-[#81E6A5] hover:text-white transition-colors duration-300 font-semibold"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  id="footer-link-whatsapp"
-                >
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#81E6A5] animate-pulse shrink-0"></span>
-                  <span className="underline decoration-[#81E6A5]/50 hover:decoration-current">WhatsApp Ms. Mustara</span>
-                </a>
                 <a 
                   href="https://instagram.com/qalbiya_institute" 
                   className="flex items-center space-x-2.5 text-white/90 hover:text-[#F3D797] transition-colors duration-300 font-semibold"
@@ -62,19 +52,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentRoute }) => {
                   id="footer-link-instagram"
                 >
                   <Instagram className="w-4 h-4 text-[#F3D797] shrink-0" />
-                  <span className="underline decoration-white/30 hover:decoration-current">@qalbiya.institute (Instagram DM)</span>
+                  <span className="underline decoration-white/30 hover:decoration-current">@qalbiya.institute (Instagram)</span>
                 </a>
-              </div>
-
-              <div>
-                <button
-                  onClick={() => onNavigate('asmaUlHusna')}
-                  className="text-white/90 hover:text-[#F3D797] hover:underline font-semibold text-xs sm:text-sm transition-colors cursor-pointer inline-flex items-center gap-1.5"
-                  id="footer-primary-btn-asma-ul-husna"
+                <a 
+                  href="mailto:qalbiya.institute@gmail.com" 
+                  className="flex items-center space-x-2.5 text-white/90 hover:text-[#F3D797] transition-colors duration-300 font-semibold"
+                  id="footer-link-email"
                 >
-                  <Sparkles className="w-3.5 h-3.5 text-[#F3D797] shrink-0" />
-                  <span>Explore Asma Ul Husna (99 Names)</span>
-                </button>
+                  <span className="w-4 h-4 text-[#F3D797] shrink-0 flex items-center justify-center">✉</span>
+                  <span className="underline decoration-white/30 hover:decoration-current">qalbiya.institute@gmail.com</span>
+                </a>
               </div>
             </div>
           </div>
