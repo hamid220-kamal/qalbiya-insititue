@@ -15,6 +15,19 @@ export const ContactPage: React.FC = () => {
   const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState<string | null>(null);
 
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [isContactMenuOpen, setIsContactMenuOpen] = useState(false);
+  const [isHelpDeskOpen, setIsHelpDeskOpen] = useState(false);
+
+  // Enrollment form states
+  const [enrollmentName, setEnrollmentName] = useState('');
+  const [enrollmentPhone, setEnrollmentPhone] = useState('');
+  const [enrollmentEmail, setEnrollmentEmail] = useState('');
+  const [selectedCourse, setSelectedCourse] = useState('');
+  const [enrollmentFor, setEnrollmentFor] = useState('self');
+  const [enrollmentSubmitting, setEnrollmentSubmitting] = useState(false);
+  const [enrollmentSuccess, setEnrollmentSuccess] = useState<string | null>(null);
+  const [enrollmentError, setEnrollmentError] = useState<string | null>(null);
+  const [isContactMenuOpen, setIsContactMenuOpen] = useState(false);
 
   const quickTopics = [
     { label: 'Tajweed 1 on 1', value: 'Tajweed 1 on 1 Inquiry' },
@@ -136,6 +149,59 @@ export const ContactPage: React.FC = () => {
       a: 'Absolutely. We believe financial constraints should never come between a seeker and sacred knowledge. Select "Scholarship / Financial Aid" in the subject above or message us directly.'
     }
   ];
+
+  const courseOptions = [
+    'Tajweed 1-on-1 Classes',
+    'Seerah of Prophet ﷺ Course',
+    'Noorani Qaida Course',
+    'Pre-Diploma in Deeniyat',
+    'Juniors Deeniyat Mastercourse',
+    'Asma Ul Husna Course'
+  ];
+
+  const handleEnrollmentSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!enrollmentName.trim() || !enrollmentPhone.trim() || !enrollmentEmail.trim() || !selectedCourse) {
+      setEnrollmentError('Please fill in all required fields.');
+      return;
+    }
+
+    setEnrollmentSubmitting(true);
+    setEnrollmentError(null);
+    setEnrollmentSuccess(null);
+
+    try {
+      const response = await fetch('/api/enrollment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: enrollmentName.trim(),
+          phone: enrollmentPhone.trim(),
+          email: enrollmentEmail.trim(),
+          course: selectedCourse,
+          enrollmentFor,
+          timestamp: new Date().toISOString()
+        })
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setEnrollmentSuccess('Alhamdulillah! Your enrollment request has been received. Ms. Mustara will contact you shortly with course details.');
+        setEnrollmentName('');
+        setEnrollmentPhone('');
+        setEnrollmentEmail('');
+        setSelectedCourse('');
+        setEnrollmentFor('self');
+      } else {
+        setEnrollmentError(data.error || 'Failed to submit enrollment. Please try again.');
+      }
+    } catch (err) {
+      setEnrollmentError('Network error. Please try again or contact us via WhatsApp.');
+    } finally {
+      setEnrollmentSubmitting(false);
+    }
+  };
 
   return (
     <div className="space-y-12 pb-24 max-w-4xl mx-auto px-4 sm:px-6 pt-8 text-left" id="contact-page-container">
@@ -364,7 +430,7 @@ export const ContactPage: React.FC = () => {
           </form>
         </motion.div>
 
-        {/* Right Column: Direct Cards & Info */}
+        {/* Right Column: Contact Options Menu */}
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -373,124 +439,394 @@ export const ContactPage: React.FC = () => {
           id="contact-direct-cards"
         >
           
-          {/* Card 1: Student Support Desk */}
-          <div className="bg-white border border-[#E8DDD9] rounded-2xl p-5 space-y-3 shadow-xs">
+          {/* Main Contact Menu Button */}
+          <button
+            type="button"
+            onClick={() => setIsContactMenuOpen(!isContactMenuOpen)}
+            className="w-full bg-[#78122B] hover:bg-[#630E23] text-white px-6 py-4 rounded-2xl text-sm font-semibold transition-all shadow-sm flex items-center justify-between gap-3 cursor-pointer"
+            id="contact-menu-toggle"
+          >
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700 border border-blue-200">
-                <Phone className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-sm text-[#23181A]">Student Support Desk</h3>
-                <p className="text-xs text-[#5C4D50]">Direct phone support for students</p>
-              </div>
+              <MessageSquare className="w-5 h-5 fill-current" />
+              <span>Quick Contact Options</span>
             </div>
-            <p className="text-xs text-[#5C4D50] leading-relaxed">
-              Call our dedicated student support line for immediate assistance with classes, technical issues, and student inquiries.
-            </p>
-            <div className="pt-2 border-t border-[#E8DDD9] flex items-center justify-between">
-              <span className="font-mono text-xs font-bold text-[#23181A]">+91 99051 01016</span>
-              <a 
-                href="tel:+919905101016"
-                className="text-xs font-semibold text-blue-700 hover:underline flex items-center gap-1"
-              >
-                Call Now →
-              </a>
-            </div>
-          </div>
+            <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isContactMenuOpen ? 'rotate-180' : ''}`} />
+          </button>
 
-          {/* Card 2: WhatsApp Support Direct */}
-          <div className="bg-white border border-[#E8DDD9] rounded-2xl p-5 space-y-3 shadow-xs">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200">
-                <MessageSquare className="w-5 h-5 fill-current" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-sm text-[#23181A]">Direct WhatsApp Support</h3>
-                <p className="text-xs text-[#5C4D50]">Connect with Ms. Mustara directly</p>
-              </div>
-            </div>
-            <p className="text-xs text-[#5C4D50] leading-relaxed">
-              Fastest route for instant course enrollment, class link help, or custom schedule arrangements.
-            </p>
-            <div className="pt-2 border-t border-[#E8DDD9] flex items-center justify-between">
-              <span className="font-mono text-xs font-bold text-[#23181A]">+91 81453 63290</span>
-              <a 
-                href="https://wa.me/918145363290?text=Assalamualaikum%2C%20Ma%27am%2C%0A%0AI%20have%20some%20queries%20regarding%20Qalbiya%20Islamic%20Institute.%20Could%20you%20please%20guide%20me%3F%0A%0AJazakAllahu%20Khair"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-semibold text-[#25D366] hover:underline flex items-center gap-1"
+          {/* Expandable Contact Options */}
+          <AnimatePresence>
+            {isContactMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-3 overflow-hidden"
               >
-                Chat Now →
-              </a>
-            </div>
-          </div>
+                {/* Card 1: Student Support Desk */}
+                <motion.div 
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.2, delay: 0 }}
+                  className="bg-white border border-[#E8DDD9] rounded-2xl p-5 space-y-3 shadow-xs"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700 border border-blue-200">
+                      <Phone className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-sm text-[#23181A]">Student Support Desk</h3>
+                      <p className="text-xs text-[#5C4D50]">Direct phone support for students</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-[#5C4D50] leading-relaxed">
+                    Call our dedicated student support line for immediate assistance with classes, technical issues, and student inquiries.
+                  </p>
+                  <div className="pt-2 border-t border-[#E8DDD9] flex items-center justify-between">
+                    <span className="font-mono text-xs font-bold text-[#23181A]">+91 99051 01016</span>
+                    <a 
+                      href="tel:+919905101016"
+                      className="text-xs font-semibold text-blue-700 hover:underline flex items-center gap-1"
+                    >
+                      Call Now →
+                    </a>
+                  </div>
+                </motion.div>
 
-          {/* Card 3: Instagram Handles */}
-          <div className="bg-white border border-[#E8DDD9] rounded-2xl p-5 space-y-3 shadow-xs">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-pink-50 text-pink-700 border border-pink-200">
-                <Instagram className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-sm text-[#23181A]">Instagram Community</h3>
-                <p className="text-xs text-[#5C4D50]">Daily reflections & announcements</p>
-              </div>
-            </div>
-            <p className="text-xs text-[#5C4D50] leading-relaxed">
-              Send us a direct message on Instagram to stay updated with upcoming batches, quotes, and video snippets.
-            </p>
-            <div className="pt-2 border-t border-[#E8DDD9] flex items-center justify-between">
-              <span className="font-mono text-xs font-bold text-[#23181A]">@qalbiya_institute</span>
-              <a 
-                href="https://instagram.com/qalbiya_institute"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-semibold text-pink-700 hover:underline flex items-center gap-1"
-              >
-                Visit Handle →
-              </a>
-            </div>
-          </div>
+                {/* Card 2: WhatsApp Support Direct */}
+                <motion.div 
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.2, delay: 0.1 }}
+                  className="bg-white border border-[#E8DDD9] rounded-2xl p-5 space-y-3 shadow-xs"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      <MessageSquare className="w-5 h-5 fill-current" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-sm text-[#23181A]">Direct WhatsApp Support</h3>
+                      <p className="text-xs text-[#5C4D50]">Connect with Ms. Mustara directly</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-[#5C4D50] leading-relaxed">
+                    Fastest route for instant course enrollment, class link help, or custom schedule arrangements.
+                  </p>
+                  <div className="pt-2 border-t border-[#E8DDD9] flex items-center justify-between">
+                    <span className="font-mono text-xs font-bold text-[#23181A]">+91 81453 63290</span>
+                    <a 
+                      href="https://wa.me/918145363290?text=Assalamualaikum%2C%20Ma%27am%2C%0A%0AI%20have%20some%20queries%20regarding%20Qalbiya%20Islamic%20Institute.%20Could%20you%20please%20guide%20me%3F%0A%0AJazakAllahu%20Khair"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-semibold text-[#25D366] hover:underline flex items-center gap-1"
+                    >
+                      Chat Now →
+                    </a>
+                  </div>
+                </motion.div>
 
-          {/* Card 4: Email Support */}
-          <div className="bg-white border border-[#E8DDD9] rounded-2xl p-5 space-y-3 shadow-xs">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#F9E8EC] text-[#78122B] border border-[#78122B]/20">
-                <Mail className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-sm text-[#23181A]">Official Email</h3>
-                <p className="text-xs text-[#5C4D50]">Formal correspondence</p>
-              </div>
-            </div>
-            <p className="text-xs text-[#5C4D50] leading-relaxed">
-              For administrative or academic inquiries, send us an email anytime.
-            </p>
-            <div className="pt-2 border-t border-[#E8DDD9] flex items-center justify-between">
-              <span className="font-mono text-xs font-bold text-[#23181A]">qalbiya.institute@gmail.com</span>
-              <a 
-                href="mailto:qalbiya.institute@gmail.com"
-                className="text-xs font-semibold text-[#78122B] hover:underline flex items-center gap-1"
-              >
-                Send Email →
-              </a>
-            </div>
-          </div>
+                {/* Card 3: Instagram Handles */}
+                <motion.div 
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.2, delay: 0.2 }}
+                  className="bg-white border border-[#E8DDD9] rounded-2xl p-5 space-y-3 shadow-xs"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-pink-50 text-pink-700 border border-pink-200">
+                      <Instagram className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-sm text-[#23181A]">Instagram Community</h3>
+                      <p className="text-xs text-[#5C4D50]">Daily reflections & announcements</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-[#5C4D50] leading-relaxed">
+                    Send us a direct message on Instagram to stay updated with upcoming batches, quotes, and video snippets.
+                  </p>
+                  <div className="pt-2 border-t border-[#E8DDD9] flex items-center justify-between">
+                    <span className="font-mono text-xs font-bold text-[#23181A]">@qalbiya_institute</span>
+                    <a 
+                      href="https://instagram.com/qalbiya_institute"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-semibold text-pink-700 hover:underline flex items-center gap-1"
+                    >
+                      Visit Handle →
+                    </a>
+                  </div>
+                </motion.div>
 
-          {/* Response Hours Info Box */}
-          <div className="bg-[#FAF8F5] border border-[#E8DDD9] rounded-2xl p-4 flex items-center gap-3 text-xs text-[#5C4D50]">
-            <Clock className="w-5 h-5 text-[#78122B] shrink-0" />
-            <div>
-              <span className="font-semibold text-[#23181A]">Class & Support Hours:</span>
-              <p className="text-[11px] text-[#5C4D50]">Monday – Saturday: 8:00 AM – 9:30 PM IST</p>
-            </div>
-          </div>
+                {/* Card 4: Email Support */}
+                <motion.div 
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.2, delay: 0.3 }}
+                  className="bg-white border border-[#E8DDD9] rounded-2xl p-5 space-y-3 shadow-xs"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#F9E8EC] text-[#78122B] border border-[#78122B]/20">
+                      <Mail className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-sm text-[#23181A]">Official Email</h3>
+                      <p className="text-xs text-[#5C4D50]">Formal correspondence</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-[#5C4D50] leading-relaxed">
+                    For administrative or academic inquiries, send us an email anytime.
+                  </p>
+                  <div className="pt-2 border-t border-[#E8DDD9] flex items-center justify-between">
+                    <span className="font-mono text-xs font-bold text-[#23181A]">qalbiya.institute@gmail.com</span>
+                    <a 
+                      href="mailto:qalbiya.institute@gmail.com"
+                      className="text-xs font-semibold text-[#78122B] hover:underline flex items-center gap-1"
+                    >
+                      Send Email →
+                    </a>
+                  </div>
+                </motion.div>
+
+                {/* Response Hours Info Box */}
+                <motion.div 
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.2, delay: 0.4 }}
+                  className="bg-[#FAF8F5] border border-[#E8DDD9] rounded-2xl p-4 flex items-center gap-3 text-xs text-[#5C4D50]"
+                >
+                  <Clock className="w-5 h-5 text-[#78122B] shrink-0" />
+                  <div>
+                    <span className="font-semibold text-[#23181A]">Class & Support Hours:</span>
+                    <p className="text-[11px] text-[#5C4D50]">Monday – Saturday: 8:00 AM – 9:30 PM IST</p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
         </motion.div>
 
       </div>
 
-      {/* Frequently Asked Questions Section on Contact Page */}
+      {/* Enrollment Section */}
+      <motion.section 
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="bg-gradient-to-br from-[#78122B]/5 to-[#78122B]/10 border border-[#78122B]/20 rounded-3xl p-6 sm:p-8 space-y-6"
+        id="enrollment-section"
+      >
+        <div className="border-b border-[#78122B]/20 pb-4 space-y-2">
+          <h2 className="serif-heading text-3xl font-bold text-[#23181A]">
+            Begin Your Journey Back To Deen Today
+          </h2>
+          <p className="text-sm text-[#5C4D50] max-w-2xl">
+            Qalbiya Islamic Institute is exclusively for sisters seeking to deepen their connection with the Quran and Islamic knowledge. We create a supportive, women-centered learning environment where you can grow spiritually and academically.
+          </p>
+        </div>
+
+        <form className="space-y-5 grid grid-cols-1 lg:grid-cols-2 gap-6">
+          
+          {/* Left Column */}
+          <div className="space-y-4">
+            <div>
+              <label className="block text-xs font-semibold text-[#23181A] uppercase tracking-wider mb-1">
+                Full Name <span className="text-[#78122B]">*</span>
+              </label>
+              <input 
+                type="text"
+                value={enrollmentName}
+                onChange={(e) => setEnrollmentName(e.target.value)}
+                placeholder="e.g. Sister Fatima"
+                className="w-full bg-white border border-[#E8DDD9] rounded-xl px-3.5 py-2.5 text-sm text-[#23181A] placeholder-[#8C7A7E] focus:outline-none focus:ring-2 focus:ring-[#78122B]/30 focus:border-[#78122B] transition-all"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#23181A] uppercase tracking-wider mb-1">
+                WhatsApp Number <span className="text-[#78122B]">*</span>
+              </label>
+              <input 
+                type="tel"
+                value={enrollmentPhone}
+                onChange={(e) => setEnrollmentPhone(e.target.value)}
+                placeholder="+91 98765 43210"
+                className="w-full bg-white border border-[#E8DDD9] rounded-xl px-3.5 py-2.5 text-sm text-[#23181A] placeholder-[#8C7A7E] focus:outline-none focus:ring-2 focus:ring-[#78122B]/30 focus:border-[#78122B] transition-all"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#23181A] uppercase tracking-wider mb-1">
+                Email Address <span className="text-[#78122B]">*</span>
+              </label>
+              <input 
+                type="email"
+                value={enrollmentEmail}
+                onChange={(e) => setEnrollmentEmail(e.target.value)}
+                placeholder="e.g. fatima@example.com"
+                className="w-full bg-white border border-[#E8DDD9] rounded-xl px-3.5 py-2.5 text-sm text-[#23181A] placeholder-[#8C7A7E] focus:outline-none focus:ring-2 focus:ring-[#78122B]/30 focus:border-[#78122B] transition-all"
+                required
+              />
+            </div>
+          </div>
+
+          {/* Right Column */}
+          <div className="space-y-4">
+            <div>
+              <label className="block text-xs font-semibold text-[#23181A] uppercase tracking-wider mb-1">
+                Select Your Course <span className="text-[#78122B]">*</span>
+              </label>
+              <select
+                value={selectedCourse}
+                onChange={(e) => setSelectedCourse(e.target.value)}
+                className="w-full bg-white border border-[#E8DDD9] rounded-xl px-3.5 py-2.5 text-sm text-[#23181A] focus:outline-none focus:ring-2 focus:ring-[#78122B]/30 focus:border-[#78122B] transition-all"
+                required
+              >
+                <option value="">-- Choose a Course --</option>
+                {courseOptions.map((course) => (
+                  <option key={course} value={course}>{course}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#23181A] uppercase tracking-wider mb-1">
+                This Enrollment Is For <span className="text-[#78122B]">*</span>
+              </label>
+              <div className="flex gap-3">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input 
+                    type="radio"
+                    value="self"
+                    checked={enrollmentFor === 'self'}
+                    onChange={(e) => setEnrollmentFor(e.target.value)}
+                    className="w-4 h-4 accent-[#78122B]"
+                  />
+                  <span className="text-sm text-[#23181A]">Myself</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input 
+                    type="radio"
+                    value="child"
+                    checked={enrollmentFor === 'child'}
+                    onChange={(e) => setEnrollmentFor(e.target.value)}
+                    className="w-4 h-4 accent-[#78122B]"
+                  />
+                  <span className="text-sm text-[#23181A]">My Daughter</span>
+                </label>
+              </div>
+            </div>
+
+            {/* Important Notice */}
+            <div className="bg-white border-l-4 border-[#78122B] rounded-lg p-4 space-y-2">
+              <p className="text-xs font-semibold text-[#78122B] uppercase tracking-wider">
+                💝 Our Commitment to Sisters
+              </p>
+              <p className="text-xs text-[#5C4D50] leading-relaxed">
+                Qalbiya Islamic Institute is a safe, nurturing space dedicated to sisters in Islam. We maintain this sacred environment exclusively for women seeking to strengthen their bond with the Quran and deepen their Islamic knowledge.
+              </p>
+            </div>
+          </div>
+
+          {/* Error or Success Feedback */}
+          <AnimatePresence>
+            {enrollmentError && (
+              <motion.div 
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="col-span-1 lg:col-span-2 p-3 bg-red-50 border border-red-200 text-red-800 text-xs rounded-xl flex items-center gap-2"
+              >
+                <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+                <span>{enrollmentError}</span>
+              </motion.div>
+            )}
+
+            {enrollmentSuccess && (
+              <motion.div 
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="col-span-1 lg:col-span-2 p-3.5 bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs rounded-xl"
+              >
+                <div className="flex items-center gap-2 font-semibold text-emerald-800">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>{enrollmentSuccess}</span>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Submit Button */}
+          <div className="col-span-1 lg:col-span-2">
+            <button
+              type="button"
+              onClick={handleEnrollmentSubmit}
+              disabled={enrollmentSubmitting}
+              className="w-full bg-[#78122B] hover:bg-[#630E23] text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+            >
+              <Send className="w-4 h-4" />
+              <span>{enrollmentSubmitting ? 'Submitting...' : 'Submit Enrollment Request'}</span>
+            </button>
+          </div>
+        </form>
+      </motion.section>
+
+      {/* Help Desk Section */}
+      <motion.section 
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="bg-white border border-[#E8DDD9] rounded-3xl p-6 sm:p-8 space-y-5 shadow-sm"
+        id="help-desk-section"
+      >
+        <div className="border-b border-[#E8DDD9] pb-4">
+          <h2 className="serif-heading text-2xl font-bold text-[#23181A] flex items-center gap-3">
+            <HelpCircle className="w-7 h-7 text-[#78122B]" />
+            Need Help Choosing a Program?
+          </h2>
+          <p className="text-sm text-[#5C4D50] mt-2">
+            Our Help Desk team is ready to guide you in selecting the perfect course based on your goals and schedule.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <a
+            href="tel:+919905101016"
+            className="flex items-center gap-4 p-4 bg-blue-50 border border-blue-200 rounded-xl hover:bg-blue-100 transition-colors cursor-pointer group"
+          >
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-700 border border-blue-300 group-hover:bg-blue-200">
+              <Phone className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-sm text-[#23181A]">Call Help Desk</h3>
+              <p className="text-xs text-[#5C4D50]">+91 99051 01016</p>
+            </div>
+          </a>
+
+          <a
+            href="https://wa.me/918145363290?text=Assalamualaikum%2C%20Ma%27am%2C%0A%0AI%20would%20like%20to%20know%20more%20about%20the%20courses%20available%20and%20which%20one%20would%20suit%20my%20needs.%20Could%20you%20help%20guide%20me%3F%0A%0AJazakAllahu%20Khair"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl hover:bg-emerald-100 transition-colors cursor-pointer group"
+          >
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 border border-emerald-300 group-hover:bg-emerald-200">
+              <MessageSquare className="w-6 h-6 fill-current" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-sm text-[#23181A]">WhatsApp Help Desk</h3>
+              <p className="text-xs text-[#5C4D50]">Instant guidance</p>
+            </div>
+          </a>
+        </div>
+
+        <div className="bg-[#FAF8F5] border border-[#E8DDD9] rounded-xl p-4 space-y-2">
+          <p className="text-xs font-semibold text-[#78122B] uppercase tracking-wider">📞 Available Hours</p>
+          <p className="text-xs text-[#5C4D50]">Monday – Saturday: 8:00 AM – 9:30 PM IST</p>
+        </div>
+      </motion.section>
       <motion.section 
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
