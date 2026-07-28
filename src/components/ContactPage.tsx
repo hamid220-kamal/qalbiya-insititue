@@ -589,8 +589,6 @@ export const ContactPage: React.FC = () => {
         </div>
       </motion.section>
 
-    </div>
-
       {/* Join Girls Community Section */}
       <motion.section 
         initial={{ opacity: 0, y: 15 }}
